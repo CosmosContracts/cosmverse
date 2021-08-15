@@ -1,4 +1,4 @@
-# Cosmverse
+# Cøsmverse
 
 NFT Marketplace on Juno.
 
