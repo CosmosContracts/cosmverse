@@ -1,5 +1,6 @@
 # Cosmverse
-NFT Marketplace on Juno
+
+NFT Marketplace on Juno.
 
 Buy, sell, & explore the amazing world of nonfungible goods.
 
