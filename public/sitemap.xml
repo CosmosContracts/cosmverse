@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://cosmverse.com/rmrk/rare</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<url>
+		<loc>https://cosmverse.com/rmrk/gallery</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<url>
+		<loc>https://cosmverse.com/rmrk/mint</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<url>
+		<loc>https://cosmverse.com/rmrk/create</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<url>
+		<loc>https://cosmverse.com/rmrk/credit</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<url>
+		<loc>https://cosmverse.com/rmrk/faq</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+</urlset>
