@@ -3,8 +3,8 @@
     <div class="hero-body">
       <div class="container">
         <h1 class="title is-1 homepage__title">
-          <span class="text__stroked">Koda</span>
-          <span>Dot</span>
+          <span class="text__stroked">Cosm</span>
+          <span>verse</span>
         </h1>
         <h2 class="title is-1 is-flex is-flex-direction-column uppercase homepage__heading">
           <span>
@@ -106,7 +106,7 @@
               </p>
               <p>
                 <span>
-                  Struggling with KodaDot?
+                  Struggling with Cosmverse?
                 </span>
                 <span>
                   Head over to our <a href="/rmrk/faq">FAQ page.</a>
