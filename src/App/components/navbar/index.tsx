@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as ReactRouterLink} from "react-router-dom"
 import {
     Box,
     Flex,
@@ -7,26 +8,21 @@ import {
     Button,
     Stack,
     Collapse,
-    Icon,
     Link,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
     useColorModeValue,
     useBreakpointValue,
     useDisclosure,
-  } from '@chakra-ui/react';
-  import {
+} from '@chakra-ui/react';
+import {
     HamburgerIcon,
     CloseIcon,
-    ChevronDownIcon,
-    ChevronRightIcon,
-  } from '@chakra-ui/icons';
+} from '@chakra-ui/icons';
+import { MdAccountBalanceWallet } from "react-icons/md"
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
   
-  export function Navbar(): JSX.Element {
+export function Navbar(): JSX.Element {
     const { isOpen, onToggle } = useDisclosure();
-  
+
     return (
       <Box>
         <Flex
@@ -37,7 +33,7 @@ import { ColorModeSwitcher } from "../../ColorModeSwitcher";
           px={{ base: 4 }}
           borderBottom={1}
           borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.900')}
+          borderColor={useColorModeValue('pink.400', 'gray.300')}
           align={'center'}>
           <Flex
             flex={{ base: 1, md: 'auto' }}
@@ -53,16 +49,22 @@ import { ColorModeSwitcher } from "../../ColorModeSwitcher";
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <Text
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily={'heading'}
-              color={useColorModeValue('gray.800', 'white')}>
-              Logo
-            </Text>
-  
-            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-              <DesktopNav />
-            </Flex>
+            <Link
+                as={ReactRouterLink}
+                to="/"
+                _hover={{
+                    textDecoration: 'none',
+                }}>
+                <Text
+                bgGradient="linear(to-l, #7928CA,#FF0080)"
+                bgClip="text"
+                fontWeight="extrabold"
+                fontSize="4xl"
+                textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                fontFamily={'heading'}>
+                Cosmverse
+                </Text>
+            </Link>
           </Flex>
   
           <Stack
@@ -70,27 +72,20 @@ import { ColorModeSwitcher } from "../../ColorModeSwitcher";
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
+            <DesktopNav />
             <Button
-              as={'a'}
+              rightIcon={<MdAccountBalanceWallet />}
               fontSize={'sm'}
-              fontWeight={400}
-              variant={'link'}
-              href={'#'}>
-              Sign In
-            </Button>
-            <Button
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={400}
-              color={'white'}
-              bg={'pink.400'}
-              href={'#'}
-              _hover={{
-                bg: 'pink.300',
-              }}>
+              fontWeight={500}
+              variant={'outline'}
+              borderRadius="50px"
+              height="var(--chakra-sizes-8)"
+              marginTop={"4px"}
+              borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
+              >
               Connect wallet
             </Button>
-            <ColorModeSwitcher />
+            <ColorModeSwitcher display={{ base: 'none', md: 'inline-flex' }} />
           </Stack>
         </Flex>
   
@@ -102,86 +97,41 @@ import { ColorModeSwitcher } from "../../ColorModeSwitcher";
   }
   
   const DesktopNav = () => {
-    const linkColor = useColorModeValue('gray.600', 'gray.200');
-    const linkHoverColor = useColorModeValue('gray.800', 'white');
-    const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-  
+    const linkHoverColor = useColorModeValue('pink.300', 'pink.400');
+
     return (
-      <Stack direction={'row'} spacing={4}>
-        {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
-            <Popover trigger={'hover'} placement={'bottom-start'}>
-              <PopoverTrigger>
-                <Link
-                  p={2}
-                  href={navItem.href ?? '#'}
-                  fontSize={'sm'}
-                  fontWeight={500}
-                  color={linkColor}
-                  _hover={{
-                    textDecoration: 'none',
+        <Stack direction={'row'} spacing={6} display={{ base: 'none', md: 'inline-flex' }}>
+            <Link
+                as={ReactRouterLink}
+                to="/collectibles"
+                p={1.5}
+                fontSize={'sm'}
+                fontFamily={'mono'}
+                fontWeight={'semibold'}
+                _hover={{
                     color: linkHoverColor,
-                  }}>
-                  {navItem.label}
-                </Link>
-              </PopoverTrigger>
-  
-              {navItem.children && (
-                <PopoverContent
-                  border={0}
-                  boxShadow={'xl'}
-                  bg={popoverContentBgColor}
-                  p={4}
-                  rounded={'xl'}
-                  minW={'sm'}>
-                  <Stack>
-                    {navItem.children.map((child) => (
-                      <DesktopSubNav key={child.label} {...child} />
-                    ))}
-                  </Stack>
-                </PopoverContent>
-              )}
-            </Popover>
-          </Box>
-        ))}
-      </Stack>
-    );
-  };
-  
-  const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
-    return (
-      <Link
-        href={href}
-        role={'group'}
-        display={'block'}
-        p={2}
-        rounded={'md'}
-        _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
-        <Stack direction={'row'} align={'center'}>
-          <Box>
-            <Text
-              transition={'all .3s ease'}
-              _groupHover={{ color: 'pink.400' }}
-              fontWeight={500}>
-              {label}
-            </Text>
-            <Text fontSize={'sm'}>{subLabel}</Text>
-          </Box>
-          <Flex
-            transition={'all .3s ease'}
-            transform={'translateX(-10px)'}
-            opacity={0}
-            _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-            justify={'flex-end'}
-            align={'center'}
-            flex={1}>
-            <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-          </Flex>
+                }}>
+                Explore
+            </Link>
+            <Button
+                as={ReactRouterLink}
+                to="/create"
+                verticalAlign={"middle"}
+                height="var(--chakra-sizes-8)"
+                fontSize={'sm'}
+                fontWeight={500}
+                borderRadius={'50px'}
+                color={'white'}
+                bg='pink.500'
+                _hover={{
+                    bg: 'pink.700',
+                }}>
+                Create
+            </Button>
         </Stack>
-      </Link>
     );
   };
-  
+
   const MobileNav = () => {
     return (
       <Stack
@@ -195,15 +145,13 @@ import { ColorModeSwitcher } from "../../ColorModeSwitcher";
     );
   };
   
-  const MobileNavItem = ({ label, children, href }: NavItem) => {
-    const { isOpen, onToggle } = useDisclosure();
-  
+  const MobileNavItem = ({ label, href }: NavItem) => {
     return (
-      <Stack spacing={4} onClick={children && onToggle}>
+      <Stack spacing={4}>
         <Flex
           py={2}
-          as={Link}
-          href={href ?? '#'}
+          as={ReactRouterLink}
+          to={href}
           justify={'space-between'}
           align={'center'}
           _hover={{
@@ -214,81 +162,23 @@ import { ColorModeSwitcher } from "../../ColorModeSwitcher";
             color={useColorModeValue('gray.600', 'gray.200')}>
             {label}
           </Text>
-          {children && (
-            <Icon
-              as={ChevronDownIcon}
-              transition={'all .25s ease-in-out'}
-              transform={isOpen ? 'rotate(180deg)' : ''}
-              w={6}
-              h={6}
-            />
-          )}
         </Flex>
-  
-        <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
-          <Stack
-            mt={2}
-            pl={4}
-            borderLeft={1}
-            borderStyle={'solid'}
-            borderColor={useColorModeValue('gray.200', 'gray.700')}
-            align={'start'}>
-            {children &&
-              children.map((child) => (
-                <Link key={child.label} py={2} href={child.href}>
-                  {child.label}
-                </Link>
-              ))}
-          </Stack>
-        </Collapse>
       </Stack>
     );
   };
   
   interface NavItem {
     label: string;
-    subLabel?: string;
-    children?: Array<NavItem>;
-    href?: string;
+    href: string;
   }
   
   const NAV_ITEMS: Array<NavItem> = [
     {
-      label: 'Inspiration',
-      children: [
-        {
-          label: 'Explore Design Work',
-          subLabel: 'Trending Design to inspire you',
-          href: '#',
-        },
-        {
-          label: 'New & Noteworthy',
-          subLabel: 'Up-and-coming Designers',
-          href: '#',
-        },
-      ],
+      label: 'Collectibles',
+      href: '/collectibles',
     },
     {
-      label: 'Find Work',
-      children: [
-        {
-          label: 'Job Board',
-          subLabel: 'Find your dream design job',
-          href: '#',
-        },
-        {
-          label: 'Freelance Projects',
-          subLabel: 'An exclusive list for contract work',
-          href: '#',
-        },
-      ],
-    },
-    {
-      label: 'Learn Design',
-      href: '#',
-    },
-    {
-      label: 'Hire Designers',
-      href: '#',
+      label: 'Create',
+      href: '/create',
     },
   ];
