@@ -1,31 +1,28 @@
 import * as React from "react"
 import {
   BrowserRouter as Router,
-  Link as ReactRouterLink,
   Switch,
   Route,
 } from "react-router-dom"
 import {
   ChakraProvider,
   Box,
-  Link,
   Grid,
-  theme,
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
 import { 
   Create,
   Collectibles,
   Landing,
 } from "./pages"
+import theme from "./theme"
 import { Navbar } from "./components/navbar"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Box textAlign="center" fontSize="xl">
-      <Navbar />
-      <Grid minH="100vh" p={3}>
+      <Grid minH="100vh">
         <Router>
+        <Navbar />
           <Switch>
             <Route
               exact
