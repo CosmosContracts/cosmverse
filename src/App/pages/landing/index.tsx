@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react"
 
 export const Landing = () => (
-  <VStack spacing={8}>
+  <VStack spacing={8} height='540px'>
     <Text>
       Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
     </Text>
