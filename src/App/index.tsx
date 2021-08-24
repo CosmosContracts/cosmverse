@@ -17,6 +17,7 @@ import {
 import theme from "./theme"
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
+import { Detail } from "./pages/detail"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -31,6 +32,12 @@ export const App = () => (
               component={Landing}
             />
             <Route
+              exact
+              path="/collectibles/:id"
+              component={Detail}
+            />
+            <Route
+              exact
               path="/collectibles"
               component={Collectibles}
             />
