@@ -16,13 +16,14 @@ import {
 } from "./pages"
 import theme from "./theme"
 import { Navbar } from "./components/navbar"
+import { Footer } from "./components/footer"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Box textAlign="center" fontSize="xl">
       <Grid minH="100vh">
         <Router>
-        <Navbar />
+          <Navbar />
           <Switch>
             <Route
               exact
@@ -39,6 +40,7 @@ export const App = () => (
             />
           </Switch>
         </Router>
+        <Footer />
       </Grid>
     </Box>
   </ChakraProvider>
