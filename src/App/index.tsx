@@ -18,44 +18,29 @@ import {
   Collectibles,
   Landing,
 } from "./pages"
+import { Navbar } from "./components/navbar"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Box textAlign="center" fontSize="xl">
+      <Navbar />
       <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
         <Router>
-          <div>
-            <ul>
-              <li>
-                <Link as={ReactRouterLink} to="/">Home</Link>
-              </li>
-              <li>
-                <Link as={ReactRouterLink} to="/collectibles">Collectibles</Link>
-              </li>
-              <li>
-                <Link as={ReactRouterLink} to="/create">Create</Link>
-              </li>
-            </ul>
-
-            <hr />
-
-            <Switch>
-              <Route
-                exact
-                path="/"
-                component={Landing}
-              />
-              <Route
-                path="/collectibles"
-                component={Collectibles}
-              />
-              <Route
-                path="/create"
-                component={Create}
-              />
-            </Switch>
-          </div>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={Landing}
+            />
+            <Route
+              path="/collectibles"
+              component={Collectibles}
+            />
+            <Route
+              path="/create"
+              component={Create}
+            />
+          </Switch>
         </Router>
       </Grid>
     </Box>
