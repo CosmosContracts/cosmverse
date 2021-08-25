@@ -9,7 +9,7 @@ import {
   Button,
   useColorModeValue
 } from "@chakra-ui/react"
-import { NftCard } from "../../components/card"
+import { NftCard } from "../../components/nft-card"
 import { NftInfo } from "../../services/type"
 import { ChevronRightIcon } from "@chakra-ui/icons"
 
