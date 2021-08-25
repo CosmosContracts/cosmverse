@@ -12,12 +12,12 @@ import {
 import { 
   Create,
   Collectibles,
+  Detail,
   Landing,
 } from "./pages"
 import theme from "./theme"
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
-import { Detail } from "./pages/detail"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
