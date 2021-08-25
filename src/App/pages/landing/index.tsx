@@ -26,12 +26,8 @@ export const Landing = () => {
         align="stretch"
       >
         <NftSection title="Curated work" />
-        <Box h="240px" bg="tomato">
-          2
-        </Box>
-        <Box h="240px" bg="pink.100">
-          3
-        </Box>
+        <NftSection title="New listed" />
+        <NftSection title="New minted" />
       </VStack>
     </Grid>
   );
