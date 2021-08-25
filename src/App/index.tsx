@@ -7,7 +7,6 @@ import {
 import {
   ChakraProvider,
   Box,
-  Grid,
 } from "@chakra-ui/react"
 import { 
   Create,
@@ -21,34 +20,32 @@ import { Footer } from "./components/footer"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh">
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={Landing}
-            />
-            <Route
-              exact
-              path="/collectibles/:id"
-              component={Detail}
-            />
-            <Route
-              exact
-              path="/collectibles"
-              component={Collectibles}
-            />
-            <Route
-              path="/create"
-              component={Create}
-            />
-          </Switch>
-        </Router>
-        <Footer />
-      </Grid>
+    <Box>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={Landing}
+          />
+          <Route
+            exact
+            path="/collectibles/:id"
+            component={Detail}
+          />
+          <Route
+            exact
+            path="/collectibles"
+            component={Collectibles}
+          />
+          <Route
+            path="/create"
+            component={Create}
+          />
+        </Switch>
+      </Router>
+      <Footer />
     </Box>
   </ChakraProvider>
 )
