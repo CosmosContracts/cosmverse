@@ -39,7 +39,7 @@ export function NftSection({ title }: NftSectionProps): JSX.Element {
             View all
         </Button>
       </Flex>
-      <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+      <Grid templateColumns="repeat(5, 1fr)" gap={10}>
         <NftCard nft={randomNft()} />
         <NftCard nft={randomNft()} />
         <NftCard nft={randomNft()} />
@@ -56,16 +56,16 @@ function randomNft(): NftInfo {
 
   if (rand === 1) {
     return {
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80",
-      title: "NIKE Air",
+      image: "https://rmrk.mypinata.cloud/ipfs/bafybeih3g3e4nlg45osboov64z6wb2m3wyh5fud7dswfs7yhyrysemxcsu",
+      title: "Punk D4",
       user: "Mistic",
       price: price + " JUNO",
     };
   }
 
   return {
-    image: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80",
-    title: "Pen cosm",
+    image: "https://rmrk.mypinata.cloud/ipfs/bafybeicpgysjduvvfvpdhe2zqn2hh2dzdcxyracwtn5foak6i5v7rjxiry",
+    title: "Break OU",
     user: "RealMint",
     price: price + " JUNO",
   };
