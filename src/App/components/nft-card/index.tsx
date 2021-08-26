@@ -20,10 +20,10 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
           alignItems="center"
           justifyContent="center"
         >
-          <Box mx="auto">
+          <Box w="full">
             <Image
                 roundedTop="lg"
-                h={52}
+                h={56}
                 w="full"
                 fit="cover"
                 src={nft.image}
@@ -65,7 +65,7 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
                         {nft.price}
                     </chakra.h1>
                 </Box>
-            </Box>  
+            </Box>
           </Box>
         </Flex>
       );
