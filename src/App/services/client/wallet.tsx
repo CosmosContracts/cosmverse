@@ -2,7 +2,7 @@ import { CosmWasmClient, SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate
 import { Coin } from "@cosmjs/stargate";
 import { OfflineSigner } from "@cosmjs/proto-signing";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AppConfig } from "../config/network";
 import { createClient, createSimpleClient } from "./sdk";
 
@@ -54,28 +54,27 @@ export function SdkProvider({ config: configProp, children }: SdkProviderProps):
   const [client, setClient] = useState<CosmWasmClient>();
   const [signClient, setSignClient] = useState<SigningCosmWasmClient>();
 
-  const contextWithInit = { ...defaultContext, init: setSigner };
+  const contextWithInit = useMemo(() => ({ ...defaultContext, init: setSigner }), []);
   const [value, setValue] = useState<CosmWasmContextType>(contextWithInit);
 
-  function clear(): void {
+  const clear = useCallback(() => {
     setValue({ ...contextWithInit });
     setClient(undefined);
     setSigner(undefined);
     setConfig(configProp);
-  }
+  }, [contextWithInit, configProp]);
 
   function changeConfig(updates: Partial<AppConfig>): void {
     setConfig((config) => ({ ...config, ...updates }));
   }
 
-  // Get balance for each coin specified in config.coinMap
-  async function refreshBalance(address: string, balance: Coin[]): Promise<void> {
+  const refreshBalance = useCallback(async (address: string, balance: Coin[]): Promise<void> => {
     if (!client) return;
 
     balance.length = 0;
     const coin = await client.getBalance(address, config.token.coinMinimalDenom);
     if (coin) balance.push(coin);
-  }
+  }, [client, config]);
 
   useEffect(() => {
     (async function updateClient(): Promise<void> {
@@ -120,7 +119,7 @@ export function SdkProvider({ config: configProp, children }: SdkProviderProps):
         getSignClient: () => signClient,
       });
     })();
-  }, [signClient]);
+  }, [signClient, signer, clear, client, config, refreshBalance]);
 
   return <CosmWasmContext.Provider value={value}>{children}</CosmWasmContext.Provider>;
 }
