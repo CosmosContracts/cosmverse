@@ -13,6 +13,7 @@ const local: AppConfig = {
   },
   gasPrice: 0.025,
   codeId: 4,
+  contract: ""
 };
 
 const testnet: AppConfig = {
@@ -28,6 +29,7 @@ const testnet: AppConfig = {
   },
   gasPrice: 0.025,
   codeId: 4,
+  contract: "juno1kz940rx78rw7p0pqhfresv03k4rtnkdjhq0myt"
 };
 
 const configs: NetworkConfigs = { local, testnet };
