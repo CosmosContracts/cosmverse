@@ -15,10 +15,10 @@ interface CosmWasmContextType {
   readonly address: string;
   readonly balance: readonly Coin[];
   readonly refreshBalance: () => Promise<void>;
-  readonly getSigner: () => OfflineSigner;
+  readonly getSigner: () => OfflineSigner | undefined;
   readonly changeSigner: (newSigner: OfflineSigner) => void;
   readonly getClient: () => CosmWasmClient;
-  readonly getSignClient: () => SigningCosmWasmClient;
+  readonly getSignClient: () => SigningCosmWasmClient | undefined;
 }
 
 function throwNotInitialized(): any {
@@ -34,10 +34,10 @@ const defaultContext: CosmWasmContextType = {
   address: "",
   balance: [],
   refreshBalance: throwNotInitialized,
-  getSigner: throwNotInitialized,
+  getSigner: () => undefined,
   changeSigner: throwNotInitialized,
   getClient: throwNotInitialized,
-  getSignClient: throwNotInitialized,
+  getSignClient: () => undefined,
 };
 
 const CosmWasmContext = React.createContext<CosmWasmContextType>(defaultContext);
