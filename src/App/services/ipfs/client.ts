@@ -1,5 +1,9 @@
 import Axios from 'axios';
 
+export function unSanitizeIpfsUrl(url: string) {
+  return `ipfs://${url}`;
+}
+
 export async function uploadFile(file: Blob): Promise<string> {
   const formData = new FormData();
   formData.append('file', file);
