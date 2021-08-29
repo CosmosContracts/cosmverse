@@ -91,6 +91,7 @@ export const Create = () => {
   <Flex
     py={{ base: 5 }}
     px={{ base: 4 }}
+    mb={8}
     justifyContent="center"
     alignItems="center"
     direction="row">
