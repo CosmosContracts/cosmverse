@@ -12,10 +12,28 @@ import {
 } from "@chakra-ui/react"
 import { FileUpload } from "../../components/file-upload"
 import { useSdk } from "../../services/client/wallet";
+import { unSanitizeIpfsUrl, uploadFile } from "../../services/ipfs/client";
+import { Bech32, toHex } from "@cosmjs/encoding";
+import { useState } from "react";
+import { config } from "../../../config";
+
+function generateId(address: string) {
+  // TODO: Format ID?
+  const pubkey = toHex(Bech32.decode(address).data);
+  return (
+    pubkey?.substr(2, 10) +
+    pubkey?.substring(pubkey.length - 8) +
+    '-' +
+    Math.random().toString(36).substr(2, 9)
+  ).toUpperCase();
+}
 
 export const Create = () => {
-  const { getSignClient, address } = useSdk();
   const toast = useToast();
+  const { getSignClient, address } = useSdk();
+  const [files, setFiles] = useState<File[]>();
+  const [nftName, setNftName]= useState<string>();
+  const [description, setDescription]= useState<string>();
 
   async function createNft(e: any) {
     // TODO: use formik validations
@@ -33,25 +51,46 @@ export const Create = () => {
       return;
     }
 
-    // const msg = {
-    //   mint: {
-    //     token_id: "",
-    //     owner: address,
-    //     name: name,
-    //     description: description,
-    //     image: "ipfs://QmSGiUSr8J5dqM4Td6MVoxjtNUrLXDfuwwRQyRxYM7keE7"
-    //   }
-    // };
+    console.log(files, nftName, description);
+    if (!files || files.length == 0) {
+      return;
+    }
 
-    // const client = getSignClient();
-    // const result = await client?.execute(address, "", msg);
+    // TODO: Show ID after load page
+    const nftId = generateId(address);
+
+    try {
+      const fileHash = await uploadFile(files[0]);
+      console.log(fileHash, nftId);
+      const msg = {
+        mint: {
+          token_id: nftId,
+          owner: address,
+          name: nftName,
+          description: description,
+          image: unSanitizeIpfsUrl(fileHash)
+        }
+      };
+
+      const client = getSignClient();
+      const result = await client?.execute(address, config.contract, msg);
+
+      console.log(result);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error,
+        status: "error",
+        position: "bottom-right",
+        isClosable: true,
+      });
+    }
   }
 
   return (
   <Flex
     py={{ base: 5 }}
     px={{ base: 4 }}
-    borderBottom={1}
     justifyContent="center"
     alignItems="center"
     direction="row">
@@ -68,7 +107,7 @@ export const Create = () => {
                 fontFamily="mono"
                 fontWeight="semibold"
               >Image</FormLabel>
-              <FileUpload accept="image/*" onDrop={acceptedFiles => console.log(acceptedFiles)} />
+              <FileUpload accept="image/*" onDrop={acceptedFiles => setFiles(acceptedFiles)} />
             </FormControl>
           </Box>
           <Box mt={4}>
@@ -78,7 +117,7 @@ export const Create = () => {
                 fontFamily="mono"
                 fontWeight="semibold"
               >Name</FormLabel>
-              <Input name="name" />
+              <Input name="name" onChange={e => setNftName(e.target.value)} />
             </FormControl>
           </Box>
           <Box mt={4}>
@@ -88,7 +127,7 @@ export const Create = () => {
                 fontFamily="mono"
                 fontWeight="semibold"
               >Description</FormLabel>
-              <Textarea name="description" placeholder="NFT description" />
+              <Textarea name="description" placeholder="NFT description" onChange={e => setDescription(e.target.value)} />
             </FormControl>
           </Box>
           <Box mt={6}>
