@@ -1,7 +1,7 @@
-import { CosmWasmFeeTable } from "@cosmjs/cosmwasm-stargate";
+import { CosmWasmClient, CosmWasmFeeTable } from "@cosmjs/cosmwasm-stargate";
 import { SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 import { Window as KeplrWindow } from "@keplr-wallet/types";
-import { defaultGasLimits as defaultStargateGasLimits, GasLimits, GasPrice, makeCosmoshubPath, } from "@cosmjs/stargate";
+import { defaultGasLimits as defaultStargateGasLimits, GasLimits, GasPrice } from "@cosmjs/stargate";
 import { OfflineSigner } from "@cosmjs/proto-signing";
 
 import { AppConfig } from "../config/network";
@@ -33,7 +33,11 @@ export async function createClient(config: AppConfig, signer: OfflineSigner): Pr
 
   return SigningCosmWasmClient.connectWithSigner(config.rpcUrl, signer, {
     prefix: config.addressPrefix,
-    gasPrice: GasPrice.fromString(`${config.gasPrice}${config.feeToken}`),
+    gasPrice: GasPrice.fromString(`${config.gasPrice}${config.token.coinMinimalDenom}`),
     gasLimits: gasLimits,
   });
+}
+
+export function createSimpleClient(config: AppConfig): Promise<CosmWasmClient> {
+  return CosmWasmClient.connect(config.rpcUrl);
 }
