@@ -118,7 +118,10 @@ export const Create = () => {
                 fontFamily="mono"
                 fontWeight="semibold"
               >Name</FormLabel>
-              <Input name="name" onChange={e => setNftName(e.target.value)} />
+              <Input
+                name="name"
+                spellCheck={false}
+                onChange={e => setNftName(e.target.value)} />
             </FormControl>
           </Box>
           <Box mt={4}>
@@ -128,7 +131,10 @@ export const Create = () => {
                 fontFamily="mono"
                 fontWeight="semibold"
               >Description</FormLabel>
-              <Textarea name="description" placeholder="NFT description" onChange={e => setDescription(e.target.value)} />
+              <Textarea name="description"
+                placeholder="NFT description"
+                spellCheck={false}
+                onChange={e => setDescription(e.target.value)} />
             </FormControl>
           </Box>
           <Box mt={6}>
