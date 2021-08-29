@@ -8,18 +8,21 @@ import {
   ChakraProvider,
   Box,
 } from "@chakra-ui/react"
-import { 
+import {
   Create,
   Collectibles,
   Detail,
   Landing,
 } from "./pages"
 import theme from "./theme"
+import { config } from "../config";
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
+import { SdkProvider } from "./services/client/wallet"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
+    <SdkProvider config={config}>
     <Box>
       <Router>
         <Navbar />
@@ -47,5 +50,6 @@ export const App = () => (
       </Router>
       <Footer />
     </Box>
+    </SdkProvider>
   </ChakraProvider>
 )
