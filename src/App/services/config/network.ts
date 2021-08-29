@@ -12,13 +12,13 @@ export interface AppConfig {
 }
 
 export interface NetworkConfigs {
-  readonly local: AppConfig;
+  readonly testnet: AppConfig;
   readonly [key: string]: AppConfig;
 }
 
 export function getAppConfig(configs: NetworkConfigs): AppConfig {
   const network = process.env.REACT_APP_NETWORK;
-  if (!network) return configs.local;
+  if (!network) return configs.testnet;
 
   const config = configs[network];
   if (!config) {
