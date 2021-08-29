@@ -6,8 +6,6 @@ export interface AppConfig {
   readonly addressPrefix: string;
   readonly rpcUrl: string;
   readonly httpUrl: string;
-  readonly faucetUrl: string;
-  readonly feeToken: string;
   readonly token: Currency;
   readonly gasPrice: number;
   readonly codeId?: number;
