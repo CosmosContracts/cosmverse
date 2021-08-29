@@ -32,7 +32,7 @@ export const Create = () => (
                 fontFamily="mono"
                 fontWeight="semibold"
               >Image</FormLabel>
-              <FileUpload accept="image/*"/>
+              <FileUpload accept="image/*" onDrop={acceptedFiles => console.log(acceptedFiles)} />
             </FormControl>
           </Box>
           <Box mt={4}>

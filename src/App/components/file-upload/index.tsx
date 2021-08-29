@@ -8,32 +8,20 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { DropzoneProps, useDropzone } from "react-dropzone";
 
-type FileUploadProps = {
-  accept?: string
-  multiple?: boolean
-}
+export function FileUpload(props: DropzoneProps): JSX.Element {
+  const {
+    acceptedFiles,
+    isDragAccept,
+    getRootProps,
+    getInputProps,
+  } = useDropzone(props)
 
-export function FileUpload({ accept, multiple }: FileUploadProps): JSX.Element {
-  // const inputRef = useRef();
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  const acceptedFileItems = acceptedFiles.map(file => file.name).join(',');
 
-
-  return (
-    <Flex
-      mt={1}
-      justify="center"
-      px={6}
-      pt={5}
-      pb={6}
-      borderWidth={2}
-      borderColor={useColorModeValue("gray.300", "gray.500")}
-      borderStyle="dashed"
-      rounded="md"
-      onClick={() => inputRef.current?.click()}
-    >
-      <Stack spacing={1} textAlign="center">
+  const uploadContainer = (
+    <Stack spacing={1} textAlign="center">
         <Icon
           mx="auto"
           boxSize={12}
@@ -68,14 +56,7 @@ export function FileUpload({ accept, multiple }: FileUploadProps): JSX.Element {
           >
             <span>Upload a file</span>
             <VisuallyHidden>
-              <input
-                accept={accept}
-                multiple={multiple}
-                id="file-upload"
-                name="file-upload"
-                type="file"
-                ref={e => inputRef.current = e}
-              />
+              <input {...getInputProps()} />
             </VisuallyHidden>
           </chakra.label>
           <Text pl={1}>or drag and drop</Text>
@@ -87,6 +68,35 @@ export function FileUpload({ accept, multiple }: FileUploadProps): JSX.Element {
           PNG, JPG, GIF up to 10MB
         </Text>
       </Stack>
+  );
+
+  const filenameContainer = (
+    <Flex
+      fontSize="sm"
+      fontFamily="mono"
+      color={useColorModeValue("gray.800", "whiteAlpha.900")}
+    >
+      {acceptedFileItems}
+    </Flex>
+  );
+
+  const acceptDropColor = useColorModeValue("pink.500", "pink.600");
+  const normalDropColor = useColorModeValue("gray.300", "gray.500");
+
+  return (
+    <Flex
+      mt={1}
+      justify="center"
+      px={6}
+      pt={5}
+      pb={6}
+      borderWidth={2}
+      borderColor={isDragAccept ? acceptDropColor : normalDropColor}
+      borderStyle="dashed"
+      rounded="md"
+      {...getRootProps()}
+    >
+      {acceptedFileItems ? filenameContainer: uploadContainer}
     </Flex>
   );
 }
