@@ -17,11 +17,49 @@ import {
     HamburgerIcon,
     CloseIcon,
 } from '@chakra-ui/icons';
+import { Window as KeplrWindow } from "@keplr-wallet/types";
 import { MdAccountBalanceWallet } from "react-icons/md"
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+import { config } from "../../../config";
+import { configKeplr } from "../../services/config/network";
+import { loadKeplrWallet, WalletLoader } from "../../services/client/sdk";
+import { useSdk } from "../../services/client/wallet";
 
 export function Navbar(): JSX.Element {
   const { isOpen, onToggle } = useDisclosure();
+  const sdk = useSdk();
+
+  async function init(loadWallet: WalletLoader) {
+    // setInitializing(true);
+    // clearError();
+
+    try {
+      const signer = await loadWallet(config.chainId, config.addressPrefix);
+      sdk.init(signer);
+    } catch (error) {
+      console.error(error);
+      // TODO: ui error
+    }
+  }
+
+  async function initKeplr() {
+    const anyWindow = window as KeplrWindow;
+    try {
+      await anyWindow.keplr?.experimentalSuggestChain(configKeplr(config));
+      await anyWindow.keplr?.enable(config.chainId);
+      await init(loadKeplrWallet);
+    } catch (error) {
+      console.error(error);
+      // setError(Error(error).message);
+    }
+  }
+
+  function getWalletMin(wallet: string): string {
+    const first = wallet.substring(0, 10);
+    const last = wallet.substring(wallet.length - 8);
+
+    return first+"..."+last;
+  }
 
   return (
     <Box>
@@ -82,8 +120,9 @@ export function Navbar(): JSX.Element {
             height="var(--chakra-sizes-8)"
             marginTop={"4px"}
             borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
+            onClick={sdk.address ? () => {} : initKeplr}
             >
-            Connect wallet
+            {sdk.address ? getWalletMin(sdk.address) : 'Connect wallet'}
           </Button>
           <ColorModeSwitcher display={{ base: 'none', md: 'inline-flex' }} />
         </Stack>
