@@ -37,6 +37,7 @@ export const Create = () => {
 
   async function createNft(e: any) {
     // TODO: use formik validations
+    // TODO: disable and animate button (loading)
     e.preventDefault();
 
     if (!address) {
@@ -52,7 +53,7 @@ export const Create = () => {
     }
 
     console.log(files, nftName, description);
-    if (!files || files.length == 0) {
+    if (!files || files.length === 0) {
       return;
     }
 
