@@ -83,7 +83,7 @@ export function SdkProvider({ config: configProp, children }: SdkProviderProps):
       setClient(client);
       setValue({ ...contextWithInit, client })
     })();
-  }, [config]);
+  }, [contextWithInit, config]);
 
   useEffect(() => {
     if (!signer) return;
