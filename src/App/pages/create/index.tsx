@@ -82,9 +82,9 @@ export const Create = () => {
 
       const contract = CW721(config.contract).useTx(getSignClient()!);
 
-      const result = await contract.mint(address, nftMsg);
+      const txHash = await contract.mint(address, nftMsg);
 
-      console.log(result);
+      alert("TX: " + txHash);
 
       clearFields();
       setLoading.off();
