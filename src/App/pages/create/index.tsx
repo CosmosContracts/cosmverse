@@ -8,6 +8,7 @@ import {
   Heading,
   Input,
   Textarea,
+  useBoolean,
   useToast,
 } from "@chakra-ui/react"
 import { FileUpload } from "../../components/file-upload"
@@ -35,6 +36,7 @@ export const Create = () => {
   const [files, setFiles] = useState<File[]>();
   const [nftName, setNftName]= useState<string>();
   const [description, setDescription]= useState<string>();
+  const [loading, setLoading] = useBoolean();
 
   async function createNft(e: any) {
     // TODO: use formik validations
@@ -57,6 +59,7 @@ export const Create = () => {
       return;
     }
 
+    setLoading.on();
     // TODO: Show ID after load page
     const nftId = generateId(address);
 
@@ -76,6 +79,7 @@ export const Create = () => {
       const result = await contract.mint(address, nftMsg);
 
       console.log(result);
+      setLoading.off();
     } catch (error) {
       console.log(error);
       toast({
@@ -85,6 +89,7 @@ export const Create = () => {
         position: "bottom-right",
         isClosable: true,
       });
+      setLoading.off();
     }
   }
 
@@ -140,6 +145,8 @@ export const Create = () => {
           </Box>
           <Box mt={6}>
             <Button
+              isLoading={loading}
+              loadingText="Minting"
               type="submit"
               height="var(--chakra-sizes-10)"
               fontSize={'md'}
