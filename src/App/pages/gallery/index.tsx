@@ -48,7 +48,7 @@ export const Gallery = () => {
   }, [client]);
 
   return (
-    <Box m={5}>
+    <Box m={5} minH={"lg"}>
       <SimpleGrid columns={5} spacing={10}>
         {nfts.map(nft => <NftCard nft={nft} key={nft.tokenId} />)}
       </SimpleGrid>
