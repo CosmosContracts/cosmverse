@@ -53,7 +53,6 @@ export const Create = () => {
       return;
     }
 
-    console.log(files, nftName, description);
     if (!files || files.length === 0) {
       return;
     }
@@ -64,7 +63,7 @@ export const Create = () => {
     try {
       const fileHash = await uploadFile(files[0]);
       console.log(fileHash, nftId);
-      const nftInfo = {
+      const nftMsg = {
         token_id: nftId,
         owner: address,
         name: nftName!,
@@ -74,13 +73,14 @@ export const Create = () => {
 
       const contract = CW721(config.contract).useTx(getSignClient()!);
 
-      const result = await contract.mint(address, nftInfo);
+      const result = await contract.mint(address, nftMsg);
 
       console.log(result);
     } catch (error) {
+      console.log(error);
       toast({
         title: "Error",
-        description: error,
+        description: "Invalid tx",
         status: "error",
         position: "bottom-right",
         isClosable: true,
