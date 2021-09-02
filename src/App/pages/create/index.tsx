@@ -38,6 +38,12 @@ export const Create = () => {
   const [description, setDescription]= useState<string>();
   const [loading, setLoading] = useBoolean();
 
+  const clearFields = () => {
+    setFiles([]);
+    setNftName('');
+    setDescription('');
+  };
+
   async function createNft(e: any) {
     // TODO: use formik validations
     // TODO: disable and animate button (loading)
@@ -79,6 +85,8 @@ export const Create = () => {
       const result = await contract.mint(address, nftMsg);
 
       console.log(result);
+
+      clearFields();
       setLoading.off();
     } catch (error) {
       console.log(error);
