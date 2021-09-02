@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom"
 import {
   ChakraProvider,
@@ -29,11 +30,6 @@ export const App = () => (
         <Switch>
           <Route
             exact
-            path="/"
-            component={Landing}
-          />
-          <Route
-            exact
             path="/collectibles/:id"
             component={Detail}
           />
@@ -44,6 +40,12 @@ export const App = () => (
           <Route
             path="/create"
             component={Create}
+          />
+          <Route component={() => <Redirect to="/gallery" />} />
+          <Route
+            exact
+            path="/"
+            component={Landing}
           />
         </Switch>
       </Router>
