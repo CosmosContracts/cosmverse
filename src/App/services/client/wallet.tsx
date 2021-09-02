@@ -11,13 +11,13 @@ interface CosmWasmContextType {
   readonly init: (signer: OfflineSigner) => void;
   readonly clear: () => void;
   readonly config: Partial<AppConfig>;
+  readonly client: CosmWasmClient | undefined;
   readonly changeConfig: (updates: Partial<AppConfig>) => void;
   readonly address: string;
   readonly balance: readonly Coin[];
   readonly refreshBalance: () => Promise<void>;
   readonly getSigner: () => OfflineSigner | undefined;
   readonly changeSigner: (newSigner: OfflineSigner) => void;
-  readonly getClient: () => CosmWasmClient;
   readonly getSignClient: () => SigningCosmWasmClient | undefined;
 }
 
@@ -30,13 +30,13 @@ const defaultContext: CosmWasmContextType = {
   init: throwNotInitialized,
   clear: throwNotInitialized,
   config: {},
+  client: undefined,
   changeConfig: throwNotInitialized,
   address: "",
   balance: [],
   refreshBalance: throwNotInitialized,
   getSigner: () => undefined,
   changeSigner: throwNotInitialized,
-  getClient: throwNotInitialized,
   getSignClient: () => undefined,
 };
 
@@ -81,6 +81,7 @@ export function SdkProvider({ config: configProp, children }: SdkProviderProps):
       // TODO: Catch errors
       const client = await createSimpleClient(config);
       setClient(client);
+      setValue({ ...contextWithInit, client })
     })();
   }, [config]);
 
@@ -109,13 +110,13 @@ export function SdkProvider({ config: configProp, children }: SdkProviderProps):
         init: () => {},
         clear,
         config,
+        client,
         changeConfig,
         address,
         balance,
         refreshBalance: refreshBalance.bind(null, address, balance),
         getSigner: () => signer,
         changeSigner: setSigner,
-        getClient: () => client,
         getSignClient: () => signClient,
       });
     })();
