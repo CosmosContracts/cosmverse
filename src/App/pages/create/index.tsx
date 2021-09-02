@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react"
 import { FileUpload } from "../../components/file-upload"
 import { useSdk } from "../../services/client/wallet";
+import { CW721 } from "../../services/client/cw721";
 import { unSanitizeIpfsUrl, uploadFile } from "../../services/ipfs/client";
 import { Bech32, toHex } from "@cosmjs/encoding";
 import { useState } from "react";
@@ -63,18 +64,17 @@ export const Create = () => {
     try {
       const fileHash = await uploadFile(files[0]);
       console.log(fileHash, nftId);
-      const msg = {
-        mint: {
-          token_id: nftId,
-          owner: address,
-          name: nftName,
-          description: description,
-          image: unSanitizeIpfsUrl(fileHash)
-        }
+      const nftInfo = {
+        token_id: nftId,
+        owner: address,
+        name: nftName!,
+        description: description,
+        image: unSanitizeIpfsUrl(fileHash)
       };
 
-      const client = getSignClient();
-      const result = await client?.execute(address, config.contract, msg);
+      const contract = CW721(config.contract).useTx(getSignClient()!);
+
+      const result = await contract.mint(address, nftInfo);
 
       console.log(result);
     } catch (error) {
