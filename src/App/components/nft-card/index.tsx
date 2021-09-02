@@ -52,7 +52,7 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
                         fontSize="xs"
                         color="white"
                     >
-                        #15 in edition of 32
+                        {nft.total === 1 ? "One edition": `#${nft.edition} in edition of ${nft.total}`}
                     </chakra.p>
                 </Box>
                 <Divider />

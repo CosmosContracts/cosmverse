@@ -4,4 +4,6 @@ export interface NftInfo {
     readonly title: string;
     readonly user: string;
     readonly price: string;
+    readonly edition: number;
+    readonly total: number;
 }
