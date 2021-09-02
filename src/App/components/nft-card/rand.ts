@@ -8,9 +8,12 @@ export function randomNft(): NftInfo {
   const randC = Math.floor((Math.random() * 100) % 2);
 
   return {
+    tokenId: '1',
     image: randI ? "https://rmrk.mypinata.cloud/ipfs/bafybeicpgysjduvvfvpdhe2zqn2hh2dzdcxyracwtn5foak6i5v7rjxiry": "https://rmrk.mypinata.cloud/ipfs/bafybeih3g3e4nlg45osboov64z6wb2m3wyh5fud7dswfs7yhyrysemxcsu",
     title: randT ? "Break OU": "Punk D4",
     user: randU ? "RealMint": "Mistic",
     price: price + (randC ? " JUNO": " ATOM"),
+    edition: 1,
+    total: 2
   };
 }
