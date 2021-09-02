@@ -23,6 +23,7 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
         >
           <Box w="full">
             <Image
+                bg="gray.500"
                 roundedTop="lg"
                 h={56}
                 w="full"
