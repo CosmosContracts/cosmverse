@@ -3,8 +3,8 @@ import {
   Box,
 } from "@chakra-ui/react"
 
-export const Collectibles = () => (
+export const Gallery = () => (
     <Box textAlign="center" fontSize="xl">
-        Collectibles
+        Gallery
     </Box>
 )

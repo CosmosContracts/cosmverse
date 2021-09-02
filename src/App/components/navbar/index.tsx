@@ -142,7 +142,7 @@ const DesktopNav = () => {
       <Stack direction={'row'} spacing={6} display={{ base: 'none', md: 'inline-flex' }}>
           <Link
               as={ReactRouterLink}
-              to="/collectibles"
+              to="/gallery"
               p={1.5}
               fontSize={'sm'}
               fontFamily={'mono'}
@@ -213,8 +213,8 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Collectibles',
-    href: '/collectibles',
+    label: 'Gallery',
+    href: '/gallery',
   },
   {
     label: 'Create',

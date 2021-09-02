@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react"
 import {
   Create,
-  Collectibles,
+  Gallery,
   Detail,
   Landing,
 } from "./pages"
@@ -38,9 +38,8 @@ export const App = () => (
             component={Detail}
           />
           <Route
-            exact
-            path="/collectibles"
-            component={Collectibles}
+            path="/gallery"
+            component={Gallery}
           />
           <Route
             path="/create"
