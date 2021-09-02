@@ -4,24 +4,53 @@ import {
 } from "@chakra-ui/react"
 import { NftCard } from "../../components/nft-card";
 import { randomNft } from "../../components/nft-card/rand";
+import { useSdk } from "../../services/client/wallet";
+import { CW721, NftInfoResponse } from "../../services/client/cw721";
+import { config } from "../../../config";
+import { useEffect } from "react";
+import { publicIpfsUrl } from "../../services/ipfs/client";
+import { useState } from "react";
+import { NftInfo } from "../../services/type";
+
 
 export const Gallery = () => {
+  const { client } = useSdk();
+  const [nfts, setNfts] = useState<NftInfo[]>([]);
+
+  const loadNfts = async () => {
+    if (!client) return;
+
+    const contract = CW721(config.contract).use(client);
+    const result = await contract.allTokens(undefined, 10);
+
+    const allNfts: Promise<NftInfoResponse>[] = [];
+    result.tokens.forEach(tokenId => {
+      allNfts.push(contract.nftInfo(tokenId));
+    });
+
+    const tokens = await Promise.all(allNfts);
+    const items = tokens.map((nft, idx) => {
+      return {
+        tokenId: result.tokens[idx],
+        user: 'unknow',
+        title: nft.name,
+        price: 'Not listed',
+        image: publicIpfsUrl(nft.image),
+        edition: 1,
+        total: 1
+      };
+    });
+    setNfts(items);
+  };
+
+  useEffect(() => {
+    loadNfts();
+  }, [client]);
+
   return (
     <Box m={5}>
       <SimpleGrid columns={5} spacing={10}>
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
-        <NftCard nft={randomNft()} />
+        {nfts.map(nft => <NftCard nft={nft} key={nft.tokenId} />)}
       </SimpleGrid>
     </Box>
   );
