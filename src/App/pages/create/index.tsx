@@ -66,7 +66,7 @@ export const Create = () => {
     }
 
     setLoading.on();
-    // TODO: Show ID after load page
+    // TODO: Load on init page and show after load page
     const nftId = generateId(address);
 
     try {
