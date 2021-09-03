@@ -13,7 +13,6 @@ export function randomNft(): NftInfo {
     title: randT ? "Break OU": "Punk D4",
     user: randU ? "RealMint": "Mistic",
     price: price + (randC ? " JUNO": " ATOM"),
-    edition: 1,
     total: 2
   };
 }

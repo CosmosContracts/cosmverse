@@ -36,7 +36,6 @@ export const Gallery = () => {
           title: nft.name,
           price: 'Not listed',
           image: publicIpfsUrl(nft.image),
-          edition: 1,
           total: 1
         };
       });
