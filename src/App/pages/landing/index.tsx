@@ -10,7 +10,7 @@ import { NftSection } from "../../components/nft-section"
 
 export const Landing = () => {
   return (
-    <Grid m={5} minH="100vh">
+    <Grid m={5}>
       <Box mt={5} mb={8}>
         <Text
           fontFamily="mono"

@@ -38,31 +38,33 @@ export const App = () => (
       </Flex>
       <Router>
         <Navbar />
-        <Switch>
-          <Route
-            exact
-            path="/collectibles/:id"
-            component={Detail}
-          />
-          <Route
-            path="/gallery"
-            component={Gallery}
-          />
-          <Route
-            path="/account"
-            component={Account}
-          />
-          <Route
-            path="/create"
-            component={Create}
-          />
-          <Route component={() => <Redirect to="/gallery" />} />
-          <Route
-            exact
-            path="/"
-            component={Landing}
-          />
-        </Switch>
+        <Box minH={"lg"}>
+          <Switch>
+            <Route
+              exact
+              path="/collectibles/:id"
+              component={Detail}
+            />
+            <Route
+              path="/gallery"
+              component={Gallery}
+            />
+            <Route
+              path="/account"
+              component={Account}
+            />
+            <Route
+              path="/create"
+              component={Create}
+            />
+            <Route component={() => <Redirect to="/gallery" />} />
+            <Route
+              exact
+              path="/"
+              component={Landing}
+            />
+          </Switch>
+        </Box>
       </Router>
       <Footer />
     </Box>

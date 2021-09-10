@@ -103,11 +103,9 @@ export const Create = () => {
 
   return (
   <Flex
-    py={{ base: 5 }}
-    px={{ base: 4 }}
+    p={4}
     mb={8}
     justifyContent="center"
-    alignItems="center"
     direction="row">
     <Box maxW="500px" w="100%">
       <Box>
