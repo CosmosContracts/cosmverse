@@ -5,12 +5,12 @@ import {
     Flex,
     Text,
     IconButton,
+    Image,
     Button,
     Stack,
     Collapse,
     Link,
     useColorModeValue,
-    useBreakpointValue,
     useDisclosure,
 } from '@chakra-ui/react';
 import {
@@ -24,6 +24,8 @@ import { config } from "../../../config";
 import { configKeplr } from "../../services/config/network";
 import { loadKeplrWallet, WalletLoader } from "../../services/client/sdk";
 import { useSdk } from "../../services/client/wallet";
+
+import cosmverseLogo from "../../assets/logo.png";
 
 export function Navbar(): JSX.Element {
   const { isOpen, onToggle } = useDisclosure();
@@ -93,15 +95,7 @@ export function Navbar(): JSX.Element {
               _hover={{
                   textDecoration: 'none',
               }}>
-              <Text
-              bgGradient="linear(to-l, #7928CA,#FF0080)"
-              bgClip="text"
-              fontWeight="extrabold"
-              fontSize="4xl"
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily={'heading'}>
-              Cosmverse
-              </Text>
+              <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
           </Link>
         </Flex>
 
