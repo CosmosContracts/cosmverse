@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.js": "/static/js/main.17ac039e.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.babe5838.js",
-    "static/js/2.9a82e3b1.chunk.js": "/static/js/2.9a82e3b1.chunk.js",
-    "static/js/3.2b1355ad.chunk.js": "/static/js/3.2b1355ad.chunk.js",
+    "main.js": "/static/js/main.b80ad8f7.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.ee4a695e.js",
+    "static/js/2.086c458f.chunk.js": "/static/js/2.086c458f.chunk.js",
+    "static/js/3.849d6d1d.chunk.js": "/static/js/3.849d6d1d.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.9a82e3b1.chunk.js.LICENSE.txt": "/static/js/2.9a82e3b1.chunk.js.LICENSE.txt",
-    "static/media/cosmverse.30b871f5.jpg": "/static/media/cosmverse.30b871f5.jpg"
+    "static/js/2.086c458f.chunk.js.LICENSE.txt": "/static/js/2.086c458f.chunk.js.LICENSE.txt",
+    "static/media/cosmverse.30b871f5.jpg": "/static/media/cosmverse.30b871f5.jpg",
+    "static/media/logo.af0ba81e.png": "/static/media/logo.af0ba81e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.babe5838.js",
-    "static/js/2.9a82e3b1.chunk.js",
-    "static/js/main.17ac039e.chunk.js"
+    "static/js/runtime-main.ee4a695e.js",
+    "static/js/2.086c458f.chunk.js",
+    "static/js/main.b80ad8f7.chunk.js"
   ]
 }
