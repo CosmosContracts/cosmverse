@@ -20,8 +20,8 @@ const testnet: AppConfig = {
   chainId: "lucina",
   chainName: "Juno Tesnet",
   addressPrefix: "juno",
-  rpcUrl: "https://rpc.juno.omniflix.co",
-  httpUrl: "https://api.juno.omniflix.co",
+  rpcUrl: "https://rpc.juno.giansalex.dev",
+  httpUrl: "https://lcd.juno.giansalex.dev",
   token: {
     coinDenom: "JUNO",
     coinDecimals: 6,
