@@ -12,6 +12,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 import {
+  Account,
   Create,
   Gallery,
   Detail,
@@ -46,6 +47,10 @@ export const App = () => (
           <Route
             path="/gallery"
             component={Gallery}
+          />
+          <Route
+            path="/account"
+            component={Account}
           />
           <Route
             path="/create"
