@@ -26,6 +26,7 @@ import { loadKeplrWallet, WalletLoader } from "../../services/client/sdk";
 import { useSdk } from "../../services/client/wallet";
 
 import cosmverseLogo from "../../assets/logo.png";
+import { formatAddress } from "../../services/utils";
 
 export function Navbar(): JSX.Element {
   const { isOpen, onToggle } = useDisclosure();
@@ -54,13 +55,6 @@ export function Navbar(): JSX.Element {
       console.error(error);
       // setError(Error(error).message);
     }
-  }
-
-  function getWalletMin(wallet: string): string {
-    const first = wallet.substring(0, 10);
-    const last = wallet.substring(wallet.length - 8);
-
-    return first+"..."+last;
   }
 
   return (
@@ -116,7 +110,7 @@ export function Navbar(): JSX.Element {
             borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
             onClick={sdk.address ? () => {} : initKeplr}
             >
-            {sdk.address ? getWalletMin(sdk.address) : 'Connect wallet'}
+            {sdk.address ? formatAddress(sdk.address) : 'Connect wallet'}
           </Button>
           <ColorModeSwitcher display={{ base: 'none', md: 'inline-flex' }} />
         </Stack>
