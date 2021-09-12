@@ -16,7 +16,6 @@ import { config } from "../../../config";
 import { configKeplr } from "../../services/config/network";
 import { loadKeplrWallet, WalletLoader } from "../../services/client/sdk";
 import userLogo from "../../assets/user-default.svg";
-import { formatAddress } from "../../services/utils";
 
 export function AccountButton(): JSX.Element {
   const sdk = useSdk();
@@ -56,9 +55,9 @@ export function AccountButton(): JSX.Element {
       height="var(--chakra-sizes-8)"
       marginTop={"4px"}
       borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
-      onClick={sdk.address ? () => { } : initKeplr}
+      onClick={initKeplr}
     >
-      {sdk.address ? formatAddress(sdk.address) : 'Connect wallet'}
+      Connect wallet
     </Button>
   );
 
@@ -71,7 +70,7 @@ export function AccountButton(): JSX.Element {
         <MenuItem
           as={ReactRouterLink}
           to="/account">My Items</MenuItem>
-        <MenuItem>Disconnect</MenuItem>
+        {/* <MenuItem onClick={logout}>Disconnect</MenuItem> */}
       </MenuList>
     </Menu>
   );
