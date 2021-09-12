@@ -12,59 +12,17 @@ import {
     Link,
     useColorModeValue,
     useDisclosure,
-    MenuButton,
-    Menu,
-    MenuList,
-    MenuItem,
-    MenuGroup,
-    Avatar,
 } from '@chakra-ui/react';
 import {
     HamburgerIcon,
     CloseIcon,
 } from '@chakra-ui/icons';
-import { Window as KeplrWindow } from "@keplr-wallet/types";
-import { MdAccountBalanceWallet } from "react-icons/md"
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
-import { config } from "../../../config";
-import { configKeplr } from "../../services/config/network";
-import { loadKeplrWallet, WalletLoader } from "../../services/client/sdk";
-import { useSdk } from "../../services/client/wallet";
-
 import cosmverseLogo from "../../assets/logo.png";
-import userLogo from "../../assets/user-default.svg";
-import { formatAddress } from "../../services/utils";
+import { AccountButton } from "../account-button";
 
 export function Navbar(): JSX.Element {
   const { isOpen, onToggle } = useDisclosure();
-  const sdk = useSdk();
-
-  async function init(loadWallet: WalletLoader) {
-    // setInitializing(true);
-    // clearError();
-
-    try {
-      const signer = await loadWallet(config.chainId, config.addressPrefix);
-      sdk.init(signer);
-    } catch (error) {
-      console.error(error);
-      // TODO: ui error
-    }
-  }
-
-  async function initKeplr() {
-    const anyWindow = window as KeplrWindow;
-    try {
-      await anyWindow.keplr?.experimentalSuggestChain(configKeplr(config));
-      await anyWindow.keplr?.enable(config.chainId);
-      await init(loadKeplrWallet);
-    } catch (error) {
-      console.error(error);
-      // setError(Error(error).message);
-    }
-  }
-
-  const btnLoginBorderColor = useColorModeValue('gray.200', 'whiteAlpha.300');
 
   return (
     <Box>
@@ -108,34 +66,7 @@ export function Navbar(): JSX.Element {
           direction={'row'}
           spacing={6}>
           <DesktopNav />
-          { sdk.address ? (
-          <Menu>
-            <MenuButton>
-              <Avatar size="sm" name="Juno" src={userLogo} />
-            </MenuButton>
-            <MenuList>
-              <MenuItem
-                as={ReactRouterLink}
-                to="/account">My Items</MenuItem>
-              <MenuItem>Disconnect</MenuItem>
-            </MenuList>
-          </Menu>
-          )
-          : (
-          <Button
-            rightIcon={<MdAccountBalanceWallet />}
-            fontSize={'sm'}
-            fontWeight={500}
-            variant={'outline'}
-            borderRadius="50px"
-            height="var(--chakra-sizes-8)"
-            marginTop={"4px"}
-            borderColor={btnLoginBorderColor}
-            onClick={sdk.address ? () => {} : initKeplr}
-            >
-            {sdk.address ? formatAddress(sdk.address) : 'Connect wallet'}
-          </Button>
-          )}
+          <AccountButton />
           <ColorModeSwitcher display={{ base: 'none', md: 'inline-flex' }} />
         </Stack>
       </Flex>
