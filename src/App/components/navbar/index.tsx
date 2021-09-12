@@ -12,6 +12,12 @@ import {
     Link,
     useColorModeValue,
     useDisclosure,
+    MenuButton,
+    Menu,
+    MenuList,
+    MenuItem,
+    MenuGroup,
+    Avatar,
 } from '@chakra-ui/react';
 import {
     HamburgerIcon,
@@ -26,6 +32,7 @@ import { loadKeplrWallet, WalletLoader } from "../../services/client/sdk";
 import { useSdk } from "../../services/client/wallet";
 
 import cosmverseLogo from "../../assets/logo.png";
+import userLogo from "../../assets/user-default.svg";
 import { formatAddress } from "../../services/utils";
 
 export function Navbar(): JSX.Element {
@@ -56,6 +63,8 @@ export function Navbar(): JSX.Element {
       // setError(Error(error).message);
     }
   }
+
+  const btnLoginBorderColor = useColorModeValue('gray.200', 'whiteAlpha.300');
 
   return (
     <Box>
@@ -99,6 +108,20 @@ export function Navbar(): JSX.Element {
           direction={'row'}
           spacing={6}>
           <DesktopNav />
+          { sdk.address ? (
+          <Menu>
+            <MenuButton>
+              <Avatar size="sm" name="Juno" src={userLogo} />
+            </MenuButton>
+            <MenuList>
+              <MenuItem
+                as={ReactRouterLink}
+                to="/account">My Items</MenuItem>
+              <MenuItem>Disconnect</MenuItem>
+            </MenuList>
+          </Menu>
+          )
+          : (
           <Button
             rightIcon={<MdAccountBalanceWallet />}
             fontSize={'sm'}
@@ -107,11 +130,12 @@ export function Navbar(): JSX.Element {
             borderRadius="50px"
             height="var(--chakra-sizes-8)"
             marginTop={"4px"}
-            borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
+            borderColor={btnLoginBorderColor}
             onClick={sdk.address ? () => {} : initKeplr}
             >
             {sdk.address ? formatAddress(sdk.address) : 'Connect wallet'}
           </Button>
+          )}
           <ColorModeSwitcher display={{ base: 'none', md: 'inline-flex' }} />
         </Stack>
       </Flex>
