@@ -1,7 +1,11 @@
 import * as React from "react";
 import {
-  Box, SimpleGrid,
+  Box,
+  LinkBox,
+  LinkOverlay,
+  SimpleGrid,
 } from "@chakra-ui/react";
+import { Link as ReactRouterLink} from "react-router-dom";
 import { NftCard } from "../../components/nft-card";
 import { useSdk } from "../../services/client/wallet";
 import { CW721, NftInfoResponse } from "../../services/client/cw721";
@@ -46,7 +50,13 @@ export const Gallery = () => {
   return (
     <Box m={5}>
       <SimpleGrid columns={5} spacing={10}>
-        {nfts.map(nft => <NftCard nft={nft} key={nft.tokenId} />)}
+        {nfts.map(nft => (
+          <LinkBox as="picture">
+            <LinkOverlay as={ReactRouterLink} to={`/token/${nft.tokenId}`}>
+              <NftCard nft={nft} key={nft.tokenId} />
+            </LinkOverlay>
+          </LinkBox>
+        ))}
       </SimpleGrid>
     </Box>
   );

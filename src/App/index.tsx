@@ -42,7 +42,7 @@ export const App = () => (
           <Switch>
             <Route
               exact
-              path="/collectibles/:id"
+              path="/token/:id"
               component={Detail}
             />
             <Route
