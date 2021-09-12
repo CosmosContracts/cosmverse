@@ -28,3 +28,9 @@ quote_type = single
 indent_style = space
 indent_size = 2
 quote_type = single
+
+# Indentation override for all TSX
+[**.tsx]
+indent_style = space
+indent_size = 2
+quote_type = single
