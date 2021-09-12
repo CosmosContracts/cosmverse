@@ -5,7 +5,7 @@ export function unSanitizeIpfsUrl(url: string) {
 }
 
 export function publicIpfsUrl(url: string) {
-  return `https://gateway.pinata.cloud/ipfs/${url.replace('ipfs://', '')}`;
+  return `https://cloudflare-ipfs.com/ipfs/${url.replace('ipfs://', '')}`;
 }
 
 export async function uploadFile(file: Blob): Promise<string> {
