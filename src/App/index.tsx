@@ -17,6 +17,7 @@ import {
   Gallery,
   Detail,
   Landing,
+  AccountToken,
 } from "./pages"
 import theme from "./theme"
 import { config } from "../config";
@@ -48,6 +49,11 @@ export const App = () => (
             <Route
               path="/gallery"
               component={Gallery}
+            />
+            <Route
+              exact
+              path="/account/token/:id"
+              component={AccountToken}
             />
             <Route
               path="/account"

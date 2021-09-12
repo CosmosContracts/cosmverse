@@ -11,7 +11,10 @@ import {
 	Text,
 	VStack,
   SimpleGrid,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
+import { Link as ReactRouterLink} from "react-router-dom";
 import { useSdk } from "../../services/client/wallet";
 import { formatAddress } from "../../services/utils";
 import { useEffect, useState } from "react";
@@ -85,7 +88,13 @@ export const Account = () => {
 						<TabPanels>
 							<TabPanel>
                 <SimpleGrid columns={5} spacing={10}>
-                  {nfts.map(nft => <NftCard nft={nft} key={nft.tokenId} />)}
+                  {nfts.map(nft => (
+                    <LinkBox as="picture">
+                      <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
+                        <NftCard nft={nft} key={nft.tokenId} />
+                      </LinkOverlay>
+                    </LinkBox>
+                  ))}
                 </SimpleGrid>
 							</TabPanel>
 							<TabPanel>
