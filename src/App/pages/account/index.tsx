@@ -82,6 +82,7 @@ export const Account = () => {
 					<Tabs>
 						<TabList>
 							<Tab>Owned</Tab>
+							<Tab>On Sale</Tab>
 							<Tab>Created</Tab>
 						</TabList>
 
@@ -96,6 +97,9 @@ export const Account = () => {
                     </LinkBox>
                   ))}
                 </SimpleGrid>
+							</TabPanel>
+              <TabPanel>
+								<p>In progress...</p>
 							</TabPanel>
 							<TabPanel>
 								<p>In progress...</p>
