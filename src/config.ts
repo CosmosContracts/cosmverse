@@ -34,5 +34,9 @@ const testnet: AppConfig = {
   marketContract: "juno1c2qje62nl0ecj9uwg607se9nxgccu5aatm3423"
 };
 
+export const coinsList = {
+  ujuno: { name: "JUNO", decimals: 6 },
+};
+
 const configs: NetworkConfigs = { local, testnet };
 export const config = getAppConfig(configs);
