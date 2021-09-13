@@ -10,6 +10,7 @@ export interface AppConfig {
   readonly gasPrice: number;
   readonly codeId: number;
   readonly contract: string;
+  readonly marketContract: string;
 }
 
 export interface NetworkConfigs {
