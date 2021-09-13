@@ -1,5 +1,4 @@
 import { CosmWasmClient, SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate";
-import { toUtf8 } from "@cosmjs/encoding";
 
 export interface NftInfoResponse {
   /**
@@ -126,16 +125,16 @@ export const CW721 = (contractAddress: string): CW721Contract => {
     };
 
     const transfer = async (sender: string, recipient: string, tokenId: string): Promise<string> => {
-      const result = await client.execute(sender, contractAddress, { transfer: { recipient, token_id: tokenId } });
+      const result = await client.execute(sender, contractAddress, { transfer_nft: { recipient, token_id: tokenId } });
       return result.transactionHash;
     };
 
     const send = async (sender: string, contract: string, msg: Record<string, unknown>, tokenId: string): Promise<string> => {
       const result = await client.execute(sender, contractAddress, {
-        send: {
+        send_nft: {
           contract,
           token_id: tokenId,
-          msg: toUtf8(JSON.stringify(msg))
+          msg: btoa(JSON.stringify(msg))
         }
       });
       return result.transactionHash;
