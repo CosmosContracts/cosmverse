@@ -13,6 +13,7 @@ import {
   Wrap,
   WrapItem,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react"
 import { useParams } from "react-router-dom";
 import { useSdk } from "../../services/client/wallet";
@@ -21,17 +22,20 @@ import { CW721, NftInfoResponse } from "../../services/client/cw721";
 import { config } from "../../../config";
 import { publicIpfsUrl } from "../../services/ipfs/client";
 import userLogo from "../../assets/user-default.svg";
-import { formatAddress } from "../../services/utils";
+import { formatAddress, formatPrice } from "../../services/utils";
+import { Market, OfferResponse } from "../../services/client/market";
 
 interface DetailParams {
     readonly id: string;
 }
 
 export const Detail = () => {
+    const toast = useToast();
     const { id } = useParams<DetailParams>();
-    const { client } = useSdk();
+    const { client, address, getSignClient } = useSdk();
     const [nft, setNft] = useState<NftInfoResponse>();
     const [owner, setOwner] = useState<string>();
+    const [offer, setOffer] = useState<OfferResponse>();
 
     useEffect(() => {
       (async () => {
@@ -45,8 +49,35 @@ export const Detail = () => {
 
         const nftOwner = await contract.ownerOf(id);
         setOwner(nftOwner);
+
+        const marketContract = Market(config.marketContract).use(client);
+
+        const offerResult = await marketContract.offer(config.contract, id);
+        setOffer(offerResult);
       })();
     }, [client, id]);
+
+    const handleBuy = async () => {
+      const signClient = getSignClient();
+      if (!signClient) {
+        toast({
+          title: "Account required.",
+          description: "Please connect wallet.",
+          status: "warning",
+          position: "top",
+          isClosable: true,
+        });
+
+        return;
+      }
+
+      if (!offer) return;
+
+      const contract = Market(config.marketContract).useTx(signClient);
+      const txHash = await contract.buy(address, offer.id, offer.list_price);
+
+      alert(txHash);
+    };
 
     const loadingSkeleton = (
       <Center>
@@ -133,7 +164,7 @@ export const Detail = () => {
                           fontSize="md"
                           color="gray.500"
                         >
-                          Not listed
+                          {offer ? formatPrice(offer.list_price) : "Not listed"}
                         </chakra.p>
                     </Box>
                   </VStack>
@@ -143,7 +174,8 @@ export const Detail = () => {
                         borderStyle={'solid'}
                         borderColor={borderColor}>
                   <Button
-                    disabled
+                    disabled={!offer}
+                    onClick={handleBuy}
                     type="button"
                     height="var(--chakra-sizes-10)"
                     fontSize={'md'}
