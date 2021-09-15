@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/static/js/main.b705226a.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.61bb3f08.js",
-    "static/js/2.1e21fc97.chunk.js": "/static/js/2.1e21fc97.chunk.js",
-    "static/js/3.1ed60dc5.chunk.js": "/static/js/3.1ed60dc5.chunk.js",
+    "main.js": "/static/js/main.f658016b.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.56e92023.js",
+    "static/js/2.8615891d.chunk.js": "/static/js/2.8615891d.chunk.js",
+    "static/js/3.75124ef2.chunk.js": "/static/js/3.75124ef2.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.1e21fc97.chunk.js.LICENSE.txt": "/static/js/2.1e21fc97.chunk.js.LICENSE.txt",
+    "static/js/2.8615891d.chunk.js.LICENSE.txt": "/static/js/2.8615891d.chunk.js.LICENSE.txt",
     "static/media/cosmverse.30b871f5.jpg": "/static/media/cosmverse.30b871f5.jpg",
     "static/media/logo.af0ba81e.png": "/static/media/logo.af0ba81e.png",
     "static/media/user-default.3f70c9cc.svg": "/static/media/user-default.3f70c9cc.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.61bb3f08.js",
-    "static/js/2.1e21fc97.chunk.js",
-    "static/js/main.b705226a.chunk.js"
+    "static/js/runtime-main.56e92023.js",
+    "static/js/2.8615891d.chunk.js",
+    "static/js/main.f658016b.chunk.js"
   ]
 }
