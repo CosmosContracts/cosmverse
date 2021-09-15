@@ -14,6 +14,8 @@ import { useEffect } from "react";
 import { publicIpfsUrl } from "../../services/ipfs/client";
 import { useState } from "react";
 import { NftInfo } from "../../services/type";
+import { Market, OfferResponse } from "../../services/client/market";
+import { formatPrice } from "../../services/utils";
 
 
 export const Gallery = () => {
@@ -25,20 +27,25 @@ export const Gallery = () => {
       if (!client) return;
 
       const contract = CW721(config.contract).use(client);
+      const marketcw = Market(config.marketContract).use(client);
       const result = await contract.allTokens(undefined, 10);
 
       const allNfts: Promise<NftInfoResponse>[] = [];
+      const allOffers: Promise<OfferResponse|undefined>[] = [];
       result.tokens.forEach(tokenId => {
         allNfts.push(contract.nftInfo(tokenId));
+        allOffers.push(marketcw.offer(config.contract, tokenId));
       });
 
       const tokens = await Promise.all(allNfts);
+      const offers = await Promise.all(allOffers);
       const items = tokens.map((nft, idx) => {
+        const off = offers[idx];
         return {
           tokenId: result.tokens[idx],
           user: 'unknow',
           title: nft.name,
-          price: 'Not listed',
+          price: off ? formatPrice(off.list_price): "Not listed",
           image: publicIpfsUrl(nft.image),
           total: 1
         };
@@ -51,9 +58,9 @@ export const Gallery = () => {
     <Box m={5}>
       <SimpleGrid columns={5} spacing={10}>
         {nfts.map(nft => (
-          <LinkBox as="picture">
+          <LinkBox as="picture" key={nft.tokenId}>
             <LinkOverlay as={ReactRouterLink} to={`/token/${nft.tokenId}`}>
-              <NftCard nft={nft} key={nft.tokenId} />
+              <NftCard nft={nft} />
             </LinkOverlay>
           </LinkBox>
         ))}
