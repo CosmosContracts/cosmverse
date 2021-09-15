@@ -46,7 +46,7 @@ export const Account = () => {
       const items = tokens.map((nft, idx) => {
         return {
           tokenId: result.tokens[idx],
-          user: 'unknow',
+          user: 'unknown',
           title: nft.name,
           price: 'Not listed',
           image: publicIpfsUrl(nft.image),

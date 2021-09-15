@@ -43,7 +43,7 @@ export const Gallery = () => {
         const off = offers[idx];
         return {
           tokenId: result.tokens[idx],
-          user: 'unknow',
+          user: 'unknown',
           title: nft.name,
           price: off ? formatPrice(off.list_price): "Not listed",
           image: publicIpfsUrl(nft.image),
