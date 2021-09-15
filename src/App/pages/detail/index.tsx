@@ -74,9 +74,20 @@ export const Detail = () => {
       if (!offer) return;
 
       const contract = Market(config.marketContract).useTx(signClient);
-      const txHash = await contract.buy(address, offer.id, offer.list_price);
+      try {
+        const txHash = await contract.buy(address, offer.id, offer.list_price);
 
-      alert(txHash);
+        alert(txHash);
+      } catch (error) {
+        console.log(error);
+        toast({
+          title: "Error",
+          description: "Unknown error",
+          status: "error",
+          position: "bottom-right",
+          isClosable: true,
+        });
+      }
     };
 
     const loadingSkeleton = (
@@ -116,7 +127,7 @@ export const Detail = () => {
                     fontSize="xs"
                     color="gray.500"
                   >
-                    @unknow
+                    @unknown
                   </chakra.p>
                   <chakra.p
                     mt={1}
