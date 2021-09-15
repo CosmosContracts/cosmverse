@@ -17,7 +17,7 @@ export interface MarketInstance {
   readonly contractAddress: string;
 
   numOffers: () => Promise<number>;
-  offer: (contract: string, tokenId: string) => Promise<OfferResponse>;
+  offer: (contract: string, tokenId: string) => Promise<OfferResponse|undefined>;
   offersBySeller: (seller: string, startAfter?: string, limit?: number) => Promise<OffersResponse>;
   allOffers: (startAfter?: string, limit?: number) => Promise<OffersResponse>;
 }
@@ -26,7 +26,7 @@ export interface MarketTxInstance {
   readonly contractAddress: string;
 
   // actions
-  buy: (sender: string, offerId: string) => Promise<string>;
+  buy: (sender: string, offerId: string, price: Coin) => Promise<string>;
   withdraw: (sender: string, offerId: string) => Promise<string>;
 }
 
@@ -43,9 +43,9 @@ export const Market = (contractAddress: string): MarketContract => {
       return result.count;
     };
 
-    const offer = async (contract: string, tokenId: string): Promise<OfferResponse> => {
-      const result = await client.queryContractSmart(contractAddress, { get_offer: { contract, token_id: tokenId } });
-      return result;
+    const offer = async (contract: string, tokenId: string): Promise<OfferResponse|undefined> => {
+      const result: OffersResponse = await client.queryContractSmart(contractAddress, { get_offer: { contract, token_id: tokenId } });
+      return result.offers.length > 0 ? result.offers[0]: undefined;
     };
 
     const offersBySeller = async (seller: string, startAfter?: string, limit?: number): Promise<OffersResponse> => {
@@ -68,8 +68,8 @@ export const Market = (contractAddress: string): MarketContract => {
   };
 
   const useTx = (client: SigningCosmWasmClient): MarketTxInstance => {
-    const buy = async (sender: string, offerId: string): Promise<string> => {
-      const result = await client.execute(sender, contractAddress, { buy: { offering_id: offerId } });
+    const buy = async (sender: string, offerId: string, price: Coin): Promise<string> => {
+      const result = await client.execute(sender, contractAddress, { buy: { offering_id: offerId } }, undefined, [price]);
       return result.transactionHash;
     };
 
