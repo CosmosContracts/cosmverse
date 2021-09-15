@@ -31,7 +31,7 @@ const testnet: AppConfig = {
   gasPrice: 0.025,
   codeId: 4,
   contract: "juno167zj5p5l5t05jrajqvdx3esmc85mmxmv7lucy0",
-  marketContract: "juno1c2qje62nl0ecj9uwg607se9nxgccu5aatm3423"
+  marketContract: "juno16te3h0x8gnwhlunhh383j2jqsv4q556x22gtj0"
 };
 
 export const coinsList = {
