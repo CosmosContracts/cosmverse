@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink} from "react-router-dom";
 import { useSdk } from "../../services/client/wallet";
-import { formatAddress } from "../../services/utils";
+import { formatAddress, formatPrice } from "../../services/utils";
 import { useEffect, useState } from "react";
 import { NftInfo } from "../../services/type";
 import { CW721, NftInfoResponse } from "../../services/client/cw721";
@@ -24,11 +24,13 @@ import { config } from "../../../config";
 import { publicIpfsUrl } from "../../services/ipfs/client";
 import { NftCard } from "../../components/nft-card";
 import userLogo from "../../assets/user-default.svg";
+import { Market } from "../../services/client/market";
 
 export const Account = () => {
   const { address } = useSdk();
   const { client } = useSdk();
   const [nfts, setNfts] = useState<NftInfo[]>([]);
+  const [nftSale, setNftSale] = useState<NftInfo[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -54,6 +56,35 @@ export const Account = () => {
         };
       });
       setNfts(items);
+    })();
+  }, [client, address]);
+
+  useEffect(() => {
+    (async () => {
+      if (!client || !address) return;
+
+      const contract = CW721(config.contract).use(client);
+      const marketcw = Market(config.marketContract).use(client);
+      const result = await marketcw.offersBySeller(address);
+
+      const allNfts: Promise<NftInfoResponse>[] = [];
+      result.offers.forEach(off => {
+        allNfts.push(contract.nftInfo(off.token_id));
+      });
+
+      const tokens = await Promise.all(allNfts);
+      const items = tokens.map((nft, idx) => {
+        const off = result.offers[idx];
+        return {
+          tokenId: off.token_id,
+          user: 'unknown',
+          title: nft.name,
+          price: formatPrice(off.list_price),
+          image: publicIpfsUrl(nft.image),
+          total: 1
+        };
+      });
+      setNftSale(items);
     })();
   }, [client, address]);
 
@@ -90,16 +121,24 @@ export const Account = () => {
 							<TabPanel>
                 <SimpleGrid columns={5} spacing={10}>
                   {nfts.map(nft => (
-                    <LinkBox as="picture">
+                    <LinkBox as="picture" key={nft.tokenId}>
                       <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
-                        <NftCard nft={nft} key={nft.tokenId} />
+                        <NftCard nft={nft} />
                       </LinkOverlay>
                     </LinkBox>
                   ))}
                 </SimpleGrid>
 							</TabPanel>
               <TabPanel>
-								<p>In progress...</p>
+                <SimpleGrid columns={5} spacing={10}>
+                    {nftSale.map(nft => (
+                      <LinkBox as="picture" key={nft.tokenId}>
+                        <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
+                          <NftCard nft={nft} />
+                        </LinkOverlay>
+                      </LinkBox>
+                    ))}
+                  </SimpleGrid>
 							</TabPanel>
 							<TabPanel>
 								<p>In progress...</p>
