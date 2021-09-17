@@ -13,3 +13,8 @@ export function formatPrice(price: {amount: string, denom: string}): string {
 
   return amount + " " + coinConfig.name;
 }
+
+export function toMinDenom(amount: number, denom: string): string {
+  const coinConfig = (coinsList as any)[denom];
+  return Math.ceil(amount * Math.pow(10, coinConfig.decimals)).toString();
+}
