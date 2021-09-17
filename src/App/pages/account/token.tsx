@@ -13,15 +13,33 @@ import {
   Wrap,
   WrapItem,
   useColorModeValue,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  FormControl,
+  FormLabel,
+  ModalFooter,
+  Select,
+  NumberInput,
+  NumberInputField,
+  SimpleGrid,
+  GridItem,
+  useDisclosure,
+  useToast,
+  useBoolean,
 } from "@chakra-ui/react"
 import { useParams } from "react-router-dom";
 import { useSdk } from "../../services/client/wallet";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { CW721, NftInfoResponse } from "../../services/client/cw721";
 import { config } from "../../../config";
 import { publicIpfsUrl } from "../../services/ipfs/client";
 import userLogo from "../../assets/user-default.svg";
-import { formatAddress } from "../../services/utils";
+import { formatAddress, formatPrice, toMinDenom } from "../../services/utils";
+import { Market, OfferResponse } from "../../services/client/market";
 
 interface DetailParams {
     readonly id: string;
@@ -29,24 +47,116 @@ interface DetailParams {
 
 export const AccountToken = () => {
     const { id } = useParams<DetailParams>();
-    const { client } = useSdk();
+    const { client, address, getSignClient } = useSdk();
     const [nft, setNft] = useState<NftInfoResponse>();
     const [owner, setOwner] = useState<string>();
+    const [offer, setOffer] = useState<OfferResponse>();
+    const [loading, setLoading] = useBoolean();
+
+    const toast = useToast();
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [amount, setAmount] = useState<number>();
+    const [denom, setDenom] = useState<string>();
+
+    const loadData = useCallback(async () => {
+      if (!client) return;
+
+      const contract = CW721(config.contract).use(client);
+      const result = await contract.nftInfo(id);
+
+      result.image = publicIpfsUrl(result.image);
+      setNft(result);
+
+      const nftOwner = await contract.ownerOf(id);
+      setOwner(nftOwner);
+
+      const marketContract = Market(config.marketContract).use(client);
+
+      const offerResult = await marketContract.offer(config.contract, id);
+      setOffer(offerResult);
+    }, [client, id]);
 
     useEffect(() => {
-      (async () => {
-        if (!client) return;
+      loadData();
+    }, [loadData]);
 
-        const contract = CW721(config.contract).use(client);
-        const result = await contract.nftInfo(id);
+    const handleSell = async () => {
+      const signClient = getSignClient();
+      if (!signClient) {
+        toast({
+          title: "Account required.",
+          description: "Please, connect wallet.",
+          status: "warning",
+          position: "top",
+          isClosable: true,
+        });
 
-        result.image = publicIpfsUrl(result.image);
-        setNft(result);
+        return;
+      }
 
-        const nftOwner = await contract.ownerOf(id);
-        setOwner(nftOwner);
-      })();
-    }, [client, id]);
+      if (!amount || !denom) return;
+      onClose();
+      setLoading.on();
+
+      try {
+        const contract = CW721(config.contract).useTx(signClient);
+        const price = { list_price: {amount: toMinDenom(amount, denom), denom}};
+        const txHash = await contract.send(address, config.marketContract, price, id);
+
+        alert(txHash);
+        await loadData();
+      } catch (error) {
+        console.log(error);
+        toast({
+          title: "Error",
+          description: "Unknown error",
+          status: "error",
+          position: "bottom-right",
+          isClosable: true,
+        });
+      }
+      finally {
+        setLoading.off();
+      }
+    };
+
+    const handleWithdraw = async () => {
+      const signClient = getSignClient();
+      if (!signClient) {
+        toast({
+          title: "Account required.",
+          description: "Please, connect wallet.",
+          status: "warning",
+          position: "top",
+          isClosable: true,
+        });
+
+        return;
+      }
+
+      if (!offer) return;
+      setLoading.on();
+
+      try {
+        const contract = Market(config.marketContract).useTx(signClient);
+        const txHash = await contract.withdraw(address, offer.id);
+
+        alert(txHash);
+        await loadData();
+      } catch (error) {
+        console.log(error);
+        toast({
+          title: "Error",
+          description: "Unknown error",
+          status: "error",
+          position: "bottom-right",
+          isClosable: true,
+        });
+      }
+      finally {
+        setLoading.off();
+      }
+    };
 
     const loadingSkeleton = (
       <Center>
@@ -55,6 +165,43 @@ export const AccountToken = () => {
     );
 
     const borderColor = useColorModeValue('gray.200', 'whiteAlpha.300');
+    const priceModal = (
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Create sell order</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormLabel fontFamily="mono" fontWeight="semibold">Price</FormLabel>
+            <SimpleGrid columns={6} spacing={3}>
+            <FormControl as={GridItem} colSpan={[6, 4]}>
+              <NumberInput
+                defaultValue={1.00}
+                onChange={(_, value) => setAmount(value)}>
+                <NumberInputField />
+              </NumberInput>
+            </FormControl>
+            <FormControl as={GridItem} colSpan={[6, 2]}>
+              <Select placeholder="Select coin" onChange={e => setDenom(e.target.value)}>
+                <option value="ujuno">JUNO</option>
+                <option value="usponge">SPONGE</option>
+              </Select>
+            </FormControl>
+            </SimpleGrid>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button onClick={handleSell} colorScheme="pink" mr={3}>
+              Confirm
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    );
     return (
       <Box m={5}>
         {!nft ? loadingSkeleton : (
@@ -85,7 +232,7 @@ export const AccountToken = () => {
                     fontSize="xs"
                     color="gray.500"
                   >
-                    @unknow
+                    @unknown
                   </chakra.p>
                   <chakra.p
                     mt={1}
@@ -133,7 +280,7 @@ export const AccountToken = () => {
                           fontSize="md"
                           color="gray.500"
                         >
-                          Not listed
+                          {offer ? formatPrice(offer.list_price) : "Not listed"}
                         </chakra.p>
                     </Box>
                   </VStack>
@@ -142,26 +289,47 @@ export const AccountToken = () => {
                         borderTop={1}
                         borderStyle={'solid'}
                         borderColor={borderColor}>
-                  <Button
-                    disabled
-                    type="button"
-                    height="var(--chakra-sizes-10)"
-                    fontSize={'md'}
-                    fontWeight="semibold"
-                    borderRadius={'50px'}
-                    color={'white'}
-                    bg="pink.500"
-                    _hover={{
-                      bg: "pink.700",
-                    }}>
-                    Sell
-                  </Button>
+                  {offer ? (
+                    <Button
+                      isLoading={loading}
+                      onClick={handleWithdraw}
+                      title="Withdraw NFT"
+                      type="button"
+                      height="var(--chakra-sizes-10)"
+                      fontSize={'md'}
+                      fontWeight="semibold"
+                      borderRadius={'50px'}
+                      color={'white'}
+                      bg="pink.500"
+                      _hover={{
+                        bg: "pink.700",
+                      }}>
+                      Cancel
+                    </Button>
+                  ) : (
+                    <Button
+                      isLoading={loading}
+                      onClick={onOpen}
+                      type="button"
+                      height="var(--chakra-sizes-10)"
+                      fontSize={'md'}
+                      fontWeight="semibold"
+                      borderRadius={'50px'}
+                      color={'white'}
+                      bg="pink.500"
+                      _hover={{
+                        bg: "pink.700",
+                      }}>
+                      Sell
+                    </Button>
+                  )}
                 </Box>
                 </VStack>
               </Flex>
             </WrapItem>
           </Wrap>
       )}
+      {priceModal}
       </Box>
     );
 }
