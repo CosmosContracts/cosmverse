@@ -28,7 +28,7 @@ export const Gallery = () => {
 
       const contract = CW721(config.contract).use(client);
       const marketcw = Market(config.marketContract).use(client);
-      const result = await contract.allTokens(undefined, 10);
+      const result = await contract.allTokens(undefined, 15);
 
       const allNfts: Promise<NftInfoResponse>[] = [];
       const allOffers: Promise<OfferResponse|undefined>[] = [];
