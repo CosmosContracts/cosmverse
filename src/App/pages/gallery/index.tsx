@@ -17,7 +17,6 @@ import { NftInfo } from "../../services/type";
 import { Market, OfferResponse } from "../../services/client/market";
 import { formatPrice } from "../../services/utils";
 
-
 export const Gallery = () => {
   const { client } = useSdk();
   const [nfts, setNfts] = useState<NftInfo[]>([]);
@@ -58,7 +57,11 @@ export const Gallery = () => {
     <Box m={5}>
       <SimpleGrid columns={5} spacing={10}>
         {nfts.map(nft => (
-          <LinkBox as="picture" key={nft.tokenId}>
+          <LinkBox as="picture" key={nft.tokenId}
+            transition="transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s"
+            _hover={{
+              transform: "scale(1.05)"
+            }}>
             <LinkOverlay as={ReactRouterLink} to={`/token/${nft.tokenId}`}>
               <NftCard nft={nft} />
             </LinkOverlay>
