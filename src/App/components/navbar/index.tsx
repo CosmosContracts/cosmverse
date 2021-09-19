@@ -1,21 +1,21 @@
 import * as React from "react";
-import { Link as ReactRouterLink} from "react-router-dom"
+import { Link as ReactRouterLink } from "react-router-dom"
 import {
-    Box,
-    Flex,
-    Text,
-    IconButton,
-    Image,
-    Button,
-    Stack,
-    Collapse,
-    Link,
-    useColorModeValue,
-    useDisclosure,
+  Box,
+  Flex,
+  Text,
+  IconButton,
+  Image,
+  Button,
+  Stack,
+  Collapse,
+  Link,
+  useColorModeValue,
+  useDisclosure,
 } from '@chakra-ui/react';
 import {
-    HamburgerIcon,
-    CloseIcon,
+  HamburgerIcon,
+  CloseIcon,
 } from '@chakra-ui/icons';
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import cosmverseLogo from "../../assets/logo.png";
@@ -51,12 +51,12 @@ export function Navbar(): JSX.Element {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link
-              as={ReactRouterLink}
-              to="/"
-              _hover={{
-                  textDecoration: 'none',
-              }}>
-              <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
+            as={ReactRouterLink}
+            to="/"
+            _hover={{
+              textDecoration: 'none',
+            }}>
+            <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
           </Link>
         </Flex>
 
@@ -82,35 +82,35 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue('pink.300', 'pink.400');
 
   return (
-      <Stack direction={'row'} spacing={6} display={{ base: 'none', md: 'inline-flex' }}>
-          <Link
-              as={ReactRouterLink}
-              to="/gallery"
-              p={1.5}
-              fontSize={'sm'}
-              fontFamily={'mono'}
-              fontWeight={'semibold'}
-              _hover={{
-                  color: linkHoverColor,
-              }}>
-              Explore
-          </Link>
-          <Button
-              as={ReactRouterLink}
-              to="/create"
-              verticalAlign={"middle"}
-              height="var(--chakra-sizes-8)"
-              fontSize={'sm'}
-              fontWeight={500}
-              borderRadius={'50px'}
-              color={'white'}
-              bg='pink.500'
-              _hover={{
-                  bg: 'pink.700',
-              }}>
-              Create
-          </Button>
-      </Stack>
+    <Stack direction={'row'} spacing={6} display={{ base: 'none', md: 'inline-flex' }}>
+      <Link
+        as={ReactRouterLink}
+        to="/gallery"
+        p={1.5}
+        fontSize={'sm'}
+        fontFamily={'mono'}
+        fontWeight={'semibold'}
+        _hover={{
+          color: linkHoverColor,
+        }}>
+        Explore
+      </Link>
+      <Button
+        as={ReactRouterLink}
+        to="/create"
+        verticalAlign={"middle"}
+        height="var(--chakra-sizes-8)"
+        fontSize={'sm'}
+        fontWeight={500}
+        borderRadius={'50px'}
+        color={'white'}
+        bg='pink.500'
+        _hover={{
+          bg: 'pink.700',
+        }}>
+        Create
+      </Button>
+    </Stack>
   );
 };
 

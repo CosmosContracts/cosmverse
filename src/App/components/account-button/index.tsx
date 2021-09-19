@@ -1,13 +1,13 @@
 import * as React from "react";
-import { Link as ReactRouterLink} from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
 import {
-    Button,
-    useColorModeValue,
-    MenuButton,
-    Menu,
-    MenuList,
-    MenuItem,
-    Avatar,
+  Button,
+  useColorModeValue,
+  MenuButton,
+  Menu,
+  MenuList,
+  MenuItem,
+  Avatar,
 } from '@chakra-ui/react';
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { Window as KeplrWindow } from "@keplr-wallet/types";
