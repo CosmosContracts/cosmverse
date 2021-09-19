@@ -30,7 +30,7 @@ const testnet: AppConfig = {
   },
   gasPrice: 0.025,
   codeId: 4,
-  contract: "juno167zj5p5l5t05jrajqvdx3esmc85mmxmv7lucy0",
+  contract: "juno1gnc0533drmdq2u9d70z0fyr9jg74dd2av9gtxw",
   marketContract: "juno16te3h0x8gnwhlunhh383j2jqsv4q556x22gtj0"
 };
 
