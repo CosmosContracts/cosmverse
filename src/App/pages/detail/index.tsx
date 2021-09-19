@@ -46,19 +46,17 @@ export const Detail = () => {
       (async () => {
         if (!client) return;
 
+        const contract = CW721(config.contract).use(client);
         const marketContract = Market(config.marketContract).use(client);
 
-        const offerResult = await marketContract.offer(config.contract, id);
-        setOffer(offerResult);
-
-        const contract = CW721(config.contract).use(client);
         const result = await contract.nftInfo(id);
-
         result.image = publicIpfsUrl(result.image);
-        setNft(result);
-
         const nftOwner = await contract.ownerOf(id);
+        const offerResult = await marketContract.offer(config.contract, id);
+
+        setOffer(offerResult);
         setOwner(nftOwner);
+        setNft(result);
       })();
     }, [client, id]);
 
