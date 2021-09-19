@@ -6,7 +6,7 @@ import {
   StackDivider,
   VStack,
 } from "@chakra-ui/react"
-import { NftSection } from "../../components/nft-section"
+import { NftSection } from "../../components"
 
 export const Landing = () => {
   return (

@@ -1,4 +1,5 @@
-import * as React from "react"
+import * as React from "react";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -10,13 +11,15 @@ import {
   Textarea,
   useBoolean,
   useToast,
-} from "@chakra-ui/react"
-import { FileUpload } from "../../components/file-upload"
-import { useSdk } from "../../services/client/wallet";
-import { CW721 } from "../../services/client/cw721";
-import { unSanitizeIpfsUrl, uploadFile } from "../../services/ipfs/client";
+} from "@chakra-ui/react";
 import { Bech32, toHex } from "@cosmjs/encoding";
-import { useState } from "react";
+import { FileUpload } from "../../components"
+import {
+  CW721,
+  unSanitizeIpfsUrl,
+  uploadFile,
+  useSdk,
+} from "../../services";
 import { config } from "../../../config";
 
 function generateId(address: string) {

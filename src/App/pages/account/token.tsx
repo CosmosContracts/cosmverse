@@ -1,4 +1,10 @@
-import * as React from "react"
+import * as React from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+import { useParams } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -30,16 +36,20 @@ import {
   useDisclosure,
   useToast,
   useBoolean,
-} from "@chakra-ui/react"
-import { useParams } from "react-router-dom";
-import { useSdk } from "../../services/client/wallet";
-import { useCallback, useEffect, useState } from "react";
-import { CW721, NftInfoResponse } from "../../services/client/cw721";
+} from "@chakra-ui/react";
+import {
+  CW721,
+  NftInfoResponse,
+  publicIpfsUrl,
+  formatAddress,
+  formatPrice,
+  Market,
+  OfferResponse,
+  toMinDenom,
+  useSdk,
+} from "../../services";
 import { config } from "../../../config";
-import { publicIpfsUrl } from "../../services/ipfs/client";
 import userLogo from "../../assets/user-default.svg";
-import { formatAddress, formatPrice, toMinDenom } from "../../services/utils";
-import { Market, OfferResponse } from "../../services/client/market";
 
 interface DetailParams {
     readonly id: string;

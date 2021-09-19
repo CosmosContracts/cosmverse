@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { Link as ReactRouterLink} from "react-router-dom";
 import {
   Box,
   Flex,
@@ -14,17 +16,19 @@ import {
   LinkBox,
   LinkOverlay,
 } from "@chakra-ui/react";
-import { Link as ReactRouterLink} from "react-router-dom";
-import { useSdk } from "../../services/client/wallet";
-import { formatAddress, formatPrice } from "../../services/utils";
-import { useEffect, useState } from "react";
-import { NftInfo } from "../../services/type";
-import { CW721, NftInfoResponse } from "../../services/client/cw721";
+import {
+  formatAddress,
+  formatPrice,
+  NftInfo,
+  CW721,
+  Market,
+  NftInfoResponse,
+  publicIpfsUrl,
+  useSdk,
+} from "../../services";
 import { config } from "../../../config";
-import { publicIpfsUrl } from "../../services/ipfs/client";
-import { NftCard } from "../../components/nft-card";
+import { NftCard } from "../../components";
 import userLogo from "../../assets/user-default.svg";
-import { Market } from "../../services/client/market";
 
 export const Account = () => {
   const { address } = useSdk();

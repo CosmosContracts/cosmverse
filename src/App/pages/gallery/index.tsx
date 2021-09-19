@@ -1,21 +1,24 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { Link as ReactRouterLink} from "react-router-dom";
 import {
   Box,
   LinkBox,
   LinkOverlay,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { Link as ReactRouterLink} from "react-router-dom";
-import { NftCard } from "../../components/nft-card";
-import { useSdk } from "../../services/client/wallet";
-import { CW721, NftInfoResponse } from "../../services/client/cw721";
+import { NftCard, Pagination } from "../../components";
+import {
+  CW721,
+  formatPrice,
+  NftInfoResponse,
+  Market,
+  NftInfo,
+  publicIpfsUrl,
+  OfferResponse,
+  useSdk,
+} from "../../services";
 import { config } from "../../../config";
-import { useEffect } from "react";
-import { publicIpfsUrl } from "../../services/ipfs/client";
-import { useState } from "react";
-import { NftInfo } from "../../services/type";
-import { Market, OfferResponse } from "../../services/client/market";
-import { formatPrice } from "../../services/utils";
 
 export const Gallery = () => {
   const { client } = useSdk();
@@ -68,6 +71,7 @@ export const Gallery = () => {
           </LinkBox>
         ))}
       </SimpleGrid>
+      <Pagination></Pagination>
     </Box>
   );
 };
