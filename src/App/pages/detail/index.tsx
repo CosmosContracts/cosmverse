@@ -46,6 +46,11 @@ export const Detail = () => {
       (async () => {
         if (!client) return;
 
+        const marketContract = Market(config.marketContract).use(client);
+
+        const offerResult = await marketContract.offer(config.contract, id);
+        setOffer(offerResult);
+
         const contract = CW721(config.contract).use(client);
         const result = await contract.nftInfo(id);
 
@@ -54,11 +59,6 @@ export const Detail = () => {
 
         const nftOwner = await contract.ownerOf(id);
         setOwner(nftOwner);
-
-        const marketContract = Market(config.marketContract).use(client);
-
-        const offerResult = await marketContract.offer(config.contract, id);
-        setOffer(offerResult);
       })();
     }, [client, id]);
 
@@ -159,7 +159,7 @@ export const Detail = () => {
                         fontSize="md"
                         color="gray.500"
                       >
-                        {owner ? formatAddress(owner): "..."}
+                        {offer ? formatAddress(offer.seller): owner ? formatAddress(owner): "..."}
                       </chakra.p>
                     </HStack>
                     </Box>
