@@ -5,7 +5,7 @@ import {
   Icon,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 interface PaginationProps {
@@ -49,11 +49,7 @@ export function Pagination({
     );
   };
 
-  useEffect(() => {
-    calculatePage(currentPage);
-  }, [total, step]);
-
-  const calculatePage = (page: number) => {
+  const getValidPages = useCallback((page: number) => {
     const pages = Math.ceil(total / step);
 
     if (page <= 1) {
@@ -62,12 +58,22 @@ export function Pagination({
       page = pages;
     }
 
-    setPrevious(page > 1)
-    setNext(page < pages);
-    setPage(page);
+    return [page, pages];
+  }, [total, step]);
 
-    return page;
-  };
+  const calculatePage = useCallback((pageNum: number) => {
+    const [pageVal, pages] = getValidPages(pageNum);
+    setPrevious(pageVal > 1)
+    setNext(pageVal < pages);
+    setPage(pageVal);
+
+    return pageVal;
+  }, [getValidPages]);
+
+  useEffect(() => {
+    console.log("useeff");
+    calculatePage(currentPage);
+  }, [calculatePage, currentPage]);
 
   const handleStep = (page: number) => {
     const validPage = calculatePage(page);
