@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Link as ReactRouterLink} from "react-router-dom";
+import { Link as ReactRouterLink, useParams} from "react-router-dom";
 import {
   Box,
   Flex,
@@ -30,8 +30,13 @@ import { config } from "../../../config";
 import { NftCard } from "../../components";
 import userLogo from "../../assets/user-default.svg";
 
+interface AccountParams {
+  readonly address: string;
+}
+
 export const Account = () => {
-  const { address } = useSdk();
+  const { address } = useParams<AccountParams>();
+
   const { client } = useSdk();
   const [nfts, setNfts] = useState<NftInfo[]>([]);
   const [nftSale, setNftSale] = useState<NftInfo[]>([]);
