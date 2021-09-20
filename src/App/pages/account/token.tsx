@@ -71,18 +71,16 @@ export const AccountToken = () => {
       if (!client) return;
 
       const contract = CW721(config.contract).use(client);
-      const result = await contract.nftInfo(id);
-
-      result.image = publicIpfsUrl(result.image);
-      setNft(result);
-
-      const nftOwner = await contract.ownerOf(id);
-      setOwner(nftOwner);
-
       const marketContract = Market(config.marketContract).use(client);
 
+      const result = await contract.nftInfo(id);
+      result.image = publicIpfsUrl(result.image);
+      const nftOwner = await contract.ownerOf(id);
       const offerResult = await marketContract.offer(config.contract, id);
+
       setOffer(offerResult);
+      setOwner(nftOwner);
+      setNft(result);
     }, [client, id]);
 
     useEffect(() => {
