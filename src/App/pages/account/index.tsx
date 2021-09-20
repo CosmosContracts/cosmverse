@@ -122,9 +122,13 @@ export const Account = () => {
 
 						<TabPanels>
 							<TabPanel>
-                <SimpleGrid columns={5} spacing={10}>
+                <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
                   {nfts.map(nft => (
-                    <LinkBox as="picture" key={nft.tokenId}>
+                    <LinkBox as="picture" key={nft.tokenId}
+                      transition="transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s"
+                      _hover={{
+                        transform: "scale(1.05)"
+                      }}>
                       <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
                         <NftCard nft={nft} />
                       </LinkOverlay>
@@ -133,15 +137,19 @@ export const Account = () => {
                 </SimpleGrid>
 							</TabPanel>
               <TabPanel>
-                <SimpleGrid columns={5} spacing={10}>
-                    {nftSale.map(nft => (
-                      <LinkBox as="picture" key={nft.tokenId}>
-                        <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
-                          <NftCard nft={nft} />
-                        </LinkOverlay>
-                      </LinkBox>
-                    ))}
-                  </SimpleGrid>
+              <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
+                  {nftSale.map(nft => (
+                    <LinkBox as="picture" key={nft.tokenId}
+                      transition="transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s"
+                      _hover={{
+                        transform: "scale(1.05)"
+                      }}>
+                      <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
+                        <NftCard nft={nft} />
+                      </LinkOverlay>
+                    </LinkBox>
+                  ))}
+                </SimpleGrid>
 							</TabPanel>
 						</TabPanels>
 					</Tabs>
