@@ -69,7 +69,7 @@ export function AccountButton(): JSX.Element {
       <MenuList>
         <MenuItem
           as={ReactRouterLink}
-          to="/account">My Items</MenuItem>
+          to={`/account/${sdk.address}`}>My Items</MenuItem>
         {/* <MenuItem onClick={logout}>Disconnect</MenuItem> */}
       </MenuList>
     </Menu>

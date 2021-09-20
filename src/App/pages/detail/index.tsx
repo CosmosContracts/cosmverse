@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link as ReactRouterLink, useParams } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -10,6 +10,7 @@ import {
   Flex,
   HStack,
   Image,
+  Link,
   Spinner,
   VStack,
   useColorModeValue,
@@ -51,11 +52,10 @@ export const Detail = () => {
 
         const result = await contract.nftInfo(id);
         result.image = publicIpfsUrl(result.image);
-        const nftOwner = await contract.ownerOf(id);
-        const offerResult = await marketContract.offer(config.contract, id);
+        const offer = await marketContract.offer(config.contract, id);
 
-        setOffer(offerResult);
-        setOwner(nftOwner);
+        setOffer(offer);
+        setOwner(offer ? offer.seller : (await contract.ownerOf(id)));
         setNft(result);
       })();
     }, [client, id]);
@@ -161,11 +161,14 @@ export const Detail = () => {
                       <Box>
                         <HStack>
                           <Avatar size="sm" name="Juno" src={userLogo} />
-                          <chakra.p
+                          <Link
                             fontSize="md"
-                          >
-                            {offer ? formatAddress(offer.seller) : owner ? formatAddress(owner) : "..."}
-                          </chakra.p>
+                            fontWeight="semibold"
+                            _hover={{
+                              color: "gray.600",
+                            }}
+                            as={ReactRouterLink}
+                            to={`/account/${owner}`}>{formatAddress(owner!)}</Link>
                         </HStack>
                       </Box>
                     </VStack>

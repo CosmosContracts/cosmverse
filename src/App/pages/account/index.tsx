@@ -37,7 +37,7 @@ interface AccountParams {
 export const Account = () => {
   const { user } = useParams<AccountParams>();
 
-  const { client } = useSdk();
+  const { client, address } = useSdk();
   const [nfts, setNfts] = useState<NftInfo[]>([]);
   const [nftSale, setNftSale] = useState<NftInfo[]>([]);
 
@@ -97,6 +97,8 @@ export const Account = () => {
     })();
   }, [client, user]);
 
+  const getNftPath = (nftId: string) => `${address === user ? "/account": ""}/token/${nftId}`;
+
 	return (
 		<Box m={5}>
 			<VStack
@@ -134,7 +136,7 @@ export const Account = () => {
                       _hover={{
                         transform: "scale(1.05)"
                       }}>
-                      <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
+                      <LinkOverlay as={ReactRouterLink} to={getNftPath(nft.tokenId)}>
                         <NftCard nft={nft} />
                       </LinkOverlay>
                     </LinkBox>
@@ -149,7 +151,7 @@ export const Account = () => {
                       _hover={{
                         transform: "scale(1.05)"
                       }}>
-                      <LinkOverlay as={ReactRouterLink} to={`/account/token/${nft.tokenId}`}>
+                      <LinkOverlay as={ReactRouterLink} to={getNftPath(nft.tokenId)}>
                         <NftCard nft={nft} />
                       </LinkOverlay>
                     </LinkBox>
