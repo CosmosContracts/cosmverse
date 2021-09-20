@@ -16,8 +16,6 @@ import {
   Image,
   Spinner,
   VStack,
-  Wrap,
-  WrapItem,
   useColorModeValue,
   Modal,
   ModalOverlay,
@@ -36,6 +34,7 @@ import {
   useDisclosure,
   useToast,
   useBoolean,
+  Grid,
 } from "@chakra-ui/react";
 import {
   CW721,
@@ -215,9 +214,16 @@ export const AccountToken = () => {
     return (
       <Box m={5}>
         {!nft ? loadingSkeleton : (
-          <Wrap>
-            <WrapItem>
-              <Flex w="800px" h="80vh" justifyContent="center" alignItems="center">
+          <Grid minH="80vh"
+            gridTemplateColumns={{
+              sm: "repeat(1, minmax(0px, 1fr))",
+              md: "repeat(8, minmax(0px, 1fr))"
+            }}>
+            <GridItem colSpan={5}>
+              <Flex
+                h="full"
+                justifyContent="center"
+                alignItems="center">
                 <Image
                   bgGradient="linear(to-r, green.200, pink.500)"
                   roundedTop="md"
@@ -226,118 +232,118 @@ export const AccountToken = () => {
                   src={nft.image}
                   alt={nft.name} />
               </Flex>
-            </WrapItem>
-            <WrapItem>
+            </GridItem>
+            <GridItem colSpan={3}>
               <Flex h="80vh">
                 <VStack spacing={6} align="stretch">
-                <Box py={2}>
-                  <chakra.h1
-                    fontWeight="bold"
-                    fontSize="3xl"
-                  >
-                    {nft.name}
-                  </chakra.h1>
-                  <chakra.p
-                    mt={1}
-                    fontSize="xs"
-                    color="gray.500"
-                  >
-                    @unknown
-                  </chakra.p>
-                  <chakra.p
-                    mt={1}
-                    maxW="400px"
-                    fontSize="md"
-                  >
-                    {nft.description}
-                  </chakra.p>
-                </Box>
-                <Box>
-                  <VStack spacing={2} align="stretch">
-                    <Box>
-                      <chakra.p
-                        fontFamily="mono"
-                        fontSize="md"
-                      >
-                        Owner
-                      </chakra.p>
-                    </Box>
-                    <Box>
-                    <HStack>
-                      <Avatar size="sm" name="Juno" src={userLogo} />
-                      <chakra.p
-                        fontSize="md"
-                        color="gray.500"
-                      >
-                        {owner ? formatAddress(owner): "..."}
-                      </chakra.p>
-                    </HStack>
-                    </Box>
-                  </VStack>
-                </Box>
-                <Box>
-                  <VStack spacing={2} align="stretch">
-                    <Box>
-                      <chakra.p
-                        fontFamily="mono"
-                        fontSize="md"
-                      >
-                        Price
-                      </chakra.p>
-                    </Box>
-                    <Box>
-                      <chakra.p
+                  <Box py={2}>
+                    <chakra.h1
+                      fontWeight="bold"
+                      fontSize="3xl"
+                    >
+                      {nft.name}
+                    </chakra.h1>
+                    <chakra.p
+                      mt={1}
+                      fontSize="xs"
+                      color="gray.500"
+                    >
+                      @unknown
+                    </chakra.p>
+                    <chakra.p
+                      mt={1}
+                      maxW="400px"
+                      fontSize="md"
+                    >
+                      {nft.description}
+                    </chakra.p>
+                  </Box>
+                  <Box>
+                    <VStack spacing={2} align="stretch">
+                      <Box>
+                        <chakra.p
+                          fontFamily="mono"
+                          fontSize="md"
+                        >
+                          Owner
+                        </chakra.p>
+                      </Box>
+                      <Box>
+                        <HStack>
+                          <Avatar size="sm" name="Juno" src={userLogo} />
+                          <chakra.p
+                            fontSize="md"
+                            color="gray.500"
+                          >
+                            {owner ? formatAddress(owner) : "..."}
+                          </chakra.p>
+                        </HStack>
+                      </Box>
+                    </VStack>
+                  </Box>
+                  <Box>
+                    <VStack spacing={2} align="stretch">
+                      <Box>
+                        <chakra.p
+                          fontFamily="mono"
+                          fontSize="md"
+                        >
+                          Price
+                        </chakra.p>
+                      </Box>
+                      <Box>
+                        <chakra.p
                           fontSize="md"
                           color="gray.500"
                         >
                           {offer ? formatPrice(offer.list_price) : "Not listed"}
                         </chakra.p>
-                    </Box>
-                  </VStack>
-                </Box>
-                <Box py={6}
-                        borderTop={1}
-                        borderStyle={'solid'}
-                        borderColor={borderColor}>
-                  {offer ? (
-                    <Button
-                      isLoading={loading}
-                      onClick={handleWithdraw}
-                      title="Withdraw NFT"
-                      type="button"
-                      height="var(--chakra-sizes-10)"
-                      fontSize={'md'}
-                      fontWeight="semibold"
-                      borderRadius={'50px'}
-                      color={'white'}
-                      bg="pink.500"
-                      _hover={{
-                        bg: "pink.700",
-                      }}>
-                      Cancel
-                    </Button>
-                  ) : (
-                    <Button
-                      isLoading={loading}
-                      onClick={onOpen}
-                      type="button"
-                      height="var(--chakra-sizes-10)"
-                      fontSize={'md'}
-                      fontWeight="semibold"
-                      borderRadius={'50px'}
-                      color={'white'}
-                      bg="pink.500"
-                      _hover={{
-                        bg: "pink.700",
-                      }}>
-                      Sell
-                    </Button>
-                  )}
-                </Box>
+                      </Box>
+                    </VStack>
+                  </Box>
+                  <Box py={6}
+                    borderTop={1}
+                    borderStyle={'solid'}
+                    borderColor={borderColor}>
+                    {offer ? (
+                      <Button
+                        isLoading={loading}
+                        onClick={handleWithdraw}
+                        title="Withdraw NFT"
+                        type="button"
+                        height="var(--chakra-sizes-10)"
+                        fontSize={'md'}
+                        fontWeight="semibold"
+                        borderRadius={'50px'}
+                        color={'white'}
+                        bg="pink.500"
+                        _hover={{
+                          bg: "pink.700",
+                        }}>
+                        Cancel
+                      </Button>
+                    ) : (
+                      <Button
+                        isLoading={loading}
+                        onClick={onOpen}
+                        type="button"
+                        height="var(--chakra-sizes-10)"
+                        fontSize={'md'}
+                        fontWeight="semibold"
+                        borderRadius={'50px'}
+                        color={'white'}
+                        bg="pink.500"
+                        _hover={{
+                          bg: "pink.700",
+                        }}>
+                        Sell
+                      </Button>
+                    )}
+                  </Box>
                 </VStack>
               </Flex>
-            </WrapItem>
-          </Wrap>
+            </GridItem>
+          </Grid>
       )}
       {priceModal}
       </Box>
