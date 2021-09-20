@@ -79,8 +79,6 @@ export function Navbar(): JSX.Element {
 }
 
 const DesktopNav = () => {
-  const linkHoverColor = useColorModeValue('pink.300', 'pink.400');
-
   return (
     <Stack direction={'row'} spacing={6} display={{ base: 'none', md: 'inline-flex' }}>
       <Link
@@ -91,7 +89,7 @@ const DesktopNav = () => {
         fontFamily={'mono'}
         fontWeight={'semibold'}
         _hover={{
-          color: linkHoverColor,
+          color: useColorModeValue('pink.300', 'pink.400'),
         }}>
         Explore
       </Link>
