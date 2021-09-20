@@ -262,6 +262,7 @@ export const AccountToken = () => {
                         <chakra.p
                           fontFamily="mono"
                           fontSize="md"
+                          color="gray.500"
                         >
                           Owner
                         </chakra.p>
@@ -271,7 +272,6 @@ export const AccountToken = () => {
                           <Avatar size="sm" name="Juno" src={userLogo} />
                           <chakra.p
                             fontSize="md"
-                            color="gray.500"
                           >
                             {owner ? formatAddress(owner) : "..."}
                           </chakra.p>
@@ -285,14 +285,15 @@ export const AccountToken = () => {
                         <chakra.p
                           fontFamily="mono"
                           fontSize="md"
+                          color="gray.500"
                         >
                           Price
                         </chakra.p>
                       </Box>
                       <Box>
                         <chakra.p
+                          fontWeight="semibold"
                           fontSize="md"
-                          color="gray.500"
                         >
                           {offer ? formatPrice(offer.list_price) : "Not listed"}
                         </chakra.p>
