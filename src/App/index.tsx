@@ -56,7 +56,7 @@ export const App = () => (
               component={AccountToken}
             />
             <Route
-              path="/account/:address"
+              path="/account/:user"
               component={Account}
             />
             <Route

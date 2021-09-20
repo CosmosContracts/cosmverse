@@ -31,11 +31,11 @@ import { NftCard } from "../../components";
 import userLogo from "../../assets/user-default.svg";
 
 interface AccountParams {
-  readonly address: string;
+  readonly user: string;
 }
 
 export const Account = () => {
-  const { address } = useParams<AccountParams>();
+  const { user } = useParams<AccountParams>();
 
   const { client } = useSdk();
   const [nfts, setNfts] = useState<NftInfo[]>([]);
@@ -43,10 +43,10 @@ export const Account = () => {
 
   useEffect(() => {
     (async () => {
-      if (!client || !address) return;
+      if (!client || !user) return;
 
       const contract = CW721(config.contract).use(client);
-      const result = await contract.tokens(address, undefined, 10);
+      const result = await contract.tokens(user, undefined, 10);
 
       const allNfts: Promise<NftInfoResponse>[] = [];
       result.tokens.forEach(tokenId => {
@@ -66,15 +66,15 @@ export const Account = () => {
       });
       setNfts(items);
     })();
-  }, [client, address]);
+  }, [client, user]);
 
   useEffect(() => {
     (async () => {
-      if (!client || !address) return;
+      if (!client || !user) return;
 
       const contract = CW721(config.contract).use(client);
       const marketcw = Market(config.marketContract).use(client);
-      const result = await marketcw.offersBySeller(address);
+      const result = await marketcw.offersBySeller(user);
 
       const allNfts: Promise<NftInfoResponse>[] = [];
       result.offers.forEach(off => {
@@ -95,7 +95,7 @@ export const Account = () => {
       });
       setNftSale(items);
     })();
-  }, [client, address]);
+  }, [client, user]);
 
 	return (
 		<Box m={5}>
@@ -113,7 +113,7 @@ export const Account = () => {
 					</Box>
 					<Box bg="blackAlpha.300" borderRadius="xl" py={1} px={3}>
 						<Text color={"gray.500"} fontFamily="mono" fontSize="sm">
-							{ address ? formatAddress(address) : '...' }
+							{ user ? formatAddress(user) : '...' }
 						</Text>
 					</Box>
 					</VStack>
