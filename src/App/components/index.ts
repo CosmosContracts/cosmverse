@@ -5,3 +5,4 @@ export * from './navbar';
 export * from './nft-card';
 export * from './nft-section';
 export * from './pagination';
+export * from './transaction-link';
