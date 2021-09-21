@@ -13,7 +13,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { Bech32, toHex } from "@cosmjs/encoding";
-import { FileUpload } from "../../components"
+import { FileUpload, TransactionLink } from "../../components"
 import {
   CW721,
   unSanitizeIpfsUrl,
@@ -49,7 +49,6 @@ export const Create = () => {
 
   async function createNft(e: any) {
     // TODO: use formik validations
-    // TODO: disable and animate button (loading)
     e.preventDefault();
 
     if (!address) {
@@ -84,10 +83,15 @@ export const Create = () => {
       };
 
       const contract = CW721(config.contract).useTx(getSignClient()!);
-
       const txHash = await contract.mint(address, nftMsg);
 
-      alert("TX: " + txHash);
+      toast({
+        title: `Successful Transaction`,
+        description: (<TransactionLink tx={txHash} />),
+        status: "success",
+        position: "bottom-right",
+        isClosable: true,
+      });
 
       clearFields();
       setLoading.off();

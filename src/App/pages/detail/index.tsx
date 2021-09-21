@@ -30,6 +30,7 @@ import {
 } from "../../services";
 import { config } from "../../../config";
 import userLogo from "../../assets/user-default.svg";
+import { TransactionLink } from "../../components";
 
 interface DetailParams {
     readonly id: string;
@@ -80,7 +81,13 @@ export const Detail = () => {
       try {
         const txHash = await contract.buy(address, offer.id, offer.list_price);
 
-        alert(txHash);
+        toast({
+          title: `Successful Transaction`,
+          description: (<TransactionLink tx={txHash} />),
+          status: "success",
+          position: "bottom-right",
+          isClosable: true,
+        });
       } catch (error) {
         console.log(error);
         toast({

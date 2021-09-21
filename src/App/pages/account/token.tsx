@@ -48,6 +48,7 @@ import {
   toMinDenom,
   useSdk,
 } from "../../services";
+import { TransactionLink } from "../../components";
 import { config } from "../../../config";
 import userLogo from "../../assets/user-default.svg";
 
@@ -110,7 +111,13 @@ export const AccountToken = () => {
         const price = { list_price: {amount: toMinDenom(amount, denom), denom}};
         const txHash = await contract.send(address, config.marketContract, price, id);
 
-        alert(txHash);
+        toast({
+          title: `Successful Transaction`,
+          description: (<TransactionLink tx={txHash} />),
+          status: "success",
+          position: "bottom-right",
+          isClosable: true,
+        });
         await loadData();
       } catch (error) {
         console.log(error);
@@ -148,7 +155,13 @@ export const AccountToken = () => {
         const contract = Market(config.marketContract).useTx(signClient);
         const txHash = await contract.withdraw(address, offer.id);
 
-        alert(txHash);
+        toast({
+          title: `Successful Transaction`,
+          description: (<TransactionLink tx={txHash} />),
+          status: "success",
+          position: "bottom-right",
+          isClosable: true,
+        });
         await loadData();
       } catch (error) {
         console.log(error);
