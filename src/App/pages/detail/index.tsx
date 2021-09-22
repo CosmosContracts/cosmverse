@@ -89,10 +89,9 @@ export const Detail = () => {
           isClosable: true,
         });
       } catch (error) {
-        console.log(error);
         toast({
           title: "Error",
-          description: "Unknown error",
+          description: `${error}`,
           status: "error",
           position: "bottom-right",
           isClosable: true,

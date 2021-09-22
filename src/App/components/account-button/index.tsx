@@ -21,19 +21,12 @@ export function AccountButton(): JSX.Element {
   const sdk = useSdk();
 
   async function init(loadWallet: WalletLoader) {
-    // setInitializing(true);
-    // clearError();
-
-    try {
-      const signer = await loadWallet(config.chainId, config.addressPrefix);
-      sdk.init(signer);
-    } catch (error) {
-      console.error(error);
-      // TODO: ui error
-    }
+    const signer = await loadWallet(config.chainId, config.addressPrefix);
+    sdk.init(signer);
   }
 
   async function initKeplr() {
+    // clearError();
     const anyWindow = window as KeplrWindow;
     try {
       await anyWindow.keplr?.experimentalSuggestChain(configKeplr(config));

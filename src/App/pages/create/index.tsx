@@ -96,10 +96,9 @@ export const Create = () => {
       clearFields();
       setLoading.off();
     } catch (error) {
-      console.log(error);
       toast({
         title: "Error",
-        description: "Invalid tx",
+        description: `${error}`,
         status: "error",
         position: "bottom-right",
         isClosable: true,

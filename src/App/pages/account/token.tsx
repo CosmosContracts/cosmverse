@@ -120,10 +120,9 @@ export const AccountToken = () => {
         });
         await loadData();
       } catch (error) {
-        console.log(error);
         toast({
           title: "Error",
-          description: "Unknown error",
+          description: `${error}`,
           status: "error",
           position: "bottom-right",
           isClosable: true,
@@ -164,10 +163,9 @@ export const AccountToken = () => {
         });
         await loadData();
       } catch (error) {
-        console.log(error);
         toast({
           title: "Error",
-          description: "Unknown error",
+          description: `${error}`,
           status: "error",
           position: "bottom-right",
           isClosable: true,
