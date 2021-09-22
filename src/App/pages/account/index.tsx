@@ -35,6 +35,8 @@ interface AccountParams {
   readonly user: string;
 }
 
+const maxItemsPerPage = 15;
+
 export const Account = () => {
   const { user } = useParams<AccountParams>();
 
@@ -66,7 +68,7 @@ export const Account = () => {
       if (!client || !user) return;
 
       const contract = CW721(config.contract).use(client);
-      const result = await contract.tokens(user, undefined, 10);
+      const result = await contract.tokens(user, undefined, maxItemsPerPage);
       setNfts(await getNftsInfo(result.tokens, contract));
     })();
   }, [client, user]);
@@ -77,7 +79,7 @@ export const Account = () => {
 
       const contract = CW721(config.contract).use(client);
       const marketcw = Market(config.marketContract).use(client);
-      const result = await marketcw.offersBySeller(user);
+      const result = await marketcw.offersBySeller(user, undefined, maxItemsPerPage);
       const tokens = await getNftsInfo(result.offers.map(o => o.token_id), contract);
 
       const items = tokens.map((nft, idx) => {
