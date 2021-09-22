@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Box,
   Button,
@@ -35,17 +36,12 @@ function generateId(address: string) {
 
 export const Create = () => {
   const toast = useToast();
+  const history = useHistory();
   const { getSignClient, address } = useSdk();
   const [files, setFiles] = useState<File[]>();
   const [nftName, setNftName]= useState<string>();
   const [description, setDescription]= useState<string>();
   const [loading, setLoading] = useBoolean();
-
-  const clearFields = () => {
-    setFiles([]);
-    setNftName('');
-    setDescription('');
-  };
 
   async function createNft(e: any) {
     // TODO: use formik validations
@@ -93,8 +89,8 @@ export const Create = () => {
         isClosable: true,
       });
 
-      clearFields();
       setLoading.off();
+      history.push(`/account/token/${nftId}`);
     } catch (error) {
       toast({
         title: "Error",

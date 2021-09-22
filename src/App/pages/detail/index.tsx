@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Link as ReactRouterLink, useParams } from "react-router-dom";
+import { Link as ReactRouterLink, useHistory, useParams } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -39,6 +39,7 @@ interface DetailParams {
 export const Detail = () => {
     const toast = useToast();
     const { id } = useParams<DetailParams>();
+    const history = useHistory();
     const { client, address, getSignClient } = useSdk();
     const [nft, setNft] = useState<NftInfoResponse>();
     const [owner, setOwner] = useState<string>();
@@ -88,6 +89,7 @@ export const Detail = () => {
           position: "bottom-right",
           isClosable: true,
         });
+        history.push(`/account/token/${offer.token_id}`);
       } catch (error) {
         toast({
           title: "Error",
