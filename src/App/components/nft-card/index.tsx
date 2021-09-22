@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { NftInfo } from "../../services/type";
-import cosmverse from "../../assets/cosmverse.jpg"
+import cosmverseLogo from "../../assets/cosmverse.jpg";
 
 interface NftCardProps {
   readonly nft: NftInfo;
@@ -29,7 +29,7 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
           w="full"
           fit="cover"
           src={nft.image}
-          fallbackSrc={cosmverse}
+          fallbackSrc={cosmverseLogo}
           alt={nft.title}
         />
         <Box px={4} bg="gray.900" roundedBottom="md">

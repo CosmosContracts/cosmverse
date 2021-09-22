@@ -30,6 +30,7 @@ import {
 } from "../../services";
 import { config } from "../../../config";
 import userLogo from "../../assets/user-default.svg";
+import cosmverseLogo from "../../assets/cosmverse.jpg";
 import { TransactionLink } from "../../components";
 
 interface DetailParams {
@@ -126,6 +127,7 @@ export const Detail = () => {
                   roundedTop="md"
                   boxSize="420px"
                   fit="cover"
+                  fallbackSrc={cosmverseLogo}
                   src={nft.image}
                   alt={nft.name} />
               </Flex>

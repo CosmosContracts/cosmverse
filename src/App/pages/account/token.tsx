@@ -51,6 +51,7 @@ import {
 import { TransactionLink } from "../../components";
 import { config } from "../../../config";
 import userLogo from "../../assets/user-default.svg";
+import cosmverseLogo from "../../assets/cosmverse.jpg";
 
 interface DetailParams {
     readonly id: string;
@@ -237,6 +238,7 @@ export const AccountToken = () => {
                   roundedTop="md"
                   boxSize="420px"
                   fit="cover"
+                  fallbackSrc={cosmverseLogo}
                   src={nft.image}
                   alt={nft.name} />
               </Flex>
