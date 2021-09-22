@@ -25,6 +25,7 @@ import {
   NftInfoResponse,
   publicIpfsUrl,
   useSdk,
+  CW721Instance,
 } from "../../services";
 import { config } from "../../../config";
 import { NftCard } from "../../components";
@@ -41,30 +42,32 @@ export const Account = () => {
   const [nfts, setNfts] = useState<NftInfo[]>([]);
   const [nftSale, setNftSale] = useState<NftInfo[]>([]);
 
+  const getNftsInfo = async (ids: string[], contract: CW721Instance) => {
+    const allNfts: Promise<NftInfoResponse>[] = [];
+    ids.forEach(tokenId => {
+      allNfts.push(contract.nftInfo(tokenId));
+    });
+
+    const tokens = await Promise.all(allNfts);
+    return tokens.map((nft, idx) => {
+      return {
+        tokenId: ids[idx],
+        user: 'unknown',
+        title: nft.name,
+        price: 'Not listed',
+        image: publicIpfsUrl(nft.image),
+        total: 1
+      };
+    });
+  };
+
   useEffect(() => {
     (async () => {
       if (!client || !user) return;
 
       const contract = CW721(config.contract).use(client);
       const result = await contract.tokens(user, undefined, 10);
-
-      const allNfts: Promise<NftInfoResponse>[] = [];
-      result.tokens.forEach(tokenId => {
-        allNfts.push(contract.nftInfo(tokenId));
-      });
-
-      const tokens = await Promise.all(allNfts);
-      const items = tokens.map((nft, idx) => {
-        return {
-          tokenId: result.tokens[idx],
-          user: 'unknown',
-          title: nft.name,
-          price: 'Not listed',
-          image: publicIpfsUrl(nft.image),
-          total: 1
-        };
-      });
-      setNfts(items);
+      setNfts(await getNftsInfo(result.tokens, contract));
     })();
   }, [client, user]);
 
@@ -75,23 +78,12 @@ export const Account = () => {
       const contract = CW721(config.contract).use(client);
       const marketcw = Market(config.marketContract).use(client);
       const result = await marketcw.offersBySeller(user);
+      const tokens = await getNftsInfo(result.offers.map(o => o.token_id), contract);
 
-      const allNfts: Promise<NftInfoResponse>[] = [];
-      result.offers.forEach(off => {
-        allNfts.push(contract.nftInfo(off.token_id));
-      });
-
-      const tokens = await Promise.all(allNfts);
       const items = tokens.map((nft, idx) => {
         const off = result.offers[idx];
-        return {
-          tokenId: off.token_id,
-          user: 'unknown',
-          title: nft.name,
-          price: formatPrice(off.list_price),
-          image: publicIpfsUrl(nft.image),
-          total: 1
-        };
+        nft.price = formatPrice(off.list_price);
+        return nft;
       });
       setNftSale(items);
     })();

@@ -36,7 +36,6 @@ export const Gallery = () => {
     const marketcw = Market(config.marketContract).use(client);
     const result = await contract.allTokens(start, pageSize);
     const numTokens = await contract.numTokens();
-    setTotalTokens(numTokens);
 
     const allNfts: Promise<NftInfoResponse>[] = [];
     const allOffers: Promise<OfferResponse|undefined>[] = [];
@@ -67,6 +66,7 @@ export const Gallery = () => {
 
     setPages(pages);
     setNfts(items);
+    setTotalTokens(numTokens);
   }, [client, pages]);
 
   useEffect(() => {

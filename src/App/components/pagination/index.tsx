@@ -71,7 +71,6 @@ export function Pagination({
   }, [getValidPages]);
 
   useEffect(() => {
-    console.log("useeff");
     calculatePage(currentPage);
   }, [calculatePage, currentPage]);
 
