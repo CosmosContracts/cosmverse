@@ -8,6 +8,7 @@ import {
   MenuList,
   MenuItem,
   Avatar,
+  useBoolean,
 } from '@chakra-ui/react';
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { Window as KeplrWindow } from "@keplr-wallet/types";
@@ -19,20 +20,23 @@ import userLogo from "../../assets/user-default.svg";
 
 export function AccountButton(): JSX.Element {
   const sdk = useSdk();
+  const [loading, setLoading] = useBoolean();
 
   async function init(loadWallet: WalletLoader) {
     const signer = await loadWallet(config.chainId, config.addressPrefix);
     sdk.init(signer);
   }
 
-  async function initKeplr() {
+  async function connectKeplr() {
     // clearError();
+    setLoading.on();
     const anyWindow = window as KeplrWindow;
     try {
       await anyWindow.keplr?.experimentalSuggestChain(configKeplr(config));
       await anyWindow.keplr?.enable(config.chainId);
       await init(loadKeplrWallet);
     } catch (error) {
+      setLoading.off();
       console.error(error);
       // setError(Error(error).message);
     }
@@ -40,6 +44,8 @@ export function AccountButton(): JSX.Element {
 
   const loginButton = (
     <Button
+      isLoading={loading}
+      loadingText="Connecting..."
       rightIcon={<MdAccountBalanceWallet />}
       fontSize={'sm'}
       fontWeight={500}
@@ -48,7 +54,7 @@ export function AccountButton(): JSX.Element {
       height="var(--chakra-sizes-8)"
       marginTop={"4px"}
       borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
-      onClick={initKeplr}
+      onClick={connectKeplr}
     >
       Connect wallet
     </Button>
