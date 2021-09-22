@@ -3,9 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 import { Link as ReactRouterLink} from "react-router-dom";
 import {
   Box,
+  Center,
   LinkBox,
   LinkOverlay,
   SimpleGrid,
+  Spinner,
 } from "@chakra-ui/react";
 import { NftCard, Pagination } from "../../components";
 import {
@@ -77,8 +79,14 @@ export const Gallery = () => {
     await loadNfts(page);
   };
 
-  return (
-    <Box m={5}>
+  const loadingSkeleton = (
+    <Center>
+      <Spinner size="xl" />
+    </Center>
+  );
+
+  const bodyContent = (
+    <>
       <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
         {nfts.map(nft => (
           <LinkBox as="picture" key={nft.tokenId}
@@ -93,6 +101,12 @@ export const Gallery = () => {
         ))}
       </SimpleGrid>
       <Pagination onChangePage={handlePage} total={totalTokens} step={pageSize} />
+    </>
+  )
+
+  return (
+    <Box m={5}>
+      {nfts.length === 0 ? loadingSkeleton : bodyContent}
     </Box>
   );
 };
