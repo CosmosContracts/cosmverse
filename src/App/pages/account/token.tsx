@@ -205,8 +205,7 @@ export const AccountToken = () => {
             </FormControl>
             <FormControl as={GridItem} colSpan={[6, 2]}>
               <Select placeholder="Select coin" onChange={e => setDenom(e.target.value)}>
-                <option value="ujuno">JUNO</option>
-                <option value="usponge">SPONGE</option>
+                <option value="ujuno" selected>JUNO</option>
               </Select>
             </FormControl>
             </SimpleGrid>

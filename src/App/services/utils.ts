@@ -25,3 +25,13 @@ export function toMinDenom(amount: number, denom: string): string {
   const coinConfig = (coinsList as any)[denom];
   return Math.ceil(amount * Math.pow(10, coinConfig.decimals)).toString();
 }
+
+export function* getListCoins() {
+  for (const key in Object.keys(coinsList)) {
+    const element = (coinsList as any)[key];
+    yield {
+      value: key,
+      text: element.name
+    };
+  }
+}
