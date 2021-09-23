@@ -45,6 +45,10 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
               color={"white"}
               fontWeight="bold"
               fontSize="2xl"
+              overflow="hidden"
+              textOverflow="ellipsis"
+              whiteSpace="nowrap"
+              title={nft.title}
             >
               {nft.title}
             </chakra.h1>
