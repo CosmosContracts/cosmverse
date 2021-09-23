@@ -117,16 +117,20 @@ export const Account = () => {
 					</VStack>
 				</Flex>
 				<Box>
-					<Tabs>
+					<Tabs
+            isManual
+            isLazy
+            defaultIndex={1}
+            colorScheme="pink">
 						<TabList>
-							<Tab>Owned</Tab>
 							<Tab>On Sale</Tab>
+              <Tab>Owned</Tab>
 						</TabList>
 
 						<TabPanels>
-							<TabPanel>
+              <TabPanel>
                 <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
-                  {nfts.map(nft => (
+                  {nftSale.map(nft => (
                     <LinkBox as="picture" key={nft.tokenId}
                       transition="transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s"
                       _hover={{
@@ -139,9 +143,9 @@ export const Account = () => {
                   ))}
                 </SimpleGrid>
 							</TabPanel>
-              <TabPanel>
-              <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
-                  {nftSale.map(nft => (
+							<TabPanel>
+                <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
+                  {nfts.map(nft => (
                     <LinkBox as="picture" key={nft.tokenId}
                       transition="transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s"
                       _hover={{
