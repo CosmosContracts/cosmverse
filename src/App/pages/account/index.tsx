@@ -17,7 +17,6 @@ import {
   LinkOverlay,
 } from "@chakra-ui/react";
 import {
-  formatAddress,
   formatPrice,
   NftInfo,
   CW721,
@@ -108,8 +107,11 @@ export const Account = () => {
 							src={userLogo} />
 					</Box>
 					<Box bg="blackAlpha.300" borderRadius="xl" py={1} px={3}>
-						<Text color={"gray.500"} fontFamily="mono" fontSize="sm">
-							{ user ? formatAddress(user) : '...' }
+						<Text
+              color={"gray.500"}
+              fontFamily="mono"
+              fontSize="sm">
+							{user}
 						</Text>
 					</Box>
 					</VStack>
