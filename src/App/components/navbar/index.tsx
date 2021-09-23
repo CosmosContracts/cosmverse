@@ -37,7 +37,7 @@ export function Navbar(): JSX.Element {
         borderBottomColor={useColorModeValue('pink.400', 'gray.300')}
         align={'center'}>
         <Flex
-          flex={{ base: 1, md: 'auto' }}
+          flex={{ base: 0, md: 'auto' }}
           ml={{ base: -2 }}
           display={{ base: 'flex', md: 'none' }}>
           <IconButton
@@ -49,14 +49,14 @@ export function Navbar(): JSX.Element {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+        <Flex flex={{ base: 1 }}>
           <Link
             as={ReactRouterLink}
             to="/"
             _hover={{
               textDecoration: 'none',
             }}>
-            <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
+             <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
           </Link>
         </Flex>
 
