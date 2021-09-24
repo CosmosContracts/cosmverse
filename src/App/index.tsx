@@ -8,8 +8,6 @@ import {
 import {
   ChakraProvider,
   Box,
-  Flex,
-  Text,
 } from "@chakra-ui/react"
 import {
   Account,
@@ -29,14 +27,6 @@ export const App = () => (
   <ChakraProvider theme={theme}>
     <SdkProvider config={config}>
     <Box>
-      <Flex
-        py={1}
-        justifyContent="center"
-        bg="purple.500">
-          <Text fontSize="md" color="white">
-            ⛓ Juno Testnet
-          </Text>
-      </Flex>
       <Router>
         <Navbar />
         <Box minH={"lg"}>
