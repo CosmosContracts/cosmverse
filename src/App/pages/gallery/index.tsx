@@ -87,7 +87,7 @@ export const Gallery = () => {
 
   const bodyContent = (
     <>
-      <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
+      <SimpleGrid spacing={{base: 5, md: 10}} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
         {nfts.map(nft => (
           <LinkBox as="picture" key={nft.tokenId}
             transition="transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s"
