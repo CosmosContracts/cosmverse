@@ -81,7 +81,7 @@ export const Gallery = () => {
   )
 
   return (
-    <Box m={5}>
+    <Box mx={5} my={8}>
       {nfts.length === 0 ? <LoadingSpinner /> : bodyContent}
     </Box>
   );

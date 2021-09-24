@@ -10,8 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { FaDiscord, FaTelegram, FaTwitter } from 'react-icons/fa';
 import { ReactNode } from 'react';
-  
-  
+
+
 const SocialButton = ({
     children,
     label,
@@ -42,13 +42,13 @@ const SocialButton = ({
       </chakra.button>
     );
   };
-  
+
   export function Footer(): JSX.Element {
     return (
       <Box
         borderTop={1}
         borderStyle={'solid'}
-        borderTopColor={'pink.400'}>
+        borderTopColor={useColorModeValue('pink.400', 'gray.300')}>
         <Container
           as={Stack}
           maxW={'7xl'}
