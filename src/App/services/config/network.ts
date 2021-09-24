@@ -54,5 +54,6 @@ export function configKeplr(config: AppConfig): ChainInfo {
     },
     bip44: { coinType: 118 },
     coinType: 118,
+    features: ["stargate", 'ibc-transfer', 'cosmwasm']
   };
 }
