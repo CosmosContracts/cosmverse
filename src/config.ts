@@ -36,6 +36,7 @@ const testnet: AppConfig = {
 
 export const coinsList = {
   ujuno: { name: "JUNO", decimals: 6 },
+  'ibc/555C7A3F9E7709786202410B9CDA64824A34AA2270E9FE8A235B4B8BCE0554B6': { name: "TCRO", decimals: 8}
 };
 
 const configs: NetworkConfigs = { local, testnet };
