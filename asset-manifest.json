@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/static/js/main.0cf56617.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.6705788f.js",
-    "static/js/2.d6d4f9d5.chunk.js": "/static/js/2.d6d4f9d5.chunk.js",
-    "static/js/3.451e9dd1.chunk.js": "/static/js/3.451e9dd1.chunk.js",
+    "main.js": "/static/js/main.d8eb4f6a.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.93a21399.js",
+    "static/js/2.c9abe663.chunk.js": "/static/js/2.c9abe663.chunk.js",
+    "static/js/3.afe00cf6.chunk.js": "/static/js/3.afe00cf6.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.d6d4f9d5.chunk.js.LICENSE.txt": "/static/js/2.d6d4f9d5.chunk.js.LICENSE.txt",
-    "static/media/cosmverse.30b871f5.jpg": "/static/media/cosmverse.30b871f5.jpg",
+    "static/js/2.c9abe663.chunk.js.LICENSE.txt": "/static/js/2.c9abe663.chunk.js.LICENSE.txt",
+    "static/media/cosmverse.1075c14e.jpg": "/static/media/cosmverse.1075c14e.jpg",
     "static/media/logo.af0ba81e.png": "/static/media/logo.af0ba81e.png",
     "static/media/user-default.3f70c9cc.svg": "/static/media/user-default.3f70c9cc.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6705788f.js",
-    "static/js/2.d6d4f9d5.chunk.js",
-    "static/js/main.0cf56617.chunk.js"
+    "static/js/runtime-main.93a21399.js",
+    "static/js/2.c9abe663.chunk.js",
+    "static/js/main.d8eb4f6a.chunk.js"
   ]
 }
