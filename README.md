@@ -6,7 +6,8 @@ NFT Marketplace on Juno.
 Buy, sell, mint & explore the amazing world of nonfungible goods.
 
 
-![Cosmverse Banner 5](https://user-images.githubusercontent.com/79812965/135060006-69364851-998e-41a6-ba33-87a7deba6696.png)
+
+![Cosmverse (Logo) 10](https://user-images.githubusercontent.com/79812965/135062726-72da60e0-644b-4f12-a6f4-9d1ecc59eac2.png)
 
 
 
