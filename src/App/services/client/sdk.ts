@@ -1,6 +1,5 @@
 import { CosmWasmClient, CosmWasmFeeTable } from "@cosmjs/cosmwasm-stargate";
 import { SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate";
-import { Window as KeplrWindow } from "@keplr-wallet/types";
 import { defaultGasLimits as defaultStargateGasLimits, GasLimits, GasPrice } from "@cosmjs/stargate";
 import { OfflineSigner } from "@cosmjs/proto-signing";
 
@@ -9,12 +8,12 @@ import { AppConfig } from "../config/network";
 export type WalletLoader = (chainId: string, addressPrefix?: string) => Promise<OfflineSigner>;
 
 export async function loadKeplrWallet(chainId: string): Promise<OfflineSigner> {
-  const anyWindow = window as KeplrWindow;
-  if (!anyWindow.getOfflineSigner) {
+  const anyWindow = window as any;
+  if (!anyWindow.getOfflineSignerAuto) {
     throw new Error("Keplr extension is not available");
   }
 
-  const signer = anyWindow.getOfflineSigner(chainId);
+  const signer = anyWindow.getOfflineSignerAuto(chainId);
 
   return Promise.resolve(signer);
 }
