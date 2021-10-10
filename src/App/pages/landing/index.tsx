@@ -10,7 +10,7 @@ import { NftSection } from "../../components"
 
 export const Landing = () => {
   return (
-    <Grid m={5}>
+    <Grid m={10}>
       <Box mt={5} mb={8}>
         <Text
           fontFamily="mono"
@@ -21,7 +21,7 @@ export const Landing = () => {
       </Box>
 
       <VStack
-        divider={<StackDivider borderColor="gray.200" />}
+        divider={<StackDivider borderColor="black.200" />}
         spacing={4}
         align="stretch"
       >
