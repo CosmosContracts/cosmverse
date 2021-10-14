@@ -1,4 +1,4 @@
-import { coinsList } from "../../config";
+import { coins } from "../../config";
 
 export function formatAddress(wallet: string): string {
   return ellideMiddle(wallet, 24);
@@ -15,23 +15,13 @@ export function ellideMiddle(str: string, maxOutLen: number): string {
 }
 
 export function formatPrice(price: {amount: string, denom: string}): string {
-  const coinConfig = (coinsList as any)[price.denom];
-  const amount = parseInt(price.amount) / Math.pow(10, coinConfig.decimals);
+  const coin = coins.find(c => c.denom === price.denom)!;
+  const amount = parseInt(price.amount) / Math.pow(10, coin.decimals);
 
-  return amount + " " + coinConfig.name;
+  return amount + " " + coin.name;
 }
 
 export function toMinDenom(amount: number, denom: string): string {
-  const coinConfig = (coinsList as any)[denom];
-  return Math.ceil(amount * Math.pow(10, coinConfig.decimals)).toString();
-}
-
-export function* getListCoins() {
-  for (const key in Object.keys(coinsList)) {
-    const element = (coinsList as any)[key];
-    yield {
-      value: key,
-      text: element.name
-    };
-  }
+  const coin = coins.find(c => c.denom === denom)!;
+  return Math.ceil(amount * Math.pow(10, coin.decimals)).toString();
 }

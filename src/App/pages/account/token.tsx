@@ -49,7 +49,7 @@ import {
   useSdk,
 } from "../../services";
 import { TransactionLink } from "../../components";
-import { config } from "../../../config";
+import { coins, config } from "../../../config";
 import userLogo from "../../assets/user-default.svg";
 import cosmverseLogo from "../../assets/cosmverse.jpg";
 
@@ -205,8 +205,7 @@ export const AccountToken = () => {
             </FormControl>
             <FormControl as={GridItem} colSpan={[6, 2]}>
               <Select placeholder="Select coin" onChange={e => setDenom(e.target.value)}>
-                <option value="ujuno">JUNO</option>
-                <option value="ibc/555C7A3F9E7709786202410B9CDA64824A34AA2270E9FE8A235B4B8BCE0554B6">TCRO</option>
+                {coins.map(c => <option value={c.denom}>{c.name}</option>)}
               </Select>
             </FormControl>
             </SimpleGrid>
