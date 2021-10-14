@@ -34,10 +34,18 @@ const testnet: AppConfig = {
   marketContract: "juno16te3h0x8gnwhlunhh383j2jqsv4q556x22gtj0"
 };
 
-export const coinsList = {
-  ujuno: { name: "JUNO", decimals: 6 },
-  'ibc/555C7A3F9E7709786202410B9CDA64824A34AA2270E9FE8A235B4B8BCE0554B6': { name: "TCRO", decimals: 8}
-};
+export const coins = [
+  {
+    denom: "ujuno",
+    name: "JUNO",
+    decimals: 6,
+  },
+  {
+    denom: "ibc/555C7A3F9E7709786202410B9CDA64824A34AA2270E9FE8A235B4B8BCE0554B6",
+    name: "TCRO",
+    decimals: 6,
+  },
+];
 
 const configs: NetworkConfigs = { local, testnet };
 export const config = getAppConfig(configs);
