@@ -1,5 +1,6 @@
 import { AppConfig, getAppConfig, NetworkConfigs } from "./App/services/config/network";
-import junoLogo from "../../assets/tokens/juno.svg";
+import junoLogo from "./App/assets/tokens/juno.svg";
+import croLogo from "./App/assets/tokens/cro.png";
 
 const local: AppConfig = {
   chainId: "testing",
@@ -48,12 +49,13 @@ export const coins: Token[] = [
     denom: "ujuno",
     name: "JUNO",
     decimals: 6,
-    logo: junoLogo
+    logo: junoLogo,
   },
   {
     denom: "ibc/555C7A3F9E7709786202410B9CDA64824A34AA2270E9FE8A235B4B8BCE0554B6",
     name: "TCRO",
     decimals: 6,
+    logo: croLogo,
   },
 ];
 
