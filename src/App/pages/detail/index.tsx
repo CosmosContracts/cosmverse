@@ -41,7 +41,7 @@ export const Detail = () => {
     const toast = useToast();
     const { id } = useParams<DetailParams>();
     const history = useHistory();
-    const { client, address, getSignClient } = useSdk();
+    const { client, address, getSignClient, refreshBalance } = useSdk();
     const [nft, setNft] = useState<NftInfoResponse>();
     const [owner, setOwner] = useState<string>();
     const [offer, setOffer] = useState<OfferResponse>();
@@ -90,6 +90,7 @@ export const Detail = () => {
           position: "bottom-right",
           isClosable: true,
         });
+        await refreshBalance();
         history.push(`/account/token/${offer.token_id}`);
       } catch (error) {
         toast({
