@@ -1,18 +1,20 @@
 {
   "files": {
-    "main.js": "/static/js/main.21dc930f.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.e80ebc86.js",
-    "static/js/2.8177ca4e.chunk.js": "/static/js/2.8177ca4e.chunk.js",
-    "static/js/3.9596bc0c.chunk.js": "/static/js/3.9596bc0c.chunk.js",
+    "main.js": "/static/js/main.3276af13.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.0a1df960.js",
+    "static/js/2.19abd3e3.chunk.js": "/static/js/2.19abd3e3.chunk.js",
+    "static/js/3.11af35ae.chunk.js": "/static/js/3.11af35ae.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.8177ca4e.chunk.js.LICENSE.txt": "/static/js/2.8177ca4e.chunk.js.LICENSE.txt",
+    "static/js/2.19abd3e3.chunk.js.LICENSE.txt": "/static/js/2.19abd3e3.chunk.js.LICENSE.txt",
     "static/media/cosmverse.1075c14e.jpg": "/static/media/cosmverse.1075c14e.jpg",
+    "static/media/cro.ce9e5a0f.png": "/static/media/cro.ce9e5a0f.png",
+    "static/media/juno.c012943e.svg": "/static/media/juno.c012943e.svg",
     "static/media/logo.af0ba81e.png": "/static/media/logo.af0ba81e.png",
-    "static/media/user-default.3f70c9cc.svg": "/static/media/user-default.3f70c9cc.svg"
+    "static/media/user-default.a2e7dd1e.svg": "/static/media/user-default.a2e7dd1e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e80ebc86.js",
-    "static/js/2.8177ca4e.chunk.js",
-    "static/js/main.21dc930f.chunk.js"
+    "static/js/runtime-main.0a1df960.js",
+    "static/js/2.19abd3e3.chunk.js",
+    "static/js/main.3276af13.chunk.js"
   ]
 }
