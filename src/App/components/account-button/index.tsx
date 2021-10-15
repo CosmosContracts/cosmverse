@@ -3,23 +3,41 @@ import { Link as ReactRouterLink } from "react-router-dom";
 import {
   Button,
   useColorModeValue,
-  MenuButton,
-  Menu,
-  MenuList,
-  MenuItem,
   Avatar,
   useBoolean,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  Link,
+  Box,
+  chakra,
+  VStack,
+  Text,
+  GridItem,
+  Grid,
+  Flex,
+  Badge,
+  useDisclosure,
+  PopoverFooter,
+  PopoverBody,
 } from '@chakra-ui/react';
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { Window as KeplrWindow } from "@keplr-wallet/types";
 import { useSdk } from "../../services/client/wallet";
 import { config } from "../../../config";
-import { configKeplr } from "../../services/config/network";
-import { loadKeplrWallet, WalletLoader } from "../../services/client/sdk";
+import {
+  configKeplr,
+  loadKeplrWallet,
+  WalletLoader,
+  formatAddress,
+  formatPrice,
+  getTokenConfig,
+} from "../../services";
 import userLogo from "../../assets/user-default.svg";
 
 export function AccountButton(): JSX.Element {
   const sdk = useSdk();
+  const { onOpen, onClose, isOpen } = useDisclosure()
   const [loading, setLoading] = useBoolean();
 
   async function init(loadWallet: WalletLoader) {
@@ -28,7 +46,6 @@ export function AccountButton(): JSX.Element {
   }
 
   async function connectKeplr() {
-    // clearError();
     setLoading.on();
     const anyWindow = window as KeplrWindow;
     try {
@@ -38,7 +55,6 @@ export function AccountButton(): JSX.Element {
     } catch (error) {
       setLoading.off();
       console.error(error);
-      // setError(Error(error).message);
     }
   }
 
@@ -60,19 +76,93 @@ export function AccountButton(): JSX.Element {
     </Button>
   );
 
-  const accountButton = (
-    <Menu>
-      <MenuButton>
-        <Avatar size="sm" name="Juno" src={userLogo} />
-      </MenuButton>
-      <MenuList>
-        <MenuItem
+  const MenuLink = (props: any) => {
+    return (
+      <Box
+        p={1}
+        rounded={6}
+        _hover={{
+          bg: useColorModeValue('gray.200', 'gray.600'),
+        }}>
+        <Link
+          fontSize={'md'}
           as={ReactRouterLink}
-          to={`/account/${sdk.address}`}>My Items</MenuItem>
-        {/* <MenuItem onClick={logout}>Disconnect</MenuItem> */}
-      </MenuList>
-    </Menu>
+          to={props.href}
+          onClick={onClose}
+          _hover={{
+            textDecoration: 'none',
+          }}>
+          {props.label}
+        </Link>
+      </Box>
+    );
+  };
+
+  const BalanceItem = (props: any) => {
+    const coin = getTokenConfig(props.coin.denom);
+
+    if (!coin) return (<></>);
+
+    return (
+      <Grid templateColumns="repeat(10, 1fr)" gap={4}>
+        <GridItem colSpan={2}>
+          <Flex h="full" justifyContent="center" alignItems="center">
+            <Avatar size="sm" name={coin.name} src={coin.logo} />
+          </Flex>
+        </GridItem>
+        <GridItem colSpan={8} textAlign="left">
+          <chakra.p
+            fontSize="xs"
+            color="gray.500">Balance</chakra.p>
+          <chakra.p fontWeight="semibold">
+            {formatPrice(props.coin)}
+          </chakra.p>
+        </GridItem>
+      </Grid>
+    );
+  };
+
+  const accountBox = (
+    <Popover
+      isOpen={isOpen}
+      placement="bottom-start"
+      onOpen={onOpen}
+      onClose={onClose}>
+      <PopoverTrigger>
+        <Avatar cursor="pointer" size="sm" name="Juno" src={userLogo} />
+      </PopoverTrigger>
+      <PopoverContent
+        mt="0.5rem"
+        maxW="sm"
+      >
+        <PopoverBody p={0}>
+          <VStack
+            px={8}
+            pt={6}
+            pb={3}
+            align="left"
+          >
+            <Box>
+              <Badge fontSize="0.6rem" variant="outline" colorScheme="orange">
+                Lucina Testnet
+              </Badge>
+              <Text fontSize="md" fontWeight="semibold">{formatAddress(sdk.address)}</Text>
+            </Box>
+            <Box py={2}>
+              {sdk.balance.map(coin => (
+                <BalanceItem key={coin.denom} coin={coin} />
+              ))}
+            </Box>
+          </VStack>
+        </PopoverBody>
+        <PopoverFooter p={0}>
+          <Box px={8} pb={6} pt={3}>
+            <MenuLink href={`/account/${sdk.address}`} label="My Items" />
+          </Box>
+        </PopoverFooter>
+      </PopoverContent>
+    </Popover>
   );
 
-  return sdk.address ? accountButton : loginButton;
+  return sdk.address ? accountBox : loginButton;
 }
