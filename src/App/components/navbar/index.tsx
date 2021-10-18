@@ -18,7 +18,7 @@ import {
   CloseIcon,
 } from '@chakra-ui/icons';
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
-import cosmverseLogo from "../../assets/logo.png";
+import cosmverseLogo from "../../assets/Cosmverse-Logo-4.svg";
 import { AccountButton } from "../account-button";
 
 export function Navbar(): JSX.Element {
@@ -27,14 +27,14 @@ export function Navbar(): JSX.Element {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
+        bg={useColorModeValue('white', '778885')}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderBottomColor={useColorModeValue('pink.400', 'gray.300')}
+        borderBottomColor={useColorModeValue('778885', 'gray.300')}
         align={'center'}>
         <Flex
           flex={{ base: 0, md: 'auto' }}
@@ -56,7 +56,7 @@ export function Navbar(): JSX.Element {
             _hover={{
               textDecoration: 'none',
             }}>
-             <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
+             <Image src={cosmverseLogo} alt="cosmverse logo" height={10} />
           </Link>
         </Flex>
 

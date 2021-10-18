@@ -48,7 +48,7 @@ const SocialButton = ({
       <Box
         borderTop={1}
         borderStyle={'solid'}
-        borderTopColor={useColorModeValue('pink.400', 'gray.300')}>
+        borderTopColor={useColorModeValue('778885', '778885')}>
         <Container
           as={Stack}
           maxW={'7xl'}

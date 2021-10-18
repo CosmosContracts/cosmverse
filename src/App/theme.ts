@@ -6,7 +6,7 @@ const theme = extendTheme({
   // },
   colors: {
     pink: {
-      500: "#eb3089",
+      500: "#93ffe9",
     },
   },
 })
