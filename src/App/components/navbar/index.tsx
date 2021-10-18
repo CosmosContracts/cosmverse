@@ -56,7 +56,7 @@ export function Navbar(): JSX.Element {
             _hover={{
               textDecoration: 'none',
             }}>
-             <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
+             <Image src={cosmverseLogo} alt="cosmverse logo" height={20} />
           </Link>
         </Flex>
 
