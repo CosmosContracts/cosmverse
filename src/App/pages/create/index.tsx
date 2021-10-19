@@ -8,6 +8,7 @@ import {
   FormControl,
   FormLabel,
   Heading,
+  Image,
   Input,
   Textarea,
   useBoolean,
@@ -64,6 +65,11 @@ export const Create = () => {
     }
 
     setLoading.on();
+
+    // Free the memory used for previewing the image. 
+    var fileImage = document.getElementById("fileImage") as HTMLImageElement;
+    URL.revokeObjectURL(fileImage.src)
+
     // TODO: Load on init page and show after load page
     const nftId = generateId(address);
 
@@ -77,7 +83,6 @@ export const Create = () => {
         description: description,
         image: unSanitizeIpfsUrl(fileHash)
       };
-
       const contract = CW721(config.contract).useTx(getSignClient()!);
       const txHash = await contract.mint(address, nftMsg);
 
@@ -103,6 +108,13 @@ export const Create = () => {
     }
   }
 
+  // Show a preview of the uploaded image to the user.
+  function dropFile(acceptedFiles: File[]) {
+    setFiles(acceptedFiles);
+    var fileImage = document.getElementById("fileImage") as HTMLImageElement;
+    fileImage.src = URL.createObjectURL(acceptedFiles[0]);
+  }
+
   return (
   <Flex
     p={4}
@@ -122,7 +134,8 @@ export const Create = () => {
                 fontFamily="mono"
                 fontWeight="semibold"
               >Image</FormLabel>
-              <FileUpload accept="image/*" onDrop={acceptedFiles => setFiles(acceptedFiles)} />
+              <Image id="fileImage"/>
+              <FileUpload accept="image/*" onDrop={e => dropFile(e)}/>
             </FormControl>
           </Box>
           <Box mt={4}>
