@@ -89,7 +89,7 @@ const DesktopNav = () => {
         fontFamily={'mono'}
         fontWeight={'semibold'}
         _hover={{
-          color: useColorModeValue('pink.300', 'pink.400'),
+          color: useColorModeValue('pink.200', 'gray.400'),
         }}>
         Explore
       </Link>
@@ -104,7 +104,7 @@ const DesktopNav = () => {
         color={'white'}
         bg='pink.500'
         _hover={{
-          bg: 'pink.700',
+          bg: 'gray.400',
         }}>
         Create
       </Button>
