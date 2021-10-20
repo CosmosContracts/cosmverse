@@ -23,7 +23,7 @@ const SocialButton = ({
   }) => {
     return (
       <chakra.button
-        bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+        bg={useColorModeValue('778885', 'whiteAlpha.100')}
         rounded={'full'}
         w={5}
         h={5}
@@ -35,7 +35,7 @@ const SocialButton = ({
         justifyContent={'center'}
         transition={'background 0.3s ease'}
         _hover={{
-          bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+          bg: useColorModeValue('cyan.900', 'cyan.900'),
         }}>
         <VisuallyHidden>{label}</VisuallyHidden>
         {children}
@@ -48,7 +48,7 @@ const SocialButton = ({
       <Box
         borderTop={1}
         borderStyle={'solid'}
-        borderTopColor={useColorModeValue('778885', 'gray.300')}>
+        borderTopColor={useColorModeValue('cyan.900', 'white.200')}>
         <Container
           as={Stack}
           maxW={'7xl'}

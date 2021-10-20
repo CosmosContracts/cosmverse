@@ -109,7 +109,7 @@ export const Detail = () => {
       </Center>
     );
 
-    const borderColor = useColorModeValue('gray.200', 'whiteAlpha.300');
+    const borderColor = useColorModeValue('cyan.900', 'white.200');
     return (
       <Box m={5}>
         {!nft ? loadingSkeleton : (
@@ -124,7 +124,7 @@ export const Detail = () => {
                 justifyContent="center"
                 alignItems="center">
                 <Image
-                  bgGradient="linear(to-r, green.200, pink.500)"
+                  bgGradient="linear(to-r, cyan.200, white.200)"
                   roundedTop="md"
                   boxSize="420px"
                   fit="cover"
@@ -176,7 +176,7 @@ export const Detail = () => {
                             fontSize="md"
                             fontWeight="semibold"
                             _hover={{
-                              color: "gray.600",
+                              color: "cyan.900",
                             }}
                             as={ReactRouterLink}
                             to={`/account/${owner}`}>{formatAddress(owner!)}</Link>

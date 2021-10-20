@@ -106,9 +106,9 @@ export const Account = () => {
 							boxSize="120px"
 							src={userLogo} />
 					</Box>
-					<Box bg="blackAlpha.300" borderRadius="xl" py={1} px={3}>
+					<Box bg="cyan.900" borderRadius="xl" py={1} px={3}>
 						<Text
-              color={"gray.500"}
+              color={"cyan.900"}
               fontFamily="mono"
               fontSize="sm">
 							{user}
@@ -121,7 +121,7 @@ export const Account = () => {
             isManual
             isLazy
             defaultIndex={1}
-            colorScheme="pink">
+            colorScheme="cyan">
 						<TabList>
 							<Tab>On Sale</Tab>
               <Tab>Owned</Tab>

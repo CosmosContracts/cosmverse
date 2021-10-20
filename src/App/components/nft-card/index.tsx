@@ -37,7 +37,7 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
             <chakra.p
               mt={1}
               fontSize="xs"
-              color="gray.500"
+              color="778885"
             >
               @{nft.user}
             </chakra.p>
