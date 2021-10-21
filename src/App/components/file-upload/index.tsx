@@ -1,8 +1,10 @@
 import * as React from "react";
 import {
   chakra,
+  Box,
   Flex,
   Icon,
+  Image,
   Stack,
   Text,
   useColorModeValue,
@@ -65,10 +67,18 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
         fontSize="xs"
         color={useColorModeValue("gray.500", "gray.50")}
       >
-        PNG, JPG, GIF up to 10MB
+        PNG, JPG, JPEG, SVG or GIF up to 10MB
       </Text>
     </Stack>
   );
+
+  function previewImage(acceptedFiles:File[]) : JSX.Element { 
+    if (acceptedFiles.length > 0){
+      console.log("previewing image!");
+      return (< Image src={URL.createObjectURL(acceptedFiles[0])}/>);
+    }
+    return (<Image/>);
+  }
 
   const filenameContainer = (
     <Flex
@@ -76,7 +86,7 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
       fontFamily="mono"
       color={useColorModeValue("gray.800", "whiteAlpha.900")}
     >
-      {acceptedFileItems}
+      {acceptedFileItems} 
     </Flex>
   );
 
@@ -84,19 +94,24 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
   const normalDropColor = useColorModeValue("gray.300", "gray.500");
 
   return (
-    <Flex
-      mt={1}
-      justify="center"
-      px={6}
-      pt={5}
-      pb={6}
-      borderWidth={2}
-      borderColor={isDragAccept ? acceptDropColor : normalDropColor}
-      borderStyle="dashed"
-      rounded="md"
-      {...getRootProps()}
-    >
-      {acceptedFileItems ? filenameContainer : uploadContainer}
-    </Flex>
+    <Box>
+      <Flex>
+        {previewImage(acceptedFiles)}
+      </Flex>
+      <Flex
+        mt={1}
+        justify="center"
+        px={6}
+        pt={5}
+        pb={6}
+        borderWidth={2}
+        borderColor={isDragAccept ? acceptDropColor : normalDropColor}
+        borderStyle="dashed"
+        rounded="md"
+        {...getRootProps()}
+      >
+        {acceptedFileItems ? filenameContainer : uploadContainer}
+      </Flex>
+    </Box>    
   );
 }
