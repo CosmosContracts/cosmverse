@@ -32,12 +32,12 @@ export function NftCard({ nft }: NftCardProps): JSX.Element {
           fallbackSrc={cosmverseLogo}
           alt={nft.title}
         />
-        <Box px={4} bg="gray.900" roundedBottom="md">
+        <Box px={4} bg="cyan.800" roundedBottom="md">
           <Box py={2}>
             <chakra.p
               mt={1}
               fontSize="xs"
-              color="778885"
+              color="gray.200"
             >
               @{nft.user}
             </chakra.p>
