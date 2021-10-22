@@ -104,7 +104,7 @@ const DesktopNav = () => {
         color={'white'}
         bg='cyan.900'
         _hover={{
-          bg: 'gray.400',
+          bg: 'gray.500',
         }}>
         Create
       </Button>
