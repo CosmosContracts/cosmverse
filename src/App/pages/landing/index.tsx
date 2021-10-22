@@ -21,7 +21,7 @@ export const Landing = () => {
       </Box>
 
       <VStack
-        divider={<StackDivider borderColor="gray.200" />}
+        divider={<StackDivider borderColor="cyan.900"/>}
         spacing={4}
         align="stretch"
       >

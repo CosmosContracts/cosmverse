@@ -69,7 +69,7 @@ export function AccountButton(): JSX.Element {
       borderRadius="50px"
       height="var(--chakra-sizes-8)"
       marginTop={"4px"}
-      borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
+      borderColor={useColorModeValue('cyan.900', 'white.200')}
       onClick={connectKeplr}
     >
       Connect wallet
@@ -82,7 +82,7 @@ export function AccountButton(): JSX.Element {
         p={1}
         rounded={6}
         _hover={{
-          bg: useColorModeValue('gray.200', 'gray.600'),
+          bg: useColorModeValue('gray.500', 'cyan.900'),
         }}>
         <Link
           fontSize={'md'}
@@ -113,7 +113,7 @@ export function AccountButton(): JSX.Element {
         <GridItem colSpan={8} textAlign="left">
           <chakra.p
             fontSize="xs"
-            color="gray.500">Balance</chakra.p>
+          >Balance</chakra.p>
           <chakra.p fontWeight="semibold">
             {formatPrice(props.coin)}
           </chakra.p>
@@ -134,6 +134,7 @@ export function AccountButton(): JSX.Element {
       <PopoverContent
         mt="0.5rem"
         maxW="sm"
+        bg={useColorModeValue('white', 'gray.500')}
       >
         <PopoverBody p={0}>
           <VStack

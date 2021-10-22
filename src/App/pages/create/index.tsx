@@ -163,7 +163,7 @@ export const Create = () => {
               color={'white'}
               bg="pink.500"
               _hover={{
-                bg: "pink.700",
+                bg: "gray.500",
               }}>
               Create
             </Button>

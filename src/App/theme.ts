@@ -1,4 +1,11 @@
-import { extendTheme } from "@chakra-ui/react"
+import { extendTheme, } from "@chakra-ui/react"
+import { mode } from "@chakra-ui/theme-tools"
+
+
+// const config : ThemeConfig = {
+//   initialColorMode: "light",
+//   useSystemColorMode: false,
+// }
 
 const theme = extendTheme({
   // fonts: {
@@ -6,8 +13,16 @@ const theme = extendTheme({
   // },
   colors: {
     pink: {
-      500: "#eb3089",
+      500: "#93ffe9",
     },
+  },
+  styles: {
+    global: (props) => ({
+      body: {
+        fontFamily: "body",
+        bg:  mode ("white.200", "cyan.900")(props)
+      },
+    }),
   },
 })
 

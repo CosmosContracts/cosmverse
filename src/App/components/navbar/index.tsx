@@ -18,7 +18,7 @@ import {
   CloseIcon,
 } from '@chakra-ui/icons';
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
-import cosmverseLogo from "../../assets/logo.png";
+import cosmverseLogo from "../../assets/Cosmverse-Logo-4.svg";
 import { AccountButton } from "../account-button";
 
 export function Navbar(): JSX.Element {
@@ -27,14 +27,14 @@ export function Navbar(): JSX.Element {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        bg={useColorModeValue('white.900', 'cyan.900')}
+        color={useColorModeValue('white.200', 'white.200')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderBottomColor={useColorModeValue('pink.400', 'gray.300')}
+        borderBottomColor={useColorModeValue('cyan.900', 'white.200')}
         align={'center'}>
         <Flex
           flex={{ base: 0, md: 'auto' }}
@@ -56,7 +56,7 @@ export function Navbar(): JSX.Element {
             _hover={{
               textDecoration: 'none',
             }}>
-             <Image src={cosmverseLogo} alt="cosmverse logo" height={6} />
+             <Image src={cosmverseLogo} alt="cosmverse logo" height={10} />
           </Link>
         </Flex>
 
@@ -89,7 +89,7 @@ const DesktopNav = () => {
         fontFamily={'mono'}
         fontWeight={'semibold'}
         _hover={{
-          color: useColorModeValue('pink.300', 'pink.400'),
+          color: useColorModeValue('light', 'dark'),
         }}>
         Explore
       </Link>
@@ -102,9 +102,9 @@ const DesktopNav = () => {
         fontWeight={500}
         borderRadius={'50px'}
         color={'white'}
-        bg='pink.500'
+        bg='cyan.900'
         _hover={{
-          bg: 'pink.700',
+          bg: 'gray.500',
         }}>
         Create
       </Button>
@@ -115,7 +115,7 @@ const DesktopNav = () => {
 const MobileNav = () => {
   return (
     <Stack
-      bg={useColorModeValue('white', 'gray.800')}
+      bg={useColorModeValue('white.200', 'cyan.900')}
       p={4}
       display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
@@ -139,7 +139,7 @@ const MobileNavItem = ({ label, href }: NavItem) => {
         }}>
         <Text
           fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}>
+          color={useColorModeValue('cyan.900', 'white.200')}>
           {label}
         </Text>
       </Flex>

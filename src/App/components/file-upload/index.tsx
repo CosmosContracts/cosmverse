@@ -27,7 +27,7 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
       <Icon
         mx="auto"
         boxSize={12}
-        color={useColorModeValue("gray.400", "gray.500")}
+        color={useColorModeValue("gray.200", "gray.200")}
         stroke="currentColor"
         fill="none"
         viewBox="0 0 48 48"
@@ -42,7 +42,7 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
       </Icon>
       <Flex
         fontSize="sm"
-        color={useColorModeValue("gray.600", "gray.400")}
+        color={useColorModeValue("red.600", "red.600")}
         alignItems="baseline"
       >
         <chakra.label
@@ -50,10 +50,10 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
           cursor="pointer"
           rounded="md"
           fontSize="md"
-          color={useColorModeValue("brand.600", "brand.200")}
+          color={useColorModeValue("red.700", "brand.200")}
           pos="relative"
           _hover={{
-            color: useColorModeValue("brand.400", "brand.300"),
+            color: useColorModeValue("red.400", "brand.300"),
           }}
         >
           <span>Upload a file</span>
@@ -65,7 +65,7 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
       </Flex>
       <Text
         fontSize="xs"
-        color={useColorModeValue("gray.500", "gray.50")}
+        color={useColorModeValue("gray.500", "gray.500")}
       >
         PNG, JPG, JPEG, SVG or GIF up to 10MB
       </Text>
@@ -84,13 +84,13 @@ export function FileUpload(props: DropzoneProps): JSX.Element {
     <Flex
       fontSize="sm"
       fontFamily="mono"
-      color={useColorModeValue("gray.800", "whiteAlpha.900")}
+      color={useColorModeValue("black.200", "whiteAlpha.900")}
     >
       {acceptedFileItems} 
     </Flex>
   );
 
-  const acceptDropColor = useColorModeValue("pink.500", "pink.600");
+  const acceptDropColor = useColorModeValue("gray.300", "gray.500");
   const normalDropColor = useColorModeValue("gray.300", "gray.500");
 
   return (

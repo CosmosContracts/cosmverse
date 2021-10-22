@@ -183,7 +183,7 @@ export const AccountToken = () => {
       </Center>
     );
 
-    const borderColor = useColorModeValue('gray.200', 'whiteAlpha.300');
+    const borderColor = useColorModeValue('cyan.900', 'white.200');
     const priceModal = (
       <Modal
         closeOnOverlayClick={false}
@@ -233,7 +233,7 @@ export const AccountToken = () => {
                 justifyContent="center"
                 alignItems="center">
                 <Image
-                  bgGradient="linear(to-r, green.200, pink.500)"
+                  bgGradient="linear(to-r, cyan.200, white.200)"
                   roundedTop="md"
                   boxSize="420px"
                   fit="cover"
@@ -255,7 +255,7 @@ export const AccountToken = () => {
                     <chakra.p
                       mt={1}
                       fontSize="xs"
-                      color="gray.500"
+                      color="cyan.500"
                     >
                       @unknown
                     </chakra.p>

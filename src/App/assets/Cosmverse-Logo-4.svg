@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 419.99998 300"
+   height="500mm"
+   width="700mm">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient1928">
+      <stop
+         id="stop1924"
+         offset="0"
+         style="stop-color:#f0827d;stop-opacity:1;" />
+      <stop
+         id="stop1926"
+         offset="1"
+         style="stop-color:#f0827d;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1849">
+      <stop
+         id="stop1845"
+         offset="0"
+         style="stop-color:#f0827d;stop-opacity:1;" />
+      <stop
+         id="stop1847"
+         offset="1"
+         style="stop-color:#f0827d;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="870.19238"
+       x2="-635.01593"
+       y1="870.19238"
+       x1="-660.65942"
+       id="linearGradient1851"
+       xlink:href="#linearGradient1849" />
+    <linearGradient
+       y2="870.19238"
+       x2="-635.01593"
+       y1="870.19238"
+       x1="-660.65942"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient1857"
+       xlink:href="#linearGradient1849" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="870.19238"
+       x2="-635.01593"
+       y1="870.19238"
+       x1="-660.65942"
+       id="linearGradient1851-4"
+       xlink:href="#linearGradient1849" />
+    <font
+       vert-adv-y="90"
+       vert-origin-y="90"
+       vert-origin-x="45"
+       horiz-origin-y="0"
+       horiz-origin-x="0"
+       id="font1912"
+       horiz-adv-x="1024">
+      <font-face
+         font-family="SVGFont 1"
+         id="font-face1914"
+         units-per-em="1024" />
+      <missing-glyph
+         id="missing-glyph1916"
+         d="M0,0h1000v1024h-1000z" />
+    </font>
+    <linearGradient
+       gradientTransform="matrix(3.9115203,0,0,3.9115203,2587.2646,-3201.7296)"
+       y2="870.19239"
+       x2="-635.0159"
+       y1="870.19239"
+       x1="-660.65941"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient1962"
+       xlink:href="#linearGradient1928" />
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,203)"
+     id="layer1">
+    <g
+       style="fill:#93ffe9;fill-opacity:1;stroke-width:0.85586971;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(1.7984771,0,0,1.7078995,-644.3204,-336.6575)"
+       id="g910">
+      <ellipse
+         ry="80.778358"
+         rx="76.710075"
+         cy="166.45929"
+         cx="474.13623"
+         id="path953"
+         style="opacity:1;fill:#93ffe9;fill-opacity:1;stroke:none;stroke-width:0.85586971;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+    </g>
+    <circle
+       r="124.73214"
+       cy="-52.739742"
+       cx="208.78072"
+       id="path1006"
+       style="opacity:1;fill:#778885;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+    <g
+       id="g1010"
+       transform="matrix(1.5841381,0,0,1.4996761,-542.12752,-302.56377)"
+       style="fill:#93ffe9;fill-opacity:1;stroke-width:0.97318631;stroke-miterlimit:4;stroke-dasharray:none">
+      <ellipse
+         style="opacity:1;fill:#93ffe9;fill-opacity:1;stroke:none;stroke-width:0.97318631;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="ellipse1008"
+         cx="474.13623"
+         cy="166.45929"
+         rx="76.710075"
+         ry="80.778358" />
+    </g>
+    <flowRoot
+       transform="matrix(0.26458333,0,0,0.26458333,0,-203)"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:38.4746666px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="flowRoot1801"
+       xml:space="preserve"><flowRegion
+         id="flowRegion1803"><rect
+           y="647.27618"
+           x="872.77179"
+           height="1624.3253"
+           width="927.32001"
+           id="rect1805" /></flowRegion><flowPara
+         id="flowPara1807"></flowPara></flowRoot>    <text
+       transform="matrix(0,-0.95227758,1.050114,0,0,0)"
+       id="text1960"
+       y="255.90924"
+       x="3.1554034"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:150.4944458px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1962);fill-opacity:1;stroke:none;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       xml:space="preserve"><tspan
+         style="fill:url(#linearGradient1962);stroke-width:1.5"
+         id="tspan1958"
+         y="255.90924"
+         x="3.1554034"><tspan
+           id="tspan1956"
+           style="fill:url(#linearGradient1962);fill-opacity:1;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+           y="255.90924"
+           x="3.1554034">V</tspan></tspan></text>
+  </g>
+</svg>

@@ -1,17 +1,17 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Link as ReactRouterLink, useParams} from "react-router-dom";
+import { Link as ReactRouterLink, useParams } from "react-router-dom";
 import {
   Box,
   Flex,
   Image,
-	Tabs,
-	TabList,
-	Tab,
-	TabPanels,
-	TabPanel,
-	Text,
-	VStack,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+  Text,
+  VStack,
   SimpleGrid,
   LinkBox,
   LinkOverlay,
@@ -90,44 +90,44 @@ export const Account = () => {
     })();
   }, [client, user]);
 
-  const getNftPath = (nftId: string) => `${address === user ? "/account": ""}/token/${nftId}`;
+  const getNftPath = (nftId: string) => `${address === user ? "/account" : ""}/token/${nftId}`;
 
-	return (
-		<Box m={5}>
-			<VStack
+  return (
+    <Box m={5}>
+      <VStack
         spacing={10}
         align="stretch"
       >
-				<Flex justifyContent={"center"}>
-					<VStack spacing={4}>
-					<Box>
-						<Image
-							borderRadius="full"
-							boxSize="120px"
-							src={userLogo} />
-					</Box>
-					<Box bg="blackAlpha.300" borderRadius="xl" py={1} px={3}>
-						<Text
-              color={"gray.500"}
-              fontFamily="mono"
-              fontSize="sm">
-							{user}
-						</Text>
-					</Box>
-					</VStack>
-				</Flex>
-				<Box>
-					<Tabs
+        <Flex justifyContent={"center"}>
+          <VStack spacing={4}>
+            <Box>
+              <Image
+                borderRadius="full"
+                boxSize="120px"
+                src={userLogo} />
+            </Box>
+            <Box bg="gray.500" borderRadius="xl" py={1} px={3}>
+              <Text
+                color={"white"}
+                fontFamily="mono"
+                fontSize="sm">
+                {user}
+              </Text>
+            </Box>
+          </VStack>
+        </Flex>
+        <Box>
+          <Tabs
             isManual
             isLazy
             defaultIndex={1}
-            colorScheme="pink">
-						<TabList>
-							<Tab>On Sale</Tab>
+            colorScheme="cyan">
+            <TabList>
+              <Tab>On Sale</Tab>
               <Tab>Owned</Tab>
-						</TabList>
+            </TabList>
 
-						<TabPanels>
+            <TabPanels>
               <TabPanel>
                 <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
                   {nftSale.map(nft => (
@@ -142,8 +142,8 @@ export const Account = () => {
                     </LinkBox>
                   ))}
                 </SimpleGrid>
-							</TabPanel>
-							<TabPanel>
+              </TabPanel>
+              <TabPanel>
                 <SimpleGrid spacing={10} gridTemplateColumns={["repeat(1, minmax(0px, 1fr))", "repeat(3, minmax(0px, 1fr))", "repeat(5, minmax(0px, 1fr))"]}>
                   {nfts.map(nft => (
                     <LinkBox as="picture" key={nft.tokenId}
@@ -157,11 +157,11 @@ export const Account = () => {
                     </LinkBox>
                   ))}
                 </SimpleGrid>
-							</TabPanel>
-						</TabPanels>
-					</Tabs>
-				</Box>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
       </VStack>
-		</Box>
-	);
+    </Box>
+  );
 };
