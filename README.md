@@ -7,7 +7,9 @@ Buy, sell, mint & explore the amazing world of nonfungible goods.
 
 
 
-![Cosmverse Text + Logo 1](https://user-images.githubusercontent.com/79812965/135065666-2a275a65-8a55-4878-8e40-635384517923.png)
+![Cosmverse Logo Discord 2](https://user-images.githubusercontent.com/79812965/138604208-912e711c-0efb-4467-8fc1-955bdb95e684.png)
+
+
 
 
 
