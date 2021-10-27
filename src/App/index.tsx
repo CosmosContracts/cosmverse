@@ -27,7 +27,18 @@ import theme from "./theme"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <SdkProvider config={config}>
+    <Router>
+
+      <Route component={() => <Redirect to="/" />} />
+      <Route
+        exact
+        path="/"
+        component={HomePage}
+      />
+
+  </Router>
+
+  {/*   <SdkProvider config={config}>
     <Box>
       <Router>
         <Navbar />
@@ -55,17 +66,17 @@ export const App = () => (
               path="/create"
               component={Create}
             />
-            <Route component={() => <Redirect to="/gallery" />} />
+            <Route component={() => <Redirect to="/" />} />
             <Route
               exact
               path="/"
-              component={Landing}
+              component={HomePage}
             />
           </Switch>
         </Box>
       </Router>
       <Footer />
     </Box>
-    </SdkProvider>
+    </SdkProvider> */}
   </ChakraProvider>
 )
