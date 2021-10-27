@@ -1,27 +1,29 @@
 import * as React from "react"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom"
-import {
-  ChakraProvider,
-  Box,
-} from "@chakra-ui/react"
+
 import {
   Account,
-  Create,
-  Gallery,
-  Detail,
-  Landing,
   AccountToken,
+  Create,
+  Detail,
+  Gallery,
+  Landing,
 } from "./pages"
-import theme from "./theme"
-import { config } from "../config";
-import { Navbar } from "./components/navbar"
+import {
+  Box,
+  ChakraProvider,
+} from "@chakra-ui/react"
+import {
+  Redirect,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom"
+
 import { Footer } from "./components/footer"
+import { Navbar } from "./components/navbar"
 import { SdkProvider } from "./services/client/wallet"
+import { config } from "../config";
+import theme from "./theme"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
