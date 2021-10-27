@@ -6,7 +6,7 @@ import {
   Create,
   Detail,
   Gallery,
-  Landing,
+  HomePage,
 } from "./pages"
 import {
   Box,
@@ -27,18 +27,18 @@ import theme from "./theme"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Router>
 
+    <Router>
       <Route component={() => <Redirect to="/" />} />
       <Route
         exact
         path="/"
         component={HomePage}
       />
-
   </Router>
 
-  {/*   <SdkProvider config={config}>
+
+  {/*  <SdkProvider config={config}>
     <Box>
       <Router>
         <Navbar />

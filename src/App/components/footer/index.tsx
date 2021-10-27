@@ -1,32 +1,37 @@
 import * as React from "react";
+
 import {
   Box,
-  chakra,
   Container,
   Stack,
   Text,
-  useColorModeValue,
   VisuallyHidden,
+  chakra,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { FaDiscord, FaTelegram, FaTwitter } from 'react-icons/fa';
+
 import { ReactNode } from 'react';
 
-
-const SocialButton = ({
+export const SocialButton = ({
     children,
     label,
     href,
+    width,
+    height
   }: {
     children: ReactNode;
     label: string;
     href: string;
+    width: string;
+    height: string;
   }) => {
     return (
       <chakra.button
         bg={useColorModeValue('778885', 'whiteAlpha.100')}
         rounded={'full'}
-        w={5}
-        h={5}
+        w={width}
+        h={height}
         cursor={'pointer'}
         as={'a'}
         href={href}
@@ -60,13 +65,13 @@ const SocialButton = ({
           <Text fontSize={'sm'}
                 fontFamily={'mono'}>© JUNO Team</Text>
           <Stack direction={'row'} spacing={6}>
-            <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'}>
+            <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='5' height='5'>
               <FaTwitter />
             </SocialButton>
-            <SocialButton label={'Telegram'} href={'https://t.me/Cosmverse_community'}>
+            <SocialButton label={'Telegram'} href={'https://t.me/Cosmverse_community'} width='5' height='5'>
               <FaTelegram />
             </SocialButton>
-            <SocialButton label={'Discord'} href={'https://discord.gg/6tbnz7ss'}>
+            <SocialButton label={'Discord'} href={'https://discord.gg/6tbnz7ss'} width='5' height='5'>
               <FaDiscord />
             </SocialButton>
           </Stack>
