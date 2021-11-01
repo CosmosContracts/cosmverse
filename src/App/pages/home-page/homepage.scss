@@ -1,48 +1,25 @@
-.home {
-  z-index: 0;
 
-  background-color: black;
-  overflow: hidden;
-  position: absolute;
-}
-
-.text {
-  margin: 4vw;
-  z-index: 0;
-
-}
 .stars {
   background: url('../../assets/background-homepage.png');
+  background-position: center;
   background-repeat: no-repeat;
   background-blend-mode: screen;
   background-size: cover;
   animation: homepage 205s linear alternate;
   mix-blend-mode: screen;
-  position: relative;
-  z-index: 2;
 }
 
 .planet {
   background: url('../../assets/juno-moon.png');
   animation: movement 30s linear 0s infinite;
-  background-size:cover;
   border-radius:50%;
   box-shadow: 10px 30px 47px 20px rgba(0, 0, 0, 0.25), inset -49px -48px 80px 23px rgba(0, 0, 0, 0.72);
-  transform:rotateX(6deg) rotateY(6deg) rotateZ(6deg);
-  position: absolute;
-  margin: 0 auto;
-  left:0;
-  right:0;
-  top: 15%;
-  width: 40vw;
-  height: 40vw;
-  z-index: 1;
+
 }
 
 .content {
-  position: absolute;
   bottom: 40%;
-  right: 20%;
+  left: 60%;
 }
 
 @keyframes movement {

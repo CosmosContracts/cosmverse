@@ -27,56 +27,16 @@ import theme from "./theme"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
+    <SdkProvider config={config}>
 
-    <Router>
-      <Route component={() => <Redirect to="/" />} />
-      <Route
-        exact
-        path="/"
-        component={HomePage}
-      />
-  </Router>
-
-
-  {/*  <SdkProvider config={config}>
-    <Box>
-      <Router>
-        <Navbar />
-        <Box minH={"lg"}>
-          <Switch>
-            <Route
-              exact
-              path="/token/:id"
-              component={Detail}
-            />
-            <Route
-              path="/gallery"
-              component={Gallery}
-            />
-            <Route
-              exact
-              path="/account/token/:id"
-              component={AccountToken}
-            />
-            <Route
-              path="/account/:user"
-              component={Account}
-            />
-            <Route
-              path="/create"
-              component={Create}
-            />
-            <Route component={() => <Redirect to="/" />} />
-            <Route
-              exact
-              path="/"
-              component={HomePage}
-            />
-          </Switch>
-        </Box>
-      </Router>
-      <Footer />
-    </Box>
-    </SdkProvider> */}
+        <Router>
+          <Route component={() => <Redirect to="/" />} />
+          <Route
+            exact
+            path="/"
+            component={HomePage}
+          />
+          </Router>
+    </SdkProvider>
   </ChakraProvider>
 )

@@ -9,7 +9,7 @@ import {
   chakra,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { FaDiscord, FaTelegram, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaGithub, FaTelegram, FaTwitter } from 'react-icons/fa';
 
 import { ReactNode } from 'react';
 
@@ -18,17 +18,19 @@ export const SocialButton = ({
     label,
     href,
     width,
-    height
+    height,
+    backgroundColor
   }: {
     children: ReactNode;
     label: string;
     href: string;
     width: string;
     height: string;
+    backgroundColor: string
   }) => {
     return (
       <chakra.button
-        bg={useColorModeValue('778885', 'whiteAlpha.100')}
+        bg={useColorModeValue(backgroundColor, 'whiteAlpha.100')}
         rounded={'full'}
         w={width}
         h={height}
@@ -70,6 +72,9 @@ export const SocialButton = ({
             </SocialButton>
             <SocialButton label={'Telegram'} href={'https://t.me/Cosmverse_community'} width='5' height='5'>
               <FaTelegram />
+            </SocialButton>
+            <SocialButton label={'Github'} href={'https://twitter.com/Cosmverse'} width='5' height='5'>
+              <FaGithub />
             </SocialButton>
             <SocialButton label={'Discord'} href={'https://discord.gg/6tbnz7ss'} width='5' height='5'>
               <FaDiscord />

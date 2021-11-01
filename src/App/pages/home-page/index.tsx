@@ -6,12 +6,10 @@ import {
 Box,
 Button,
 Flex,
-Grid,
-GridItem,
 Image,
 Stack
 } from "@chakra-ui/react"
-import { FaDiscord, FaTelegram, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaGithub, FaTelegram, FaTwitter } from 'react-icons/fa';
 
 import { SocialButton } from "../../components";
 import cosmverseText from "../../assets/cosmoverse-fit.svg";
@@ -19,46 +17,157 @@ import cosmverseText from "../../assets/cosmoverse-fit.svg";
 export const HomePage = () => {
   return (
     <React.Fragment>
-        <Box w="100vw" h="100vh" className='home'>
-          <Image maxH='36vh' src={cosmverseText} className='text'>
+
+      <Flex w={[
+        '100vw',
+        '100vw',
+        '100vw',
+        '100vw'
+      ]}
+      h={[
+        '100vh',
+        '100vh',
+        '100vh',
+        '100vh'
+      ]}
+
+
+        direction={[
+          'column',
+          'column',
+          'row',
+          'row'
+        ]}
+        zIndex='0'
+
+      >
+
+
+        <Box w="100vw" h="100vh" zIndex='1' position='absolute' bg='black'>
+          <Image src={cosmverseText} className='text' margin='4vw'>
           </Image>
         </Box>
 
-      <Box  className='planet'>
-      </Box>
 
-      <Box w="100vw" h="100vh" className='stars'>
-      </Box>
+        <Box w="100vw" h="100vh" zIndex='2' display={['flex','','','']} flexDirection={['column','column','column','column']} alignItems='center'>
+          <Box
+            w={[
+            '320px',
+            '450px',
+            '550px',
+            '700px'
+          ]}
+            h={[
+            '320px',
+            '450px',
+            '550px',
+            '700px'
+            ]}
 
-      <Box className='content'>
-          <Button
+            top={[
+                '10vh',
+                '10vh',
+                '20vh',
+                '24vh',
+              ]}
+
+            position={[
+                'relative',
+                'relative',
+                'absolute',
+                'absolute'
+            ]}
+
+            zIndex='2'
+              className='planet'>
+          </Box>
+
+        </Box>
+
+        <Box w="100vw" h="100vh" className='stars' zIndex='3' position={['absolute','absolute','absolute','absolute']}>
+        </Box>
+
+        <Box zIndex='3'
+           w={[
+            'auto',
+            '100vw',
+            '100vw',
+            '500px'
+          ]}
+          position={[
+            'relative',
+            'relative',
+            'absolute',
+            'absolute'
+          ]}
+
+          margin='0 auto'
+          className='content'
+          bottom={[
+            '10vh',
+            '10vh',
+            '10vh',
+            '25vh'
+          ]}
+          left={[
+            '0',
+            '0',
+            '0',
+            '60%'
+          ]}
+
+          display={[
+            'flex',
+            'flex',
+            'flex',
+            'flex',
+
+          ]}
+
+          flexDirection={[
+            'column',
+            'column',
+            'column',
+            'column'
+          ]}
+          alignItems='center'
+        >
+
+
+            <Button
               fontSize={'sm'}
-              size='lg'
+              size='2lg'
               fontWeight={500}
-              variant={'outline'}
+              variant={'solid'}
+              w='184px'
               borderRadius='50px'
-              height='var(--chakra-sizes-8)'
+              height='var(--chakra-sizes-10)'
               marginTop={'4px'}
               backgroundColor='#1e7880'
               href='#'
+              mb='10px'
             >
-              Enter the CosmVerse
-            </Button>
+              Comming Soon...
+          </Button>
 
-              <Stack direction={'row'} backgroundColor='#1e7880'>
-                <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='25' height='25'>
+          <Stack direction={'row'}>
+                <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='40px' height='40px' backgroundColor='#1e7880'>
                   <FaTwitter />
                 </SocialButton>
-                <SocialButton label={'Telegram'} href={'https://t.me/Cosmverse_community'} width='19' height='19'>
-                  <FaTelegram />
+                <SocialButton label={'Telegram'} href={'https://t.me/Cosmverse_community'} width='40px' height='40px' backgroundColor='#1e7880'>
+                    <FaTelegram />
                 </SocialButton>
-                <SocialButton label={'Discord'} href={'https://discord.gg/6tbnz7ss'} width='19' height='19'>
+                <SocialButton label={'Github'} href={'https://github.com/CosmosContracts/cosmverse'} width='40px' height='40px' backgroundColor='#1e7880'>
+                  <FaGithub />
+                </SocialButton>
+                <SocialButton label={'Discord'} href={'https://discord.gg/6tbnz7ss'} width='40px' height='40px' backgroundColor='#1e7880'>
                   <FaDiscord />
                 </SocialButton>
 
-              </Stack>
+          </Stack>
 
       </Box>
+      </Flex>
     </React.Fragment>
 
 
