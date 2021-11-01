@@ -1,18 +1,11 @@
-import "./homepage.css";
+import './homepage.css';
 
-import * as React from "react"
+import { Box, Button, Flex, Image, Stack } from '@chakra-ui/react';
+import * as React from 'react';
+import { FaDiscord, FaGithub, FaMedium, FaTelegram, FaTwitter } from 'react-icons/fa';
 
-import {
-Box,
-Button,
-Flex,
-Image,
-Stack
-} from "@chakra-ui/react"
-import { FaDiscord, FaGithub, FaTelegram, FaTwitter } from 'react-icons/fa';
-
-import { SocialButton } from "../../components";
-import cosmverseText from "../../assets/cosmoverse-fit.svg";
+import cosmverseText from '../../assets/cosmoverse-fit.svg';
+import { SocialButton } from '../../components';
 
 export const HomePage = () => {
   return (
@@ -139,7 +132,7 @@ export const HomePage = () => {
               size='2lg'
               fontWeight={500}
               variant={'solid'}
-              w='184px'
+              w='232px'
               borderRadius='50px'
               height='var(--chakra-sizes-10)'
               marginTop={'4px'}
@@ -151,6 +144,9 @@ export const HomePage = () => {
           </Button>
 
           <Stack direction={'row'}>
+                <SocialButton label={'Medium'} href={'https://medium.com/@Cosmverse'} width='40px' height='40px' backgroundColor='#1e7880'>
+                  <FaMedium />
+                </SocialButton>
                 <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='40px' height='40px' backgroundColor='#1e7880'>
                   <FaTwitter />
                 </SocialButton>
