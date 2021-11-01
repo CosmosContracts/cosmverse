@@ -1,0 +1,61 @@
+.stars {
+  background: url("../../assets/background-homepage.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+  background-size: cover;
+  -webkit-animation: homepage 205s linear alternate;
+          animation: homepage 205s linear alternate;
+  mix-blend-mode: screen;
+}
+
+.planet {
+  background: url("../../assets/juno-moon.png");
+  -webkit-animation: movement 30s linear 0s infinite;
+          animation: movement 30s linear 0s infinite;
+  border-radius: 50%;
+  -webkit-box-shadow: 10px 30px 47px 20px rgba(0, 0, 0, 0.25), inset -49px -48px 80px 23px rgba(0, 0, 0, 0.72);
+          box-shadow: 10px 30px 47px 20px rgba(0, 0, 0, 0.25), inset -49px -48px 80px 23px rgba(0, 0, 0, 0.72);
+}
+
+.content {
+  bottom: 40%;
+  left: 60%;
+}
+
+@-webkit-keyframes movement {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 355px 0;
+  }
+}
+
+@keyframes movement {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 355px 0;
+  }
+}
+
+@-webkit-keyframes homepage {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes homepage {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+/*# sourceMappingURL=homepage.css.map */
