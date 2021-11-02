@@ -141,7 +141,7 @@ export const HomePage = () => {
               href='#'
               mb='10px'
             >
-              Comming Soon...
+              Coming Soon...
           </Button>
 
           <Stack direction={'row'}>
