@@ -25,6 +25,7 @@ const theme = extendTheme({
   styles: {
     global: (props) => ({
       body: {
+        overflow: 'hidden',
         fontFamily: 'body',
         bg: mode('white.200', 'cyan.900')(props),
       },
