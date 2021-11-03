@@ -13,7 +13,7 @@ export const HomePage = () => {
   return (
     <React.Fragment>
 
-    
+
     <Flex flexDirection='column' alignItems='center'>
 
       <Box w='100vw' h='100vh' backgroundImage={cosmverseHomepage} zIndex='-1' position='relative' backgroundSize='cover'>
@@ -24,7 +24,7 @@ export const HomePage = () => {
 
 
 
-      <Stack direction={'row'} zIndex='1' position='absolute' bottom='10vh'>
+      <Stack direction={'row'} zIndex='1' position='absolute' bottom={['25vh','10vh']}>
         <SocialButton label={'Medium'} href={'https://medium.com/@Cosmverse'} width='40px' height='40px' backgroundColor='white'>
           <FaMedium />
         </SocialButton>
@@ -43,7 +43,7 @@ export const HomePage = () => {
 
       </Stack>
     </Flex>
-    
+
     </React.Fragment>
   );
 }
