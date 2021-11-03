@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8eff529b.chunk.css",
+    "main.js": "/static/js/main.ce80a2f7.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.042b88f2.js",
+    "static/js/2.0f118a9c.chunk.js": "/static/js/2.0f118a9c.chunk.js",
+    "static/js/3.7347bb7d.chunk.js": "/static/js/3.7347bb7d.chunk.js",
+    "index.html": "/index.html",
+    "static/js/2.0f118a9c.chunk.js.LICENSE.txt": "/static/js/2.0f118a9c.chunk.js.LICENSE.txt",
+    "static/media/background-home2.b42b0cf7.jpg": "/static/media/background-home2.b42b0cf7.jpg",
+    "static/media/homepage.css": "/static/media/juno-moon.5bba39a3.png",
+    "static/media/cosmverse.1075c14e.jpg": "/static/media/cosmverse.1075c14e.jpg",
+    "static/media/cosmverse_logo.ea450a56.svg": "/static/media/cosmverse_logo.ea450a56.svg",
+    "static/media/cro.ce9e5a0f.png": "/static/media/cro.ce9e5a0f.png",
+    "static/media/juno.c012943e.svg": "/static/media/juno.c012943e.svg",
+    "static/media/user-default.a2e7dd1e.svg": "/static/media/user-default.a2e7dd1e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.042b88f2.js",
+    "static/js/2.0f118a9c.chunk.js",
+    "static/css/main.8eff529b.chunk.css",
+    "static/js/main.ce80a2f7.chunk.js"
+  ]
+}
