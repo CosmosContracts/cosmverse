@@ -1,25 +1,27 @@
 import * as React from "react";
-import { Link as ReactRouterLink } from "react-router-dom"
+
 import {
   Box,
+  Button,
+  Collapse,
   Flex,
-  Text,
   IconButton,
   Image,
-  Button,
-  Stack,
-  Collapse,
   Link,
+  Stack,
+  Text,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
 import {
-  HamburgerIcon,
   CloseIcon,
+  HamburgerIcon,
 } from '@chakra-ui/icons';
-import { ColorModeSwitcher } from "../../ColorModeSwitcher";
-import cosmverseLogo from "../../assets/Cosmverse-Logo-4.svg";
+
 import { AccountButton } from "../account-button";
+import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+import { Link as ReactRouterLink } from "react-router-dom"
+import cosmverseLogo from "../../assets/cosmverse_logo.svg";
 
 export function Navbar(): JSX.Element {
   const { isOpen, onToggle } = useDisclosure();
