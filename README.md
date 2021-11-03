@@ -1,9 +1,10 @@
 # Cøsmverse
 [![App](https://github.com/CosmosContracts/Cosmverse/actions/workflows/react.yml/badge.svg)](https://github.com/CosmosContracts/Cosmverse/actions/workflows/react.yml)
 
-NFT Marketplace on Juno.
+Cross-chain #NFT marketplace on 
+Juno.
 
-Buy, sell, mint & explore the amazing world of nonfungible goods.
+Auction, mint & explore the amazing world of nonfungible assets. 
 
 
 
