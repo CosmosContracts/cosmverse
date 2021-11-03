@@ -2,7 +2,7 @@ import './homepage.css';
 
 import * as React from 'react';
 
-import { Box, Button, Flex, Image, Stack } from '@chakra-ui/react';
+import { Box, Flex, Stack } from '@chakra-ui/react';
 import { FaDiscord, FaGithub, FaMedium, FaTelegram, FaTwitter } from 'react-icons/fa';
 
 import { SocialButton } from '../../components';
