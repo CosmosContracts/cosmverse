@@ -25,7 +25,6 @@ export const HomePage = () => {
         '100vh'
       ]}
 
-
         direction={[
           'column',
           'column',
@@ -49,13 +48,13 @@ export const HomePage = () => {
             '320px',
             '450px',
             '550px',
-            '700px'
+            '600px'
           ]}
             h={[
             '320px',
             '450px',
             '550px',
-            '700px'
+            '600px'
             ]}
 
             top={[
@@ -98,9 +97,9 @@ export const HomePage = () => {
           margin='0 auto'
           className='content'
           bottom={[
-            '10vh',
-            '10vh',
-            '10vh',
+            '20vh',
+            '20vh',
+            '20vh',
             '25vh'
           ]}
           left={[
