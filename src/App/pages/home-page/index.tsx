@@ -1,18 +1,12 @@
-import "./homepage.css";
+import './homepage.css';
 
-import * as React from "react"
+import * as React from 'react';
 
-import {
-Box,
-Button,
-Flex,
-Image,
-Stack
-} from "@chakra-ui/react"
-import { FaDiscord, FaGithub, FaTelegram, FaTwitter } from 'react-icons/fa';
+import { Box, Button, Flex, Image, Stack } from '@chakra-ui/react';
+import { FaDiscord, FaGithub, FaMedium, FaTelegram, FaTwitter } from 'react-icons/fa';
 
-import { SocialButton } from "../../components";
-import cosmverseText from "../../assets/cosmoverse-fit.svg";
+import { SocialButton } from '../../components';
+import cosmverseText from '../../assets/cosmoverse-fit.svg';
 
 export const HomePage = () => {
   return (
@@ -30,7 +24,6 @@ export const HomePage = () => {
         '100vh',
         '100vh'
       ]}
-
 
         direction={[
           'column',
@@ -55,18 +48,18 @@ export const HomePage = () => {
             '320px',
             '450px',
             '550px',
-            '700px'
+            '600px'
           ]}
             h={[
             '320px',
             '450px',
             '550px',
-            '700px'
+            '600px'
             ]}
 
             top={[
-                '10vh',
-                '10vh',
+                '20vh',
+                '20vh',
                 '20vh',
                 '24vh',
               ]}
@@ -104,9 +97,9 @@ export const HomePage = () => {
           margin='0 auto'
           className='content'
           bottom={[
-            '10vh',
-            '10vh',
-            '10vh',
+            '20vh',
+            '20vh',
+            '20vh',
             '25vh'
           ]}
           left={[
@@ -139,7 +132,7 @@ export const HomePage = () => {
               size='2lg'
               fontWeight={500}
               variant={'solid'}
-              w='184px'
+              w='232px'
               borderRadius='50px'
               height='var(--chakra-sizes-10)'
               marginTop={'4px'}
@@ -151,10 +144,13 @@ export const HomePage = () => {
           </Button>
 
           <Stack direction={'row'}>
+                <SocialButton label={'Medium'} href={'https://medium.com/@Cosmverse'} width='40px' height='40px' backgroundColor='#1e7880'>
+                  <FaMedium />
+                </SocialButton>
                 <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='40px' height='40px' backgroundColor='#1e7880'>
                   <FaTwitter />
                 </SocialButton>
-                <SocialButton label={'Telegram'} href={'https://t.me/Cosmverse_community'} width='40px' height='40px' backgroundColor='#1e7880'>
+                <SocialButton label={'Telegram'} href={'https://t.me/cosmverse_official'} width='40px' height='40px' backgroundColor='#1e7880'>
                     <FaTelegram />
                 </SocialButton>
                 <SocialButton label={'Github'} href={'https://github.com/CosmosContracts/cosmverse'} width='40px' height='40px' backgroundColor='#1e7880'>
