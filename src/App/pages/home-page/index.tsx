@@ -14,7 +14,7 @@ export const HomePage = () => {
     <React.Fragment>
 
 
-    <Flex flexDirection='column' alignItems='center'>
+      <Flex flexDirection='column' alignItems={['flex-end', 'center']}>
 
       <Box w='100vw' h='100vh' backgroundImage={cosmverseHomepage} zIndex='-1' position='relative' backgroundSize='cover'>
       </Box>
@@ -24,22 +24,24 @@ export const HomePage = () => {
 
 
 
-      <Stack direction={'row'} zIndex='1' position='absolute' bottom={['25vh','10vh']}>
-        <SocialButton label={'Medium'} href={'https://medium.com/@Cosmverse'} width='40px' height='40px' backgroundColor='white'>
-          <FaMedium />
-        </SocialButton>
-        <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='40px' height='40px' backgroundColor='white'>
-          <FaTwitter />
-        </SocialButton>
-        <SocialButton label={'Telegram'} href={'https://t.me/cosmverse_official'} width='40px' height='40px' backgroundColor='white'>
-            <FaTelegram />
-        </SocialButton>
-        <SocialButton label={'Github'} href={'https://github.com/CosmosContracts/cosmverse'} width='40px' height='40px' backgroundColor='white'>
-          <FaGithub />
-        </SocialButton>
-        <SocialButton label={'Discord'} href={'https://discord.gg/6tbnz7ss'} width='40px' height='40px' backgroundColor='white'>
-          <FaDiscord />
-        </SocialButton>
+        <Stack direction={["column", "row"]}  zIndex='1' position='absolute' bottom={['25vh', '10vh']}>
+         
+          <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='40px' height='40px' backgroundColor='white'>
+            <FaTwitter />
+          </SocialButton>
+
+          <SocialButton label={'Medium'} href={'https://medium.com/@Cosmverse'} width='40px' height='40px' backgroundColor='white'>
+            <FaMedium />
+          </SocialButton>
+          <SocialButton label={'Telegram'} href={'https://t.me/cosmverse_official'} width='40px' height='40px' backgroundColor='white'>
+              <FaTelegram />
+          </SocialButton>
+          <SocialButton label={'Github'} href={'https://github.com/CosmosContracts/cosmverse'} width='40px' height='40px' backgroundColor='white'>
+            <FaGithub />
+          </SocialButton>
+          <SocialButton label={'Discord'} href={'https://discord.com/invite/b9wgpfzGx4'} width='40px' height='40px' backgroundColor='white'>
+            <FaDiscord />
+          </SocialButton>
 
       </Stack>
     </Flex>
