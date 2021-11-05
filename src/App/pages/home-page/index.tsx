@@ -2,7 +2,7 @@ import './homepage.css';
 
 import * as React from 'react';
 
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Stack } from '@chakra-ui/react';
 import { FaDiscord, FaGithub, FaMedium, FaTelegram, FaTwitter } from 'react-icons/fa';
 
 import { SocialButton } from '../../components';
@@ -24,7 +24,7 @@ export const HomePage = () => {
 
 
 
-        <Flex flexDirection={['column', 'row']} zIndex='1' position='absolute' bottom={['25vh', '10vh']}>
+        <Stack direction={["column", "row"]}  zIndex='1' position='absolute' bottom={['25vh', '10vh']}>
          
           <SocialButton label={'Twitter'} href={'https://twitter.com/Cosmverse'} width='40px' height='40px' backgroundColor='white'>
             <FaTwitter />
@@ -43,7 +43,7 @@ export const HomePage = () => {
             <FaDiscord />
           </SocialButton>
 
-      </Flex>
+      </Stack>
     </Flex>
 
     </React.Fragment>
