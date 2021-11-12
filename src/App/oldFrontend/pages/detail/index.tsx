@@ -1,37 +1,39 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
-import { Link as ReactRouterLink, useHistory, useParams } from "react-router-dom";
+
 import {
   Avatar,
   Box,
   Button,
   Center,
-  chakra,
   Flex,
+  Grid,
+  GridItem,
   HStack,
   Image,
   Link,
   Spinner,
   VStack,
+  chakra,
   useColorModeValue,
   useToast,
-  GridItem,
-  Grid,
 } from "@chakra-ui/react";
 import {
   CW721,
-  formatAddress,
-  formatPrice,
   Market,
   NftInfoResponse,
   OfferResponse,
+  formatAddress,
+  formatPrice,
   publicIpfsUrl,
   useSdk,
-} from "../../services";
-import { config } from "../../../config";
-import userLogo from "../../assets/user-default.svg";
-import cosmverseLogo from "../../assets/cosmverse.jpg";
-import { TransactionLink } from "../../components";
+} from "../../../services";
+import { Link as ReactRouterLink, useHistory, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { TransactionLink } from "../../../components";
+import { config } from "../../../../config";
+import cosmverseLogo from "../../../assets/cosmverse.jpg";
+import userLogo from "../../../assets/user-default.svg";
 
 interface DetailParams {
     readonly id: string;

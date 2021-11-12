@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Link } from "@chakra-ui/react";
+
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { ellideMiddle } from "../../services";
+import { Link } from "@chakra-ui/react";
+import { ellideMiddle } from "../../../services";
 
 interface TransactionLinkProps {
   readonly tx: string;

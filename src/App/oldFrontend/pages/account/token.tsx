@@ -1,57 +1,59 @@
 import * as React from "react";
-import {
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
-import { Link as ReactRouterLink, useParams } from "react-router-dom";
+
 import {
   Avatar,
   Box,
   Button,
   Center,
-  chakra,
   Flex,
+  FormControl,
+  FormLabel,
+  Grid,
+  GridItem,
   HStack,
   Image,
   Link,
-  Spinner,
-  VStack,
-  useColorModeValue,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
   ModalBody,
-  FormControl,
-  FormLabel,
+  ModalCloseButton,
+  ModalContent,
   ModalFooter,
-  Select,
+  ModalHeader,
+  ModalOverlay,
   NumberInput,
   NumberInputField,
+  Select,
   SimpleGrid,
-  GridItem,
+  Spinner,
+  VStack,
+  chakra,
+  useBoolean,
+  useColorModeValue,
   useDisclosure,
   useToast,
-  useBoolean,
-  Grid,
 } from "@chakra-ui/react";
 import {
   CW721,
+  Market,
   NftInfoResponse,
-  publicIpfsUrl,
+  OfferResponse,
   formatAddress,
   formatPrice,
-  Market,
-  OfferResponse,
+  publicIpfsUrl,
   toMinDenom,
   useSdk,
-} from "../../services";
-import { TransactionLink } from "../../components";
-import { coins, config } from "../../../config";
-import userLogo from "../../assets/user-default.svg";
-import cosmverseLogo from "../../assets/cosmverse.jpg";
+} from "../../../services";
+import { Link as ReactRouterLink, useParams } from "react-router-dom";
+import { coins, config } from "../../../../config";
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+
+import { TransactionLink } from "../../../components";
+import cosmverseLogo from "../../../assets/cosmverse.jpg";
+import userLogo from "../../../assets/user-default.svg";
 
 interface DetailParams {
     readonly id: string;

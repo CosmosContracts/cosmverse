@@ -19,9 +19,9 @@ import {
 } from '@chakra-ui/icons';
 
 import { AccountButton } from "../account-button";
-import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+import { ColorModeSwitcher } from "../../../ColorModeSwitcher";
 import { Link as ReactRouterLink } from "react-router-dom"
-import cosmverseLogo from "../../assets/cosmverse_logo.svg";
+import cosmverseLogo from "../../../assets/cosmverse_logo.svg";
 
 export function Navbar(): JSX.Element {
   const { isOpen, onToggle } = useDisclosure();

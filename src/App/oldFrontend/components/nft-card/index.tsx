@@ -1,14 +1,16 @@
+import * as React from "react";
+
 import {
   Box,
-  chakra,
   Divider,
   Flex,
   Image,
   Text,
+  chakra,
 } from "@chakra-ui/react";
-import * as React from "react";
-import { NftInfo } from "../../services/type";
-import cosmverseLogo from "../../assets/cosmverse.jpg";
+
+import { NftInfo } from "../../../services/type";
+import cosmverseLogo from "../../../assets/cosmverse.jpg";
 
 interface NftCardProps {
   readonly nft: NftInfo;

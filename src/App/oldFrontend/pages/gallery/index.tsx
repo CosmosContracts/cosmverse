@@ -1,20 +1,22 @@
 import * as React from "react";
+
+import {
+  CW721,
+  Market,
+  NftInfo,
+  NftInfoResponse,
+  OfferResponse,
+  formatPrice,
+  publicIpfsUrl,
+  useSdk,
+} from "../../../services";
+import { LoadingSpinner, NftTable, Pagination } from "../../../components";
 import { useCallback, useEffect, useState } from "react";
+
 import {
   Box,
 } from "@chakra-ui/react";
-import { LoadingSpinner, NftTable, Pagination } from "../../components";
-import {
-  CW721,
-  formatPrice,
-  NftInfoResponse,
-  Market,
-  NftInfo,
-  publicIpfsUrl,
-  OfferResponse,
-  useSdk,
-} from "../../services";
-import { config } from "../../../config";
+import { config } from "../../../../config";
 
 const pageSize = 15;
 

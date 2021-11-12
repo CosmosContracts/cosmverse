@@ -1,12 +1,14 @@
 import * as React from "react";
-import { Link as ReactRouterLink} from "react-router-dom";
+
 import {
   LinkBox,
   LinkOverlay,
   SimpleGrid,
 } from "@chakra-ui/react";
+
 import { NftCard } from "../nft-card";
-import { NftInfo } from "../../services";
+import { NftInfo } from "../../../services";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 interface NftTableProps {
   readonly data: NftInfo[];

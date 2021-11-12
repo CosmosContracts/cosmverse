@@ -1,12 +1,14 @@
 import * as React from "react"
+
 import {
-  Text,
   Box,
   Grid,
   StackDivider,
+  Text,
   VStack,
 } from "@chakra-ui/react"
-import { NftSection } from "../../components"
+
+import { NftSection } from "../../../components"
 
 export const Landing = () => {
   return (

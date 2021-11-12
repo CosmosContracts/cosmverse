@@ -1,4 +1,5 @@
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import * as React from "react";
+
 import {
   Box,
   Button,
@@ -7,7 +8,8 @@ import {
   Text,
   useColorModeValue
 } from "@chakra-ui/react";
-import * as React from "react";
+
+import { ChevronRightIcon } from "@chakra-ui/icons";
 import { NftCard } from "../nft-card";
 import { randomNft } from "../nft-card/rand";
 

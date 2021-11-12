@@ -1,34 +1,36 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
-import { Link as ReactRouterLink, useParams } from "react-router-dom";
+
 import {
   Box,
   Flex,
   Image,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-  Text,
-  VStack,
-  SimpleGrid,
   LinkBox,
   LinkOverlay,
+  SimpleGrid,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import {
-  formatPrice,
-  NftInfo,
   CW721,
+  CW721Instance,
   Market,
+  NftInfo,
   NftInfoResponse,
+  formatPrice,
   publicIpfsUrl,
   useSdk,
-  CW721Instance,
-} from "../../services";
-import { config } from "../../../config";
-import { NftCard } from "../../components";
-import userLogo from "../../assets/user-default.svg";
+} from "../../../services";
+import { Link as ReactRouterLink, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { NftCard } from "../../../components";
+import { config } from "../../../../config";
+import userLogo from "../../../assets/user-default.svg";
 
 interface AccountParams {
   readonly user: string;

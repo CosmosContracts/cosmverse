@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+
+import { Bech32, toHex } from "@cosmjs/encoding";
 import {
   Box,
   Button,
@@ -13,15 +13,17 @@ import {
   useBoolean,
   useToast,
 } from "@chakra-ui/react";
-import { Bech32, toHex } from "@cosmjs/encoding";
-import { FileUpload, TransactionLink } from "../../components"
 import {
   CW721,
   unSanitizeIpfsUrl,
   uploadFile,
   useSdk,
-} from "../../services";
-import { config } from "../../../config";
+} from "../../../services";
+import { FileUpload, TransactionLink } from "../../../components"
+
+import { config } from "../../../../config";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 function generateId(address: string) {
   // TODO: Format ID?

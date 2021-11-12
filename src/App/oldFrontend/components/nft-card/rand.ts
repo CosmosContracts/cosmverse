@@ -1,4 +1,4 @@
-import { NftInfo } from "../../services/type";
+import { NftInfo } from "../../../services/type";
 
 export function randomNft(): NftInfo {
   const price = (Math.random() * 10).toFixed(1);
