@@ -1,6 +1,10 @@
 import * as React from "react"
 
 import {
+ Dashboard,
+ HomePage
+} from "./pages"
+import {
   Redirect,
   Route,
   BrowserRouter as Router,
@@ -9,9 +13,6 @@ import {
 import {
   ChakraProvider,
 } from "@chakra-ui/react"
-import {
- HomePage,
-} from "./pages"
 import { SdkProvider } from "./services/client/wallet"
 import { config } from "../config";
 import theme from "./theme"
@@ -27,6 +28,13 @@ export const App = () => (
             path="/"
             component={HomePage}
           />
+
+          <Route
+            exact
+            path="/"
+            component={Dashboard}
+          />
+            
           </Router>
     </SdkProvider>
   </ChakraProvider>

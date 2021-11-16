@@ -5,3 +5,4 @@ export { Gallery } from '../oldFrontend/pages/gallery';
 export { Detail } from '../oldFrontend/pages/detail';
 export { Landing } from '../oldFrontend/pages/landing';
 export { HomePage } from './home-page';
+export {Dashboard } from './dashboad';

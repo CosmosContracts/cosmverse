@@ -1,12 +1,13 @@
-import { AppConfig, getAppConfig, NetworkConfigs } from "./App/services/config/network";
-import junoLogo from "./App/assets/tokens/juno.svg";
+import { AppConfig, NetworkConfigs, getAppConfig } from "./App/services/config/network";
+
 import croLogo from "./App/assets/tokens/cro.png";
+import junoLogo from "./App/assets/tokens/juno.svg";
 
 const local: AppConfig = {
   chainId: "testing",
   chainName: "Testing",
   addressPrefix: "juno",
-  rpcUrl: "http://localhost:26657",
+  rpcUrl: "https://rpc.uni.kingnodes.com/",
   httpUrl: "http://localhost:1317",
   token: {
     coinDenom: "STAKE",
@@ -23,8 +24,8 @@ const testnet: AppConfig = {
   chainId: "lucina",
   chainName: "Juno Tesnet",
   addressPrefix: "juno",
-  rpcUrl: "https://rpc.juno.giansalex.dev",
-  httpUrl: "https://lcd.juno.giansalex.dev",
+  rpcUrl: "https://rpc.uni.kingnodes.com/",
+  httpUrl: "https://rpc.uni.kingnodes.com/",
   token: {
     coinDenom: "JUNO",
     coinDecimals: 6,

@@ -19,6 +19,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
+    "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
     "framer-motion": "^4.0.0",
     "node-sass": "4.14.1",
