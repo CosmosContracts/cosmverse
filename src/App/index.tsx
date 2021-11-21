@@ -19,10 +19,10 @@ import theme from "./theme"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <SdkProvider config={config}>
+    {/* <SdkProvider config={config}> */}
 
         <Router>
-          <Route component={() => <Redirect to="/" />} />
+         
           <Route
             exact
             path="/"
@@ -31,11 +31,11 @@ export const App = () => (
 
           <Route
             exact
-            path="/"
+            path="/dashboard"
             component={Dashboard}
           />
             
           </Router>
-    </SdkProvider>
+    {/* </SdkProvider> */}
   </ChakraProvider>
 )

@@ -3,13 +3,17 @@ import * as serviceWorker from "./serviceWorker"
 
 import { App } from "./App"
 import { ColorModeScript } from "@chakra-ui/react"
-import ReactDOM from "react-dom"
-import reportWebVitals from "./reportWebVitals"
+import { Provider } from 'react-redux';
+import ReactDOM from "react-dom";
+import reportWebVitals from "./reportWebVitals";
+import store from './App/store/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ColorModeScript />
-    <App />
+     <Provider store={store}>
+          <ColorModeScript />
+          <App />
+       </Provider>
   </React.StrictMode>,
   document.getElementById("root"),
 )

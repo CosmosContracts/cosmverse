@@ -6,7 +6,7 @@ import Header from "../Header";
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 import styles from "./Page.module.sass";
 
-const Page = ({ children : unknown} ) => {
+const Page = ({ children } ): JSX.Element => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Page = ({ children : unknown} ) => {
     <div className={styles.page}>
       <Header />
       <div className={styles.inner}>{children}</div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

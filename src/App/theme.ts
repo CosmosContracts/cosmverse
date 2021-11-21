@@ -1,15 +1,14 @@
-import { extendTheme } from '@chakra-ui/react';
+import { ThemeConfig, extendTheme } from '@chakra-ui/react';
+
 import { mode } from '@chakra-ui/theme-tools';
 
-// const config : ThemeConfig = {
-//   initialColorMode: "light",
-//   useSystemColorMode: false,
-// }
+const config : ThemeConfig = {
+   initialColorMode: "light",
+   useSystemColorMode: false,
+  }
 
 const theme = extendTheme({
-  // fonts: {
-  //   body: "mono",
-  // },
+  config,
   breakpoins: {
     sm: '30em',
     md: '48em',
@@ -27,7 +26,7 @@ const theme = extendTheme({
       body: {
         overflow: 'hidden',
         fontFamily: 'body',
-        bg: mode('white.200', 'cyan.900')(props),
+        bg: mode('#9f9f9fff', '#000000ff')(props),
       },
     }),
   },

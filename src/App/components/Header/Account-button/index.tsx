@@ -4,11 +4,9 @@ import {
   Avatar,
   Badge,
   Box,
-  Button,
   Flex,
   Grid,
   GridItem,
-  Link,
   Popover,
   PopoverBody,
   PopoverContent,
@@ -31,9 +29,10 @@ import {
 } from "../../../services";
 
 import { Window as KeplrWindow } from "@keplr-wallet/types";
-import { MdAccountBalanceWallet } from "react-icons/md";
 import { Link as ReactRouterLink } from "react-router-dom";
+import cn from "classnames";
 import { config } from "../../../../config";
+import styles from "../Header.module.sass";
 import { useSdk } from "../../../services/client/wallet";
 import userLogo from "../../../assets/user-default.svg";
 
@@ -61,21 +60,14 @@ export function AccountButton(): JSX.Element {
   }
 
   const loginButton = (
-    <Button
+    <ReactRouterLink
       isLoading={loading}
       loadingText="Connecting..."
-      rightIcon={<MdAccountBalanceWallet />}
-      fontSize={'sm'}
-      fontWeight={500}
-      variant={'outline'}
-      borderRadius="50px"
-      height="var(--chakra-sizes-8)"
-      marginTop={"4px"}
-      borderColor={useColorModeValue('cyan.900', 'white.200')}
+      className={cn("button-stroke button-small", styles.button)}
       onClick={connectKeplr}
     >
       Connect wallet
-    </Button>
+    </ReactRouterLink>
   );
 
   const MenuLink = (props: any) => {
@@ -86,7 +78,7 @@ export function AccountButton(): JSX.Element {
         _hover={{
           bg: useColorModeValue('gray.500', 'cyan.900'),
         }}>
-        <Link
+        <ReactRouterLink
           fontSize={'md'}
           as={ReactRouterLink}
           to={props.href}
@@ -95,7 +87,7 @@ export function AccountButton(): JSX.Element {
             textDecoration: 'none',
           }}>
           {props.label}
-        </Link>
+        </ReactRouterLink>
       </Box>
     );
   };
@@ -153,7 +145,7 @@ export function AccountButton(): JSX.Element {
             </Box>
             <Box py={2}>
               {sdk.balance.map(coin => (
-                <BalanceItem key={coin.denom} coin={coin} />
+                {/* <BalanceItem key={coin.denom} coin={coin} /> */}
               ))}
             </Box>
           </VStack>
