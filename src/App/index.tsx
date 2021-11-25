@@ -1,7 +1,8 @@
+import "./styles/app.sass";
+
 import * as React from "react"
 
 import {
-  Redirect,
   Route,
   BrowserRouter as Router,
 } from "react-router-dom"
@@ -9,9 +10,11 @@ import {
 import {
   ChakraProvider,
 } from "@chakra-ui/react"
+import Home from "./screens/Home";
 import {
  HomePage,
 } from "./pages"
+import Page from "./components/Page";
 import { SdkProvider } from "./services/client/wallet"
 import { config } from "../config";
 import theme from "./theme"
@@ -21,13 +24,25 @@ export const App = () => (
     <SdkProvider config={config}>
 
         <Router>
-          <Route component={() => <Redirect to="/" />} />
+          
           <Route
             exact
             path="/"
             component={HomePage}
           />
+
+          <Route
+            exact
+            path="/dashboard"
+            render={() => (
+              <Page>
+                <Home />
+              </Page>
+            )}
+          /> 
           </Router>
+          
+
     </SdkProvider>
   </ChakraProvider>
 )

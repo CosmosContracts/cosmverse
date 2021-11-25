@@ -1,0 +1,81 @@
+@import ../../../styles/helpers
+
+.top
+    max-width: 640px
+    margin-bottom: 80px
+    +t
+        margin-bottom: 64px
+    +m
+        margin-bottom: 40px
+
+.stage
+    margin-bottom: 12px
+    +hairline-2
+    color: $neutrals4
+
+.title
+    margin-bottom: 20px
+
+.info
+    +body-2
+    color: $neutrals3
+    +m
+        margin-bottom: 40px
+    +dark
+        color: $neutrals6
+    a
+        font-weight: 500
+        color: $blue
+        &:hover
+            text-decoration: underline
+        
+.row
+    display: flex
+    +m
+        display: block
+    
+.col
+    &:first-child
+        flex-shrink: 0
+        width: 160px
+        +m
+            display: none
+    &:nth-child(2)
+        flex-grow: 1
+        padding-left: 225px
+        +x
+            padding-left: 128px
+        +d
+            padding-left: 64px
+        +t
+            padding-left: 32px
+        +m
+            padding: 0
+    
+.nav
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+
+.link
+    display: flex
+    align-items: center
+    +button-2
+    color: $neutrals4
+    cursor: pointer
+    transition: color .2s
+    svg
+        margin-right: 16px
+        fill: $neutrals4
+        transition: fill .2s
+    &:hover,
+    &.active
+        color: $neutrals2
+        svg
+            fill: $neutrals2
+        +dark
+            color: $neutrals8
+            svg
+                fill: $neutrals8
+    &:not(:last-child)
+        margin-bottom: 40px

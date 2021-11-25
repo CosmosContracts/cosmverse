@@ -1,0 +1,20 @@
+@import ../../../styles/helpers
+
+.options
+    display: flex
+    padding: 8px
+    border-radius: 32px
+    background: $neutrals8
+    +dark
+        background: $neutrals2
+
+.button
+    &:not(:last-child)
+        margin-right: 24px
+    
+.favorite
+    svg
+        fill: $pink
+    &:hover
+        svg
+            fill: $pink

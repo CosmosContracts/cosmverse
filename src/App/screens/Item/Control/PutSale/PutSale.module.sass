@@ -1,0 +1,74 @@
+@import ../../../../styles/helpers
+
+.title
+    margin-bottom: 32px
+
+.line
+    display: flex
+    margin-bottom: 32px
+    strong
+        white-space: nowrap
+        font-weight: 500
+
+.icon
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    width: 48px
+    height: 48px
+    margin-right: 16px
+    background: $purple
+    border: 2px solid $purple
+    border-radius: 50%
+    transition: all .2s
+    svg
+        fill: $neutrals8
+        transition: fill .2s
+    .loader
+        position: absolute
+        top: -2px
+        left: -2px
+        right: -2px
+        bottom: -2px
+    
+.details
+    flex-grow: 1
+
+.info
+    +body-bold-2
+
+.text
+    color: $neutrals4
+
+.switch
+    flex-shrink: 0
+    margin-left: 16px
+
+.row
+    display: flex
+    padding-top: 12px
+    &:first-child
+        padding: 0 0 12px
+        border-bottom: 1px solid $neutrals6
+        font-weight: 500
+        +dark
+            border-color: $neutrals3
+
+.col
+    +body-2
+    &:first-child
+        color: $neutrals4
+    &:nth-child(2)
+        margin-left: auto
+        padding-left: 30px
+        font-weight: 500
+
+.btns
+    margin-top: 32px
+
+.button
+    width: 100%
+    &:not(:last-child)
+        margin-bottom: 8px

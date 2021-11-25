@@ -1,0 +1,214 @@
+@import ../../styles/helpers
+
+.top
+    position: relative
+    z-index: 3
+    display: flex
+    align-items: center
+    width: calc(100% - 352px)
+    padding-right: 128px
+    +x
+        padding-right: 64px
+    +d
+        width: calc(100% - 304px)
+        padding-right: 32px
+    +t
+        width: 100%
+        padding: 0
+
+.title
+    margin-right: auto
+    
+.button
+    +m
+        width: 100%
+        margin-top: 16px
+    
+.toggle
+    position: relative
+    margin-left: 24px
+    svg
+        &:nth-child(2)
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%,-50%) 
+            opacity: 0
+    &.active
+        background: $blue
+        box-shadow: inset 0 0 0 2px $blue
+        +dark
+            background: $blue
+        svg
+            fill: $neutrals8
+            &:first-child
+                opacity: 0
+            &:nth-child(2)
+                opacity: 1
+
+.row
+    display: flex
+    align-items: flex-start
+    margin-top: -56px
+    +t
+        flex-direction: column-reverse
+        margin-top: 0
+
+.wrapper
+    flex-grow: 1
+    padding-right: 128px
+    padding-top: 120px
+    +x
+        padding-right: 64px
+    +d
+        padding-right: 32px
+    +t
+        width: 100%
+        padding: 0
+
+.filters
+    flex-shrink: 0
+    width: 352px
+    padding: 48px
+    border-radius: 24px
+    box-shadow: inset 0 0 0 1px $neutrals6, 0px 40px 32px -24px rgba(15, 15, 15, 0.12)
+    +d
+        width: 304px
+        padding: 32px
+    +t
+        display: none
+        width: 100%
+    +dark
+        box-shadow: inset 0 0 0 1px $neutrals3, 0px 40px 32px -24px rgba(15, 15, 15, 0.12)
+        background: $neutrals2
+    &.active
+        +t
+            display: block
+            margin-top: 32px
+        +m
+            margin-top: 16px
+
+.nav
+    display: flex
+    flex-wrap: wrap
+    margin: 0 -6px 32px
+    +t
+        margin-top: 40px
+    +m
+        margin-top: 32px
+
+.link
+    margin: 0 6px
+    padding: 6px 12px
+    border-radius: 14px
+    background: none
+    +button-2
+    color: $neutrals4
+    transition: all .2s
+    &:hover
+        color: $neutrals3
+        +dark
+            color: $neutrals6
+    &.active
+        background: $neutrals3
+        color: $neutrals8
+
+.item
+    position: relative
+    display: flex
+    align-items: center
+    padding: 16px 64px 16px 16px
+    border-radius: 20px
+    cursor: pointer
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+    transition: background .2s
+    +m
+        padding-right: 32px
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        top: 50%
+        right: 24px
+        width: 12px
+        height: 12px
+        transform: translateY(-50%)
+        transition: all .2s
+        +m
+            right: 12px
+    &:before
+        border-radius: 50%
+        background: $blue
+    &:after
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='10' fill='none' viewBox='0 0 6 10'%3E%3Cpath fill-rule='evenodd' d='M.793.793a1 1 0 0 0 0 1.414L3.586 5 .793 7.793a1 1 0 0 0 1.414 1.414l3.5-3.5a1 1 0 0 0 0-1.414l-3.5-3.5a1 1 0 0 0-1.414 0z' fill='%23777e91'/%3E%3C/svg%3E") no-repeat 50% 50% / 6px auto
+        opacity: 0
+    &:hover
+        background: $neutrals7
+        +dark
+            background: $neutrals2
+        &:before
+            transform: translateY(-50%) scale(0)
+        &:after
+            opacity: 1
+    &:not(:last-child)
+        margin-bottom: 16px
+
+.preview
+    position: relative
+    flex-shrink: 0
+    width: 96px
+    height: 96px
+    margin-right: 24px
+    +m
+        width: 64px
+        height: 64px
+        margin-right: 16px
+    & > img
+        width: 100%
+        height: 100%
+        border-radius: 50%
+        object-fit: cover
+    
+.icon
+    position: absolute
+    top: 0
+    right: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 32px
+    height: 32px
+    border-radius: 50%
+    +m
+        width: 24px
+        height: 24px
+    +dark
+        border: 1px solid $neutrals3
+    img
+        max-width: 16px
+        +m
+            max-width: 12px
+
+.details
+    flex-grow: 1
+
+.subtitle
+    +body-bold-1
+    +m
+        margin-bottom: 3px
+        font-size: 16px
+
+.description
+    +body-2
+    color: $neutrals3
+    +m
+        font-size: 12px
+    +dark
+        color: $neutrals6
+
+.date
+    +caption-bold-2
+    color: $neutrals4
+
+.loader
+    margin: 32px auto 0

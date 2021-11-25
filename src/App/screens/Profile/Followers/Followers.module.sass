@@ -1,0 +1,93 @@
+@import ../../../styles/helpers
+
+.item
+    display: flex
+    padding-bottom: 32px
+    border-bottom: 1px solid $neutrals6
+    +m
+        position: relative
+        display: block
+        padding: 0 100px 0 0
+        border: none
+    +dark
+        border-color: $neutrals3
+    &:not(:last-child)
+        margin-bottom: 48px
+        +m
+            margin-bottom: 32px
+
+.follower
+    display: flex
+    align-items: center
+    width: 326px
+    flex: 0 0 326px
+    padding-right: 24px
+    +d
+        flex: 0 0 244px
+        width: 244px
+    +m
+        width: 100%
+        padding-right: 0
+
+.wrap
+    width: calc(100% - 326px)
+    flex: 0 0 calc(100% - 326px)
+    +d
+        width: calc(100% - 244px)
+        flex: 0 0 calc(100% - 244px)
+    +m
+        display: none
+
+.avatar
+    flex-shrink: 0
+    width: 88px
+    height: 88px
+    margin-right: 20px
+    +m
+        width: 72px
+        height: 72px
+        margin-right: 16px
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        border-radius: 50%
+    
+.title
+    +body-bold-2
+
+.counter
+    +caption-2
+    color: $neutrals4
+
+.button
+    height: 32px
+    margin-top: 12px
+    padding: 0 12px
+    +m
+        position: absolute
+        top: 50%
+        right: 0
+        transform: translateY(-50%)
+        margin-top: 0
+
+.gallery
+    display: flex
+    margin: 0 -4px
+    overflow-x: auto 
+    -ms-overflow-style: none
+    scrollbar-width: none
+    -webkit-overflow-scrolling: touch
+    &::-webkit-scrollbar
+        display: none 
+    
+.preview
+    flex-shrink: 0
+    width: 112px
+    margin: 0 4px
+    img
+        width: 100%
+        border-radius: 12px
+
+.loader
+    margin: 48px auto 10px

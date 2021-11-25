@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Icon from "../../components copy/Icon";
+import Icon from "../../components/Icon";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import styles from "./Card.module.sass";

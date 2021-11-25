@@ -1,0 +1,65 @@
+@import ../../../../styles/helpers
+
+.line
+    display: flex
+    align-items: center
+    margin-top: 72px
+    margin-bottom: 32px
+    +body-2
+    strong
+        white-space: nowrap
+        font-weight: 500
+
+.icon
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    width: 48px
+    height: 48px
+    margin-right: 16px
+    background: $green
+    border: 2px solid $green
+    border-radius: 50%
+    transition: all .2s
+    svg
+        fill: $neutrals8
+        transition: fill .2s
+    .loader
+        position: absolute
+        top: -2px
+        left: -2px
+        right: -2px
+        bottom: -2px
+        background: $neutrals8
+        +dark
+            background: $neutrals1
+
+.stage
+    margin-bottom: 16px
+    +body-bold-1
+
+.row
+    display: flex
+    padding-top: 12px
+    &:first-child
+        border-top: 1px solid $neutrals6
+        +dark
+            border-color: $neutrals3
+
+.col
+    &:first-child
+        margin-right: auto
+        padding-right: 16px
+        color: $neutrals4
+    &:nth-child(2)
+        font-weight: 500
+
+.btns
+    margin-top: 32px
+
+.button
+    width: 100%
+    &:not(:last-child)
+        margin-bottom: 8px

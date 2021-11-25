@@ -1,0 +1,172 @@
+@import ../../styles/helpers
+
+.container
+    max-width: 896px
+
+.top
+    margin-bottom: 64px
+    +m
+        margin-bottom: 32px
+        padding-bottom: 16px
+        border-bottom: 1px solid $neutrals6
+        +dark
+            border-color: $neutrals3
+
+.title
+    margin-bottom: 16px
+
+.info
+    color: $neutrals4
+    strong
+        font-weight: 500
+        color: $neutrals2
+        +dark
+            color: $neutrals8
+
+.row
+    display: flex
+    margin: 0 -16px
+    +d
+        display: block
+        margin: 0
+
+.col
+    flex: 0 0 calc(50% - 32px)
+    width: calc(50% - 32px)
+    margin: 0 16px
+    +d
+        width: 100%
+        margin: 0
+    &:not(:last-child)
+        +d
+            margin-bottom: 64px
+        +m
+            margin-bottom: 32px
+            padding-bottom: 32px
+            border-bottom: 1px solid $neutrals6
+            +dark
+                border-color: $neutrals3
+
+.user
+    display: flex
+    +d
+        max-width: 416px
+
+.avatar
+    flex-shrink: 0
+    width: 128px
+    height: 128px
+    margin-right: 32px
+    +m
+        width: 64px
+        height: 64px
+        margin-right: 16px
+    img
+        width: 100%
+        height: 100%
+        border-radius: 50%
+        object-fit: cover
+    
+.details
+    flex-grow: 1
+
+.stage
+    margin-bottom: 8px
+    +body-bold-2
+
+.text
+    margin-bottom: 16px
+    +caption-2
+    color: $neutrals4
+
+.file
+    display: inline-block
+    position: relative
+    overflow: hidden
+
+.load
+    position: absolute
+    top: 0
+    left: 0
+    font-size: 140px
+    opacity: 0
+    
+.list
+    margin-bottom: 40px
+    +d
+        display: flex
+        margin: 0 -20px 64px
+    +m
+        display: block
+        margin: 0 0 32px
+
+.item
+    +d
+        flex: 0 0 calc(50% - 40px)
+        width: calc(50% - 40px)
+        margin: 0 20px
+    +m
+        width: 100%
+        margin: 0
+    & > .button
+        margin-top: 32px
+    &:not(:last-child)
+        margin-bottom: 40px
+        +d
+            margin-bottom: 0
+        +m
+            margin-bottom: 32px
+
+.category
+    margin-bottom: 32px
+    +body-bold-2
+
+.fieldset 
+    & > .field
+        &:not(:last-child)
+            margin-bottom: 32px
+
+.box
+    position: relative
+    .button
+        position: absolute
+        right: 12px
+        bottom: 8px
+        height: 32px
+        padding: 0 10px
+
+.note
+    color: $neutrals4
+
+.btns
+    display: flex
+    margin-top: 40px
+    padding-top: 40px
+    border-top: 1px solid $neutrals6
+    +m
+        display: block
+        text-align: center
+    +dark
+        border-color: $neutrals3
+    .button
+        +m
+            width: 100%
+        &:not(:last-child)
+            margin-right: 32px
+            +m
+                margin: 0 0 32px
+
+.clear
+    display: inline-flex
+    align-items: center
+    +button-1
+    color: $neutrals4
+    transition: color .2s
+    svg
+        margin-right: 8px
+        fill: $neutrals4
+        transition: fill .2s
+    &:hover
+        color: $blue
+        svg
+            fill: $blue
