@@ -1,0 +1,148 @@
+@import ../../../styles/helpers
+
+.notification
+    position: relative
+    +m
+        position: static
+
+.head
+    position: relative
+    width: 40px
+    height: 40px
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+    svg
+        fill: $neutrals4
+        transition: fill .2s
+    &:hover
+        svg
+            fill: $blue
+    &.active
+        &:before
+            content: ""
+            position: absolute
+            top: 0
+            right: 0
+            width: 12px
+            height: 12px
+            border-radius: 50%
+            background: $green
+
+.body
+    position: absolute
+    top: calc(100% + 44px)
+    left: 50%
+    width: 396px
+    margin-left: -198px
+    padding: 40px 32px 32px
+    box-shadow: 0px 16px 64px 0 rgba(31, 47, 70, 0.4)
+    border-radius: 24px
+    background: $neutrals8
+    opacity: 0
+    transform: scale(.9)
+    transform-origin: 50% 50px
+    will-change: transform
+    animation: showNotification .4s forwards
+    +m
+        left: 16px 
+        right: 16px
+        top: calc(100% + 16px)
+        width: auto
+        margin: 0
+        padding: 32px 16px
+        box-shadow: 0px 16px 32px 0 rgba(31, 47, 70, 0.4)
+    &:before
+        content: ""
+        position: absolute
+        left: 50%
+        bottom: 100%
+        width: 32px
+        height: 13px
+        transform: translateX(-50%)
+        background: url("data:image/svg+xml,%3Csvg width='32' height='13' viewBox='0 0 32 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.3432 2.65685L0 13H32L21.6569 2.65686C18.5327 -0.467339 13.4673 -0.467344 10.3432 2.65685Z' fill='%23FCFCFD'/%3E%3C/svg%3E%0A") no-repeat 100% 50% / 100% auto
+        +m
+            display: none
+    +dark
+        background: $neutrals1
+        box-shadow: 0px 16px 32px 0 rgba($neutrals1, 0.6)
+        &:before
+            background-image: url("data:image/svg+xml,%3Csvg width='32' height='13' viewBox='0 0 32 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.3432 2.65685L0 13H32L21.6569 2.65686C18.5327 -0.467339 13.4673 -0.467344 10.3432 2.65685Z' fill='%23141416'/%3E%3C/svg%3E%0A")
+
+@keyframes showNotification
+    0%
+        opacity: 0
+        transform: scale(.9)
+    100%
+        opacity: 1
+        transform: scale(1)
+
+.title
+    margin-bottom: 16px
+    +m
+        margin: 0 16px
+
+.list
+    margin: 0 -16px
+    +m
+        margin: 0
+
+.item
+    position: relative
+    display: flex
+    align-items: center
+    padding: 16px 40px 16px 16px
+    border-radius: 16px
+    transition: background .2s
+    &:hover
+        background: $neutrals7
+        +dark
+            background: $neutrals2
+
+.preview
+    flex-shrink: 0
+    width: 64px
+    height: 64px
+    margin-right: 24px
+    +m
+        margin-right: 16px
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        border-radius: 16px
+
+.details
+    flex-grow: 1
+
+.subtitle
+    +body-bold-2
+    color: $neutrals1
+    +dark
+        color: $neutrals8
+
+.price
+    font-weight: 500
+    color: $neutrals3
+    +dark
+        color: $neutrals6
+
+.date
+    +caption-2
+    color: $neutrals4
+
+.status
+    position: absolute
+    top: 50%
+    right: 16px
+    transform: translateY(-50%)
+    width: 12px
+    height: 12px
+    border-radius: 50%
+
+.button
+    position: absolute
+    top: 40px
+    right: 32px
+    +m
+        position: static
+        width: 100%
+        margin-top: 20px

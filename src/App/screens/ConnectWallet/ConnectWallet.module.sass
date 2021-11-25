@@ -1,0 +1,234 @@
+@import ../../styles/helpers
+
+.head
+    margin-bottom: 80px
+    padding-bottom: 40px
+    border-bottom: 2px solid $neutrals6
+    +m
+        margin-bottom: 40px
+        padding-bottom: 24px
+    +dark
+        border-color: $neutrals3
+
+.back
+    display: inline-flex
+    align-items: center
+    color: $neutrals2
+    svg
+        margin-right: 24px
+        transition: transform .2s
+        +m
+            flex-shrink: 0
+            width: 24px
+            height: 24px
+            margin-right: 16px
+    +dark
+        color: $neutrals8
+        svg
+            fill: $neutrals8
+    &:hover
+        svg
+            transform: translateX(-2px)
+
+.stage
+    +m
+        font-size: 24px
+
+.body
+    display: flex
+    +m
+        display: block
+
+.menu
+    flex-shrink: 0
+    width: 544px
+    margin-right: auto
+    +d
+        width: 384px
+    +t
+        width: 300px
+    +m
+        width: 100%
+        margin-bottom: 40px
+
+.wrapper
+    flex-grow: 1
+    padding-left: 128px
+    +x
+        padding-left: 64px
+    +t
+        padding-left: 32px
+    +m
+        padding-left: 0
+    & > div
+        &:not(:last-child)
+            margin-bottom: 48px
+    
+.link
+    position: relative
+    display: flex
+    align-items: center
+    padding: 32px 64px 32px 32px
+    border-radius: 12px
+    +body-bold-1
+    cursor: pointer
+    +t
+        padding: 0 30px 0 0
+        font-size: 20px
+    &:hover
+        .arrow
+            opacity: 1
+    &.active
+        box-shadow: inset 0 0 0 2px $neutrals6
+        +t
+            box-shadow: none
+        +dark
+            box-shadow: inset 0 0 0 2px $neutrals3
+            +t
+                box-shadow: none
+        .icon
+            &:before
+                opacity: 1
+            svg
+                &:first-child
+                    opacity: 0
+                &:nth-child(2)
+                    opacity: 1
+        .arrow
+            opacity: 1
+    &:not(:last-child)
+        +t
+            margin-bottom: 24px
+
+.icon
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 64px
+    height: 64px
+    margin-right: 32px
+    border-radius: 50%
+    flex-shrink: 0
+    +d
+        margin-right: 24px
+    +t
+        margin-right: 16px
+    &:before
+        content: ""
+        position: absolute
+        top: 3px
+        left: 3px
+        right: 3px
+        bottom: 3px
+        border-radius: 50%
+        background: $neutrals8
+        opacity: 0
+        transition: opacity .2s
+        +dark
+            background: $neutrals1
+    svg
+        transition: opacity .2s
+        &:first-child
+            fill: $neutrals8
+        &:nth-child(2)
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%,-50%)
+            opacity: 0
+    
+.arrow
+    position: absolute
+    top: 50%
+    right: 37px
+    transform: translateY(-50%)
+    opacity: 0
+    transition: opacity .2s
+    +d
+        right: 24px
+    +t
+        right: 0
+    svg
+        +dark
+            fill: $neutrals8
+
+.bg
+    img
+        width: 100%
+        border-radius: 24px
+    
+.title
+    margin-bottom: 8px
+    +m
+        text-align: center
+        font-size: 32px
+
+.text
+    margin-bottom: 24px
+    +caption-2
+    color: $neutrals4
+    +m
+        text-align: center
+    span
+        font-weight: 600
+        color: $neutrals2
+        +dark
+            color: $neutrals8
+
+.box
+    margin-bottom: 24px
+    padding: 18%
+    background: $neutrals7
+    border-radius: 16px
+    +m
+        padding: 10%
+    +dark
+        background: $neutrals2
+
+.code
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 29%
+    border-radius: 12px
+    border: 1px solid $neutrals6
+    background: $neutrals8
+    box-shadow: 0px 64px 64px -48px rgba(31, 47, 70, 0.12)
+    +m
+        padding: 20%
+    +dark
+        background: $neutrals5
+        border-color: $neutrals3
+    img
+        width: 100%
+
+.preview
+    margin: 40px 0
+    img
+        width: 100%
+        border-radius: 12px
+    
+.variants
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    margin-bottom: 40px
+
+.checkbox
+    &:not(:last-child)
+        margin-bottom: 12px
+
+.button
+    +m
+        width: 100%
+
+.btns
+    display: flex
+    +m
+        display: block
+    .button
+        &:not(:last-child)
+            margin-right: 8px
+            +m
+                margin: 0 0 8px

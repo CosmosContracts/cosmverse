@@ -1,0 +1,199 @@
+@import ../../styles/helpers
+
+.head
+    position: relative
+    display: flex
+    align-items: flex-end
+    height: 326px
+    padding: 32px 0
+    background-repeat: no-repeat
+    background-position: 50% 50%
+    background-size: cover
+    overflow: hidden
+    +t
+        height: 260px
+        padding-bottom: 64px
+    +m
+        height: 230px
+        padding-bottom: 56px
+    .container
+        display: flex
+        justify-content: flex-end
+    &.active
+        .btns
+            opacity: 0
+        .file
+            opacity: 1
+            visibility: visible
+    
+.btns
+    transition: opacity .2s
+    .button
+        box-shadow: 0 0 0 2px $neutrals4 inset
+        color: $neutrals8
+        +m
+            flex-grow: 1
+            padding: 0 10px
+        svg
+            fill: $neutrals8
+        &:hover
+            box-shadow: 0 0 0 2px $blue inset
+        &:not(:last-child)
+            margin-right: 16px
+
+.file
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    color: $neutrals8
+    opacity: 0
+    visibility: hidden
+    transition: all .2s
+    +m
+        align-items: flex-start
+        padding-top: 40px
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+    &:before
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: rgba($neutrals1, .6)
+    &:after
+        top: 8px
+        left: 8px
+        right: 8px
+        bottom: 8px
+        border: 2px dashed $neutrals6
+        border-radius: 12px
+    input
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 3
+        font-size: 1400px
+        opacity: 0
+    svg
+        margin-bottom: 24px
+        fill: $neutrals8
+        +m
+            width: 24px
+            height: 24px
+            margin-bottom: 12px
+    .button
+        position: absolute
+        right: 16px
+        bottom: 16px
+        z-index: 4
+        +t
+            bottom: 48px
+        +m
+            right: 50%
+            transform: translateX(50%)
+    
+.wrap
+    position: relative
+    z-index: 2
+
+.info
+    font-size: 24px
+    line-height: (32/24)
+    font-weight: 600
+    +m
+        font-size: 16px
+
+.text
+    +body-2
+    +m
+        font-size: 12px
+
+.body
+    position: relative
+    z-index: 3
+    padding: 80px 0
+    +t
+        padding-top: 0
+    +m
+        padding: 0 0 64px
+    .container
+        display: flex
+        align-items: flex-start
+        +t
+            display: block
+
+.user
+    flex-shrink: 0
+    width: 256px
+    margin-top: -193px
+    +t
+        width: 100%
+        margin: -32px 0 48px
+
+.wrapper
+    flex: 0 0 calc(100% - 256px)
+    width: calc(100% - 256px)
+    padding-left: 64px
+    +x
+        padding-left: 32px
+    +t
+        width: 100%
+        padding-left: 0
+
+.nav
+    display: flex
+    margin: 0 -6px 32px
+    +m
+        margin: 0 -32px 32px
+        overflow: auto
+        overflow-x: auto 
+        -ms-overflow-style: none
+        scrollbar-width: none
+        -webkit-overflow-scrolling: touch
+        &::-webkit-scrollbar
+            display: none 
+        &:before,
+        &:after
+            content: ""
+            flex-shrink: 0
+            width: 32px
+            height: 1px
+
+.link
+    flex-shrink: 0
+    margin: 0 6px
+    padding: 6px 12px
+    border-radius: 14px
+    background: none
+    +button-2
+    color: $neutrals4
+    transition: all .2s
+    +m
+        margin: 0
+    &:hover
+        color: $neutrals3
+        +dark
+            color: $neutrals6
+    &.active
+        background: $neutrals3
+        color: $neutrals8
+        +dark
+            background: $neutrals8
+            color: $neutrals2
+    &:not(:last-child)
+        +m
+            margin-right: 12px
+
+.following,
+.followers
+    padding-top: 16px
+    +m
+        padding-top: 0

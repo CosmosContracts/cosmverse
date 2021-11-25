@@ -1,0 +1,33 @@
+@import ../../../styles/helpers
+
+.info
+    margin-bottom: 32px
+    +body-bold-1
+
+.group
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    margin-bottom: 32px
+    padding-bottom: 32px
+    border-bottom: 1px solid $neutrals6
+    +dark
+        border-color: $neutrals3
+
+.checkbox
+    &:not(:last-child)
+        margin-bottom: 24px
+
+.btns
+    display: flex
+    margin: 0 -6px
+    .button
+        width: calc(50% - 12px)
+        flex: 0 0 calc(50% - 12px)
+        height: 32px
+        margin: 0 6px
+        padding: 0 8px
+        +dark
+            box-shadow: inset 0 0 0 2px $neutrals4
+            &:hover
+                box-shadow: inset 0 0 0 2px $blue
