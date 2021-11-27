@@ -1,28 +1,29 @@
-import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import cn from "classnames";
-import styles from "./Header.module.sass";
+import React, { useState } from "react";
+
 import Icon from "../Icon";
 import Image from "../Image";
 import Notification from "./Notification";
 import User from "./User";
+import cn from "classnames";
+import styles from "./Header.module.sass";
 
 const nav = [
   {
-    url: "/search01",
-    title: "Discover",
+    url: "/",
+    title: "Explore",
   },
   {
-    url: "/faq",
-    title: "How it work",
+    url: "/dashboard",
+    title: "dashboard",
   },
   {
-    url: "/item",
-    title: "Create item",
+    url: "/mint",
+    title: "Mint",
   },
   {
-    url: "/profile",
-    title: "Profile",
+    url: "/auction",
+    title: "Auction",
   },
 ];
 
@@ -42,7 +43,7 @@ const Headers = () => {
             className={styles.pic}
             src="/images/logo-dark.png"
             srcDark="/images/logo-light.png"
-            alt="Fitness Pro"
+            alt="Cosmverse"
           />
         </Link>
         <div className={cn(styles.wrapper, { [styles.active]: visibleNav })}>
@@ -58,7 +59,7 @@ const Headers = () => {
               </Link>
             ))}
           </nav>
-          <form
+        {/*   <form
             className={styles.search}
             action=""
             onSubmit={() => handleSubmit()}
@@ -75,7 +76,7 @@ const Headers = () => {
             <button className={styles.result}>
               <Icon name="search" size="20" />
             </button>
-          </form>
+          </form> */}
           <Link
             className={cn("button-small", styles.button)}
             to="/upload-variants"
@@ -84,12 +85,12 @@ const Headers = () => {
           </Link>
         </div>
         <Notification className={styles.notification} />
-        <Link
+       {/*  <Link
           className={cn("button-small", styles.button)}
           to="/upload-variants"
         >
           Upload
-        </Link>
+        </Link> */}
         {/* <Link
           className={cn("button-stroke button-small", styles.button)}
           to="/connect-wallet"
