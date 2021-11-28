@@ -1,4 +1,4 @@
-import { coins, Token } from "../../config";
+import { Token, coins } from "../../config";
 
 export function formatAddress(wallet: string): string {
   return ellideMiddle(wallet, 24);
@@ -23,6 +23,16 @@ export function formatPrice(price: {amount: string, denom: string}): string {
   const amount = parseInt(price.amount) / Math.pow(10, coin.decimals);
 
   return amount + " " + coin.name;
+}
+
+export function getCoinName(price: {amount: string, denom: string}): string {
+  const coin = getTokenConfig(price.denom)!;
+
+  return coin.name;
+}
+
+export function getPrice(price: {amount: string, denom: string}): string {
+  return price.amount ;
 }
 
 export function toMinDenom(amount: number, denom: string): string {

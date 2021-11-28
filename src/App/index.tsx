@@ -33,7 +33,7 @@ export const App = () => (
 
           <Route
             exact
-            path="/dashboard"
+            path="/home"
             render={() => (
               <Page>
                 <Home />

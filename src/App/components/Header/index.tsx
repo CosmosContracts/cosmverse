@@ -1,12 +1,24 @@
-import { Link, NavLink } from "react-router-dom";
 import React, { useState } from "react";
+import {
+  WalletLoader,
+  configKeplr,
+  loadKeplrWallet,
+} from "../../services";
 
-import Icon from "../Icon";
 import Image from "../Image";
+import { Window as KeplrWindow } from "@keplr-wallet/types";
+import { Link } from "react-router-dom";
 import Notification from "./Notification";
 import User from "./User";
 import cn from "classnames";
+import { config } from "../../../config";
 import styles from "./Header.module.sass";
+import {
+   useBoolean,
+} from '@chakra-ui/react';
+import { useSdk } from "../../services/client/wallet";
+
+//import Icon from "../Icon";
 
 const nav = [
   {
@@ -15,25 +27,65 @@ const nav = [
   },
   {
     url: "/dashboard",
-    title: "dashboard",
-  },
-  {
-    url: "/mint",
-    title: "Mint",
+    title: "Dashboard",
   },
   {
     url: "/auction",
     title: "Auction",
   },
+  {
+    url: "/data",
+    title: "Data",
+  },
 ];
 
 const Headers = () => {
+  const sdk = useSdk();
   const [visibleNav, setVisibleNav] = useState(false);
-  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useBoolean();
 
-  const handleSubmit = (e) => {
-    alert();
+
+
+  async function init(loadWallet: WalletLoader) {
+    const signer = await loadWallet(config.chainId, config.addressPrefix);
+    sdk.init(signer);
   };
+
+  
+  async function connectKeplr() {
+    setLoading.on();
+    const anyWindow = window as KeplrWindow;
+    try {
+      await anyWindow.keplr?.experimentalSuggestChain(configKeplr(config));
+      await anyWindow.keplr?.enable(config.chainId);
+      await init(loadKeplrWallet);
+    } catch (error) {
+      setLoading.off();
+      console.error(error);
+    }
+  }
+
+  function connectWallet() {
+    return (
+      <div
+      className={cn("button-stroke button-small", styles.button)}
+      onClick={connectKeplr}
+    >
+      Connect Wallet
+    </div> 
+    )
+  }
+
+  function  userConnected() {
+    return (
+      <User className={styles.user} sdk={sdk} />
+    )
+  }
+
+  function IsUserLogin() {
+
+    return sdk.address ? userConnected() : connectWallet()
+  }
 
   return (
     <header className={styles.header}>
@@ -51,7 +103,7 @@ const Headers = () => {
             {nav.map((x, index) => (
               <Link
                 className={styles.link}
-                // activeClassName={styles.active}
+               /* activeClassName={styles.active} */
                 to={x.url}
                 key={index}
               >
@@ -81,23 +133,18 @@ const Headers = () => {
             className={cn("button-small", styles.button)}
             to="/upload-variants"
           >
-            Upload
+            Mint
           </Link>
         </div>
-        <Notification className={styles.notification} />
-       {/*  <Link
+         <Link
           className={cn("button-small", styles.button)}
-          to="/upload-variants"
+          to="/mint"
         >
-          Upload
-        </Link> */}
-        {/* <Link
-          className={cn("button-stroke button-small", styles.button)}
-          to="/connect-wallet"
-        >
-          Connect Wallet
-        </Link> */}
-        <User className={styles.user} />
+          Mint
+        </Link> 
+        <Notification className={styles.notification} />
+     
+        <IsUserLogin />
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
           onClick={() => setVisibleNav(!visibleNav)}
