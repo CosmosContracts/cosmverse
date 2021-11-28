@@ -82,6 +82,12 @@ const Headers = () => {
   function  userConnected() {
     return (
       <>
+        <Link
+          className={cn("button-small", styles.button)}
+          to="/mint"
+        >
+          Mint
+        </Link> 
       <Notification className={styles.notification} />
       <User className={styles.user} sdk={sdk} />
       </>
@@ -142,12 +148,7 @@ const Headers = () => {
             Mint
           </Link>
         </div>
-         <Link
-          className={cn("button-small", styles.button)}
-          to="/mint"
-        >
-          Mint
-        </Link> 
+    
        
      
         <IsUserLogin />
