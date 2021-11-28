@@ -5,6 +5,7 @@ import {
   loadKeplrWallet,
 } from "../../services";
 
+import Icon from "../Icon";
 import Image from "../Image";
 import { Window as KeplrWindow } from "@keplr-wallet/types";
 import { Link } from "react-router-dom";
@@ -17,8 +18,6 @@ import {
    useBoolean,
 } from '@chakra-ui/react';
 import { useSdk } from "../../services/client/wallet";
-
-//import Icon from "../Icon";
 
 const nav = [
   {
@@ -111,7 +110,7 @@ const Headers = () => {
               </Link>
             ))}
           </nav>
-        {/*   <form
+           <form
             className={styles.search}
             action=""
             onSubmit={() => handleSubmit()}
@@ -128,7 +127,7 @@ const Headers = () => {
             <button className={styles.result}>
               <Icon name="search" size="20" />
             </button>
-          </form> */}
+          </form> 
           <Link
             className={cn("button-small", styles.button)}
             to="/upload-variants"
