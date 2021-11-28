@@ -14,7 +14,6 @@ import {
 import Page from "./components/Page";
 import { SdkProvider } from "./services/client/wallet"
 import { config } from "../config";
-import theme from "./theme"
 
 export const App = () => (
   
