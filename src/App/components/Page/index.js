@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation, withRouter } from "react-router-dom";
 
 import Footer from "../footer";
-import Header from "../Header";
+import Header from "../header";
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 import styles from "./Page.module.sass";
 

@@ -41,6 +41,7 @@ const nav = [
 const Headers = () => {
   const sdk = useSdk();
   const [visibleNav, setVisibleNav] = useState(false);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useBoolean();
 
 
@@ -63,6 +64,9 @@ const Headers = () => {
       console.error(error);
     }
   }
+  const handleSubmit = (e: any) => {
+    console.log('searching', e);
+  };
 
   function connectWallet() {
     return (
@@ -77,7 +81,10 @@ const Headers = () => {
 
   function  userConnected() {
     return (
+      <>
+      <Notification className={styles.notification} />
       <User className={styles.user} sdk={sdk} />
+      </>
     )
   }
 
@@ -141,7 +148,7 @@ const Headers = () => {
         >
           Mint
         </Link> 
-        <Notification className={styles.notification} />
+       
      
         <IsUserLogin />
         <button
