@@ -2,6 +2,7 @@ import "./styles/app.sass";
 
 import * as React from "react"
 
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import {
   Route,
   BrowserRouter as Router,
@@ -20,13 +21,13 @@ export const App = () => (
     <SdkProvider config={config}>
 
         <Router>
-        
+        <ChakraProvider theme={theme}>
           <Route
             exact
             path="/"
             component={HomePage}
           />
-        
+        </ChakraProvider>
           <Route
             exact
             path="/home"
