@@ -42,6 +42,7 @@ const Headers = () => {
   const sdk = useSdk();
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useBoolean();
 
 
@@ -102,7 +103,7 @@ const Headers = () => {
   return (
     <header className={styles.header}>
       <div className={cn("container", styles.container)}>
-        <Link className={styles.logo} to="/">
+        <Link className={styles.logo} to="/home">
           <Image
             className={styles.pic}
             src="/images/logo-dark.png"
@@ -148,9 +149,6 @@ const Headers = () => {
             Mint
           </Link>
         </div>
-    
-       
-     
         <IsUserLogin />
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}

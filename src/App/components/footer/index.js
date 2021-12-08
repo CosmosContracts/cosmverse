@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import Form from "../Form";
 import Group from "./Group";
 import Image from "../Image";
 import { Link } from "react-router-dom";
@@ -51,11 +50,11 @@ const items = [
 ];
 
 const Footers = () => {
-  const [email, setEmail] = useState("");
+  //const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  /* const handleSubmit = (e) => {
     alert();
-  };
+  }; */
 
   return (
     <footer className={styles.footer}>

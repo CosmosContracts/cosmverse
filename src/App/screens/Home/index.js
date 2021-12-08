@@ -1,5 +1,4 @@
 import Collections from "./Collections";
-import Description from "./Description";
 import Hero from "./Hero";
 import HotBid from "../../components/HotBid";
 import Popular from "./Popular";
@@ -17,9 +16,7 @@ const Home = () => {
       <Selection />
       <Popular />
       <HotBid classSection="section" />
-      <Collections />
-      {/* <Discover /> */}
-      <Description />
+      <Collections />  
     </>
   );
 };
