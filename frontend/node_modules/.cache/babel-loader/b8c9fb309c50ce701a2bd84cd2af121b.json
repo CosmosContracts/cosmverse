@@ -1,0 +1,1 @@
+{"ast":null,"code":"export default {\n  attach: function attach() {},\n  detach: function detach() {}\n};","map":null,"metadata":{},"sourceType":"module"}

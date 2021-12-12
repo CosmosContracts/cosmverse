@@ -1,0 +1,55 @@
+{
+	"name": "document.contains",
+	"version": "1.0.2",
+	"description": "Polyfill/shim for `document.contains`",
+	"main": "index.js",
+	"scripts": {
+		"prepublish": "safe-publish-latest",
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "npm run tests-only",
+		"tests-only": "es-shim-api --bound",
+		"posttest": "npx aud --production",
+		"version": "auto-changelog && git add CHANGELOG.md",
+		"postversion": "auto-changelog && git add CHANGELOG.md && git commit --no-edit --amend && git tag -f \"v$(node -e \"console.log(require('./package.json').version)\")\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ljharb/document.contains.git"
+	},
+	"keywords": [
+		"contains",
+		"document",
+		"element",
+		"node",
+		"polyfill",
+		"shim"
+	],
+	"author": "Jordan Harband <ljharb@gmail.com>",
+	"funding": {
+		"url": "https://github.com/sponsors/ljharb"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ljharb/document.contains/issues"
+	},
+	"homepage": "https://github.com/ljharb/document.contains#readme",
+	"devDependencies": {
+		"@es-shims/api": "^2.1.2",
+		"@ljharb/eslint-config": "^17.1.0",
+		"aud": "^1.1.2",
+		"auto-changelog": "^2.0.0",
+		"eslint": "^7.2.0",
+		"safe-publish-latest": "^1.1.4"
+	},
+	"dependencies": {
+		"define-properties": "^1.1.3"
+	},
+	"auto-changelog": {
+		"output": "CHANGELOG.md",
+		"template": "keepachangelog",
+		"unreleased": false,
+		"commitLimit": false,
+		"backfillLimit": false
+	}
+}

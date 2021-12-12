@@ -1,0 +1,73 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.randomString = exports.buildKvTx = exports.tendermintSearchIndexUpdated = exports.pendingWithoutTendermint = exports.tendermintEnabled = exports.defaultInstance = exports.tendermintInstances = exports.anyMatcher = exports.chainIdMatcher = void 0;
+const encoding_1 = require("@cosmjs/encoding");
+const utils_1 = require("@cosmjs/utils");
+exports.chainIdMatcher = /^[-a-zA-Z0-9]{3,30}$/;
+exports.anyMatcher = /^.*$/; // Any string, including empty. Does not do more than a type check.
+/**
+ * Tendermint instances to be tested.
+ *
+ * Testing different versions: as a convention, the minor version number is encoded
+ * in the port 111<version>, e.g. Tendermint 0.21.0 runs on port 11121. To start
+ * a specific version use:
+ *   TENDERMINT_VERSION=0.29.2 TENDERMINT_PORT=11129 ./scripts/tendermint/start.sh
+ *
+ * When more than 1 instances of tendermint are running, stop them manually:
+ *   docker container ls | grep tendermint/tendermint
+ *   docker container kill <container id from 1st column>
+ */
+exports.tendermintInstances = [
+    {
+        url: "localhost:11133",
+        version: "0.33.x",
+        blockTime: 1000,
+        expected: {
+            version: "0.33.8",
+            appCreator: "Cosmoshi Netowoko",
+            p2pVersion: 7,
+            blockVersion: 10,
+            appVersion: 1,
+        },
+    },
+    {
+        url: "localhost:11134",
+        version: "0.34.x",
+        blockTime: 500,
+        expected: {
+            version: exports.anyMatcher,
+            appCreator: "Cosmoshi Netowoko",
+            p2pVersion: 8,
+            blockVersion: 11,
+            appVersion: 1,
+        },
+    },
+];
+exports.defaultInstance = exports.tendermintInstances[0];
+function tendermintEnabled() {
+    return !!process.env.TENDERMINT_ENABLED;
+}
+exports.tendermintEnabled = tendermintEnabled;
+function pendingWithoutTendermint() {
+    if (!tendermintEnabled()) {
+        pending("Set TENDERMINT_ENABLED to enable tendermint-based tests");
+    }
+}
+exports.pendingWithoutTendermint = pendingWithoutTendermint;
+async function tendermintSearchIndexUpdated() {
+    // Tendermint needs some time before a committed transaction is found in search
+    return utils_1.sleep(75);
+}
+exports.tendermintSearchIndexUpdated = tendermintSearchIndexUpdated;
+function buildKvTx(k, v) {
+    return encoding_1.toAscii(`${k}=${v}`);
+}
+exports.buildKvTx = buildKvTx;
+function randomString() {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    return Array.from({ length: 12 })
+        .map(() => alphabet[Math.floor(Math.random() * alphabet.length)])
+        .join("");
+}
+exports.randomString = randomString;
+//# sourceMappingURL=testutil.spec.js.map

@@ -1,0 +1,1 @@
+import{useRef as e,useEffect as r}from"react";export default(t,n,a=global,c={})=>{const o=e(),{capture:s,passive:i,once:u}=c;r(()=>{o.current=n},[n]),r(()=>{if(!a||!a.addEventListener)return;const e=e=>o.current(e),r={capture:s,passive:i,once:u};return a.addEventListener(t,e,r),()=>{a.removeEventListener(t,e,r)}},[t,a,s,i,u])};
