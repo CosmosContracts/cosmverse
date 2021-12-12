@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import cn from "classnames";
-import styles from "./Footer.module.sass";
+
 import Group from "./Group";
 import Image from "../Image";
-import Form from "../Form";
+import { Link } from "react-router-dom";
 import Theme from "../Theme";
+import cn from "classnames";
+import styles from "./Footer.module.sass";
 
 const items = [
   {
-    title: "Crypter.",
+    title: "Marketplace",
     menu: [
       {
         title: "Discover",
@@ -22,14 +22,27 @@ const items = [
     ],
   },
   {
-    title: "Info",
+    title: "My Account",
     menu: [
       {
-        title: "FAQ",
+        title: "Profile",
+        url: "/profile",
+      },
+      {
+        title: "My NFTS",
+        url: "/upload-variants",
+      },
+    ],
+  },
+  {
+    title: "Resources",
+    menu: [
+      {
+        title: "Connect Wallet",
         url: "/faq",
       },
       {
-        title: "Create item",
+        title: "Mint NFT",
         url: "/upload-variants",
       },
     ],
@@ -37,11 +50,11 @@ const items = [
 ];
 
 const Footers = () => {
-  const [email, setEmail] = useState("");
+  //const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  /* const handleSubmit = (e) => {
     alert();
-  };
+  }; */
 
   return (
     <footer className={styles.footer}>
@@ -53,10 +66,10 @@ const Footers = () => {
                 className={styles.pic}
                 src="/images/logo-dark.png"
                 srcDark="/images/logo-light.png"
-                alt="Fitness Pro"
+                alt="Cosmverse Logo"
               />
             </Link>
-            <div className={styles.info}>The New Creative Economy.</div>
+            <div className={styles.info}>Cross-chain NFT marketplace on JunoNetwork.</div>
             <div className={styles.version}>
               <div className={styles.details}>Dark theme</div>
               <Theme className="theme-big" />
@@ -67,8 +80,8 @@ const Footers = () => {
               <Group className={styles.group} item={x} key={index} />
             ))}
           </div>
-          <div className={styles.col}>
-            <div className={styles.category}>Join Newsletter</div>
+           <div className={styles.col}>
+            {/* <div className={styles.category}>Join Newsletter</div>
             <div className={styles.text}>
               Subscribe our newsletter to get more free design course and
               resource
@@ -81,16 +94,14 @@ const Footers = () => {
               placeholder="Enter your email"
               type="email"
               name="email"
-            />
-          </div>
+            /> */}
+          </div> 
         </div>
         <div className={styles.foot}>
           <div className={styles.copyright}>
-            Copyright © 2021 UI8 LLC. All rights reserved
+            Copyright © 2021 Cosmverse. All rights reserved
           </div>
-          <div className={styles.note}>
-            We use cookies for better service. <a href="/#">Accept</a>
-          </div>
+          
         </div>
       </div>
     </footer>

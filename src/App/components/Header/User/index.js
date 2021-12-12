@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import cn from "classnames";
-import OutsideClickHandler from "react-outside-click-handler";
-import styles from "./User.module.sass";
+import {
+  formatAddress,
+  getCoinName,
+  getPrice,
+  getTokenConfig
+} from "../../../services";
+
 import Icon from "../../Icon";
+import { Link } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
 import Theme from "../../Theme";
+import cn from "classnames";
+import styles from "./User.module.sass";
+import userDefaultLogo from '../../../assets/user-default.svg'
 
 const items = [
   {
@@ -24,11 +32,25 @@ const items = [
   {
     title: "Disconnect",
     icon: "exit",
-    url: "https://ui8.net/ui8/products/crypter-nft-marketplace-ui-kit",
+    url: "/home",
   },
 ];
 
-const User = ({ className }) => {
+const BalanceItem = (props) => {
+  const coin = getTokenConfig(props.coin.denom);
+  
+  if (!coin) return (<></>);
+
+  return (
+    <>
+    <span>{getPrice(props.coin)} </span> 
+    <span className={styles.currency}>{getCoinName(props.coin)} </span>
+    </>
+  );
+
+};
+
+const User = ({ className , sdk }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -36,22 +58,24 @@ const User = ({ className }) => {
       <div className={cn(styles.user, className)}>
         <div className={styles.head} onClick={() => setVisible(!visible)}>
           <div className={styles.avatar}>
-            <img src="/images/content/avatar-user.jpg" alt="Avatar" />
+            <img src={userDefaultLogo} alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            7.00698 <span className={styles.currency}>ETH</span>
+          {sdk.balance.map(coin => (
+                <BalanceItem key={coin.denom} coin={coin} />
+              ))} 
           </div>
         </div>
         {visible && (
           <div className={styles.body}>
             <div className={styles.name}>Enrico Cole</div>
             <div className={styles.code}>
-              <div className={styles.number}>0xc4c16ab5ac7d...b21a</div>
+              <div className={styles.number}>{formatAddress(sdk.address, sdk)}</div>
               <button className={styles.copy}>
                 <Icon name="copy" size="16" />
               </button>
             </div>
-            <div className={styles.wrap}>
+           {/*  <div className={styles.wrap}>
               <div className={styles.line}>
                 <div className={styles.preview}>
                   <img
@@ -69,7 +93,7 @@ const User = ({ className }) => {
               >
                 Manage fun on Coinbase
               </button>
-            </div>
+            </div> */}
             <div className={styles.menu}>
               {items.map((x, index) =>
                 x.url ? (

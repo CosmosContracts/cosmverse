@@ -2,14 +2,12 @@ import "./styles/app.sass";
 
 import * as React from "react"
 
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import {
   Route,
   BrowserRouter as Router,
 } from "react-router-dom"
 
-import {
-  ChakraProvider,
-} from "@chakra-ui/react"
 import Home from "./screens/Home";
 import {
  HomePage,
@@ -17,32 +15,67 @@ import {
 import Page from "./components/Page";
 import { SdkProvider } from "./services/client/wallet"
 import { config } from "../config";
-import theme from "./theme"
 
 export const App = () => (
-  <ChakraProvider theme={theme}>
+  
     <SdkProvider config={config}>
 
         <Router>
-          
+        <ChakraProvider theme={theme}>
           <Route
             exact
             path="/"
             component={HomePage}
           />
-
+        </ChakraProvider>
           <Route
             exact
-            path="/dashboard"
+            path="/home"
             render={() => (
               <Page>
                 <Home />
               </Page>
             )}
           /> 
+
+          <Route
+            exact
+            path="/dashboard"
+            render={() => (
+              <Page>
+               
+              </Page>
+            )}
+          /> 
+          <Route
+            exact
+            path="/auction"
+            render={() => (
+              <Page>
+                  
+              </Page>
+            )}
+          /> 
+          <Route
+            exact
+            path="/data"
+            render={() => (
+              <Page>
+              </Page>
+            )}
+          /> 
+          <Route
+            exact
+            path="/profile/:id"
+            render={() => (
+              <Page>
+              </Page>
+            )}
+          /> 
+
           </Router>
           
 
     </SdkProvider>
-  </ChakraProvider>
+
 )

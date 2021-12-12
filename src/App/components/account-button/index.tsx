@@ -1,38 +1,40 @@
 import * as React from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
+
 import {
-  Button,
-  useColorModeValue,
   Avatar,
-  useBoolean,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Link,
-  Box,
-  chakra,
-  VStack,
-  Text,
-  GridItem,
-  Grid,
-  Flex,
   Badge,
-  useDisclosure,
-  PopoverFooter,
+  Box,
+  Button,
+  Flex,
+  Grid,
+  GridItem,
+  Link,
+  Popover,
   PopoverBody,
+  PopoverContent,
+  PopoverFooter,
+  PopoverTrigger,
+  Text,
+  VStack,
+  chakra,
+  useBoolean,
+  useColorModeValue,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { MdAccountBalanceWallet } from "react-icons/md";
-import { Window as KeplrWindow } from "@keplr-wallet/types";
-import { useSdk } from "../../services/client/wallet";
-import { config } from "../../../config";
 import {
-  configKeplr,
-  loadKeplrWallet,
   WalletLoader,
+  configKeplr,
   formatAddress,
   formatPrice,
   getTokenConfig,
+  loadKeplrWallet,
 } from "../../services";
+
+import { Window as KeplrWindow } from "@keplr-wallet/types";
+import { MdAccountBalanceWallet } from "react-icons/md";
+import { Link as ReactRouterLink } from "react-router-dom";
+import { config } from "../../../config";
+import { useSdk } from "../../services/client/wallet";
 import userLogo from "../../assets/user-default.svg";
 
 export function AccountButton(): JSX.Element {
@@ -98,7 +100,7 @@ export function AccountButton(): JSX.Element {
     );
   };
 
-  const BalanceItem = (props: any) => {
+   const BalanceItem = (props: any) => {
     const coin = getTokenConfig(props.coin.denom);
 
     if (!coin) return (<></>);

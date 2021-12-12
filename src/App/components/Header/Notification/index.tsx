@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
-import cn from "classnames";
-import OutsideClickHandler from "react-outside-click-handler";
-import styles from "./Notification.module.sass";
+
 import Icon from "../../Icon";
+import { Link } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
+import cn from "classnames";
+import styles from "./Notification.module.sass";
 
 const items = [
   {
